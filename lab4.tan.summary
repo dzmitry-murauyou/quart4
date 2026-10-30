@@ -1,0 +1,36 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 9.817 ns
+From           : rom:inst4|lpm_rom0:inst|altsyncram:altsyncram_component|altsyncram_7g71:auto_generated|ram_block1a0~porta_address_reg5
+To             : data_otp_inp[3]
+From Clock     : clk
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Clock Setup: 'clk'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 259.88 MHz ( period = 3.848 ns )
+From           : rom:inst4|lpm_rom0:inst|altsyncram:altsyncram_component|altsyncram_7g71:auto_generated|ram_block1a0~porta_address_reg5
+To             : ram:inst2|lpm_ram_dq0:inst|altsyncram:altsyncram_component|altsyncram_sic1:auto_generated|ram_block1a0~porta_datain_reg4
+From Clock     : clk
+To Clock       : clk
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+
