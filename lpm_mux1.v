@@ -42,18 +42,18 @@ module lpm_mux1 (
 	sel,
 	result);
 
-	input	[5:0]  data0x;
-	input	[5:0]  data1x;
+	input	[3:0]  data0x;
+	input	[3:0]  data1x;
 	input	  sel;
-	output	[5:0]  result;
+	output	[3:0]  result;
 
-	wire [5:0] sub_wire0;
-	wire [5:0] sub_wire5 = data1x[5:0];
-	wire [5:0] result = sub_wire0[5:0];
+	wire [3:0] sub_wire0;
+	wire [3:0] sub_wire5 = data1x[3:0];
+	wire [3:0] result = sub_wire0[3:0];
 	wire  sub_wire1 = sel;
 	wire  sub_wire2 = sub_wire1;
-	wire [5:0] sub_wire3 = data0x[5:0];
-	wire [11:0] sub_wire4 = {sub_wire5, sub_wire3};
+	wire [3:0] sub_wire3 = data0x[3:0];
+	wire [7:0] sub_wire4 = {sub_wire5, sub_wire3};
 
 	lpm_mux	lpm_mux_component (
 				.sel (sub_wire2),
@@ -69,7 +69,7 @@ module lpm_mux1 (
 	defparam
 		lpm_mux_component.lpm_size = 2,
 		lpm_mux_component.lpm_type = "LPM_MUX",
-		lpm_mux_component.lpm_width = 6,
+		lpm_mux_component.lpm_width = 4,
 		lpm_mux_component.lpm_widths = 1;
 
 

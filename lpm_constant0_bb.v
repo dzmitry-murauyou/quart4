@@ -34,7 +34,7 @@
 module lpm_constant0 (
 	result);
 
-	output	[5:0]  result;
+	output	[3:0]  result;
 
 endmodule
 

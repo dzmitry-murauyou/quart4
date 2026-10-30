@@ -38,9 +38,9 @@ module lpm_dff1 (
 	q);
 
 	input	  clock;
-	input	[5:0]  data;
+	input	[3:0]  data;
 	input	  enable;
-	output	[5:0]  q;
+	output	[3:0]  q;
 
 endmodule
 

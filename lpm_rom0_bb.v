@@ -36,9 +36,9 @@ module lpm_rom0 (
 	clock,
 	q);
 
-	input	[5:0]  address;
+	input	[3:0]  address;
 	input	  clock;
-	output	[8:0]  q;
+	output	[7:0]  q;
 
 endmodule
 

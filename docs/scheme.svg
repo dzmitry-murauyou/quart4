@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="660" viewBox="0 0 980 660" font-family="DejaVu Sans, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#333"/>
+    </marker>
+    <marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#b33"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="980" height="660" fill="#ffffff"/>
+  <text x="490" y="30" text-anchor="middle" font-size="20" font-weight="bold">Структурная схема: ШД = 6, ША = 4</text>
+
+  <!-- ROM -->
+  <rect x="60" y="70" width="220" height="110" rx="8" fill="#eef4fb" stroke="#2b5c8a" stroke-width="2"/>
+  <text x="170" y="105" text-anchor="middle" font-size="16" font-weight="bold">ROM — память команд</text>
+  <text x="170" y="130" text-anchor="middle" font-size="13">16 × 8 бит (rom.mif)</text>
+  <text x="170" y="152" text-anchor="middle" font-size="13">A[3..0]  →  Q[7..0]</text>
+
+  <!-- RAM -->
+  <rect x="60" y="300" width="220" height="110" rx="8" fill="#eef4fb" stroke="#2b5c8a" stroke-width="2"/>
+  <text x="170" y="335" text-anchor="middle" font-size="16" font-weight="bold">RAM — память данных</text>
+  <text x="170" y="360" text-anchor="middle" font-size="13">16 × 6 бит (ram.mif)</text>
+  <text x="170" y="382" text-anchor="middle" font-size="13">A[3..0] ↔ D[5..0]</text>
+
+  <!-- RON -->
+  <rect x="60" y="470" width="220" height="120" rx="8" fill="#eef4fb" stroke="#2b5c8a" stroke-width="2"/>
+  <text x="170" y="502" text-anchor="middle" font-size="16" font-weight="bold">РОН — 4 × 6 бит</text>
+  <text x="170" y="526" text-anchor="middle" font-size="13">R0, R1, R2, R3</text>
+  <text x="170" y="548" text-anchor="middle" font-size="13">запись / чтение через ШД</text>
+  <text x="170" y="570" text-anchor="middle" font-size="13">адрес регистра: IR[1..0]</text>
+
+  <!-- UU -->
+  <rect x="560" y="70" width="340" height="520" rx="8" fill="#fbf5ec" stroke="#a4762b" stroke-width="2"/>
+  <text x="730" y="100" text-anchor="middle" font-size="17" font-weight="bold">УУ — устройство управления</text>
+  <rect x="590" y="120" width="130" height="52" rx="6" fill="#fff" stroke="#a4762b"/>
+  <text x="655" y="142" text-anchor="middle" font-size="13" font-weight="bold">IP</text>
+  <text x="655" y="160" text-anchor="middle" font-size="12">4 бита</text>
+  <rect x="740" y="120" width="130" height="52" rx="6" fill="#fff" stroke="#a4762b"/>
+  <text x="805" y="142" text-anchor="middle" font-size="13" font-weight="bold">IR</text>
+  <text x="805" y="160" text-anchor="middle" font-size="12">8 бит</text>
+  <rect x="590" y="192" width="130" height="52" rx="6" fill="#fff" stroke="#a4762b"/>
+  <text x="655" y="214" text-anchor="middle" font-size="13" font-weight="bold">AR</text>
+  <text x="655" y="232" text-anchor="middle" font-size="12">4 бита</text>
+  <rect x="740" y="192" width="130" height="52" rx="6" fill="#fff" stroke="#a4762b"/>
+  <text x="805" y="214" text-anchor="middle" font-size="13" font-weight="bold">DR</text>
+  <text x="805" y="232" text-anchor="middle" font-size="12">6 бит</text>
+  <rect x="590" y="264" width="130" height="52" rx="6" fill="#fff" stroke="#a4762b"/>
+  <text x="655" y="286" text-anchor="middle" font-size="13" font-weight="bold">FR (Z)</text>
+  <text x="655" y="304" text-anchor="middle" font-size="12">1 бит</text>
+  <rect x="740" y="264" width="130" height="52" rx="6" fill="#fff" stroke="#a4762b"/>
+  <text x="805" y="286" text-anchor="middle" font-size="13" font-weight="bold">T (счётчик)</text>
+  <text x="805" y="304" text-anchor="middle" font-size="12">3 бита, T0…T7</text>
+  <rect x="590" y="336" width="280" height="74" rx="6" fill="#fff" stroke="#a4762b"/>
+  <text x="730" y="362" text-anchor="middle" font-size="13" font-weight="bold">Комбинационная логика УУ</text>
+  <text x="730" y="384" text-anchor="middle" font-size="12">дешифратор команд, мультиплексоры ША,</text>
+  <text x="730" y="402" text-anchor="middle" font-size="12">формирователь флага Z, формирователи ШУ</text>
+  <rect x="590" y="428" width="280" height="60" rx="6" fill="#fff" stroke="#a4762b"/>
+  <text x="730" y="452" text-anchor="middle" font-size="13" font-weight="bold">Блок опорных сигналов</text>
+  <text x="730" y="472" text-anchor="middle" font-size="12">(счётчик тактов, синхронизация)</text>
+  <rect x="590" y="506" width="280" height="60" rx="6" fill="#fff" stroke="#a4762b"/>
+  <text x="730" y="530" text-anchor="middle" font-size="13" font-weight="bold">Формирователи ШУ</text>
+  <text x="730" y="550" text-anchor="middle" font-size="12">rom/ram/ron_wr, ron_rd, ram_en…</text>
+
+  <!-- ША -->
+  <line x1="400" y1="200" x2="120" y2="200" stroke="#b33" stroke-width="3" marker-end="url(#arr2)"/>
+  <line x1="400" y1="200" x2="400" y2="70" stroke="#b33" stroke-width="3"/>
+  <line x1="400" y1="70" x2="280" y2="70" stroke="#b33" stroke-width="3" marker-end="url(#arr2)"/>
+  <line x1="400" y1="200" x2="400" y2="300" stroke="#b33" stroke-width="3"/>
+  <line x1="400" y1="300" x2="280" y2="300" stroke="#b33" stroke-width="3" marker-end="url(#arr2)"/>
+  <line x1="400" y1="200" x2="590" y2="200" stroke="#b33" stroke-width="3" marker-end="url(#arr2)"/>
+  <text x="330" y="190" font-size="15" font-weight="bold" fill="#b33">ША (4)</text>
+
+  <!-- ШД -->
+  <line x1="280" y1="345" x2="470" y2="345" stroke="#1c6b3a" stroke-width="3"/>
+  <line x1="470" y1="345" x2="470" y2="470" stroke="#1c6b3a" stroke-width="3"/>
+  <line x1="470" y1="530" x2="280" y2="530" stroke="#1c6b3a" stroke-width="3" marker-end="url(#arr)"/>
+  <line x1="470" y1="470" x2="590" y2="470" stroke="#1c6b3a" stroke-width="3" marker-end="url(#arr)"/>
+  <text x="330" y="335" font-size="15" font-weight="bold" fill="#1c6b3a">ШД (6)</text>
+
+  <!-- УУ -> ROM: команда -->
+  <line x1="560" y1="140" x2="280" y2="140" stroke="#333" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arr)"/>
+  <text x="330" y="132" font-size="12">код команды (8)</text>
+
+  <!-- clk -->
+  <line x1="730" y1="620" x2="730" y2="590" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="740" y="615" font-size="13">clk</text>
+
+  <text x="60" y="640" font-size="12" fill="#555">Связи: ША — шина адреса (4), ШД — шина данных (6), ШУ — шина управления (от УУ к блокам).</text>
+</svg>

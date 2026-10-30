@@ -39,10 +39,10 @@
 module lpm_constant0 (
 	result);
 
-	output	[5:0]  result;
+	output	[3:0]  result;
 
-	wire [5:0] sub_wire0;
-	wire [5:0] result = sub_wire0[5:0];
+	wire [3:0] sub_wire0;
+	wire [3:0] result = sub_wire0[3:0];
 
 	lpm_constant	lpm_constant_component (
 				.result (sub_wire0));
@@ -50,7 +50,7 @@ module lpm_constant0 (
 		lpm_constant_component.lpm_cvalue = 1,
 		lpm_constant_component.lpm_hint = "ENABLE_RUNTIME_MOD=NO",
 		lpm_constant_component.lpm_type = "LPM_CONSTANT",
-		lpm_constant_component.lpm_width = 6;
+		lpm_constant_component.lpm_width = 4;
 
 
 endmodule

@@ -18,20 +18,8 @@
 #
 # Quartus II
 # Version 9.1 Build 222 10/21/2009 SJ Web Edition
-# Date created = 22:33:17  October 10, 2026
 #
-# -------------------------------------------------------------------------- #
-#
-# Notes:
-#
-# 1) The default values for assignments are stored in the file:
-#		lab4_assignment_defaults.qdf
-#    If this file doesn't exist, see file:
-#		assignment_defaults.qdf
-#
-# 2) Altera recommends that you do not modify this file. This
-#    file is updated automatically by the Quartus II software
-#    and any changes you make may be lost or overwritten.
+# Вариант: ШД = 6, ША = 4, MOV M->R (прямая адресация), JZ (непосредственная)
 #
 # -------------------------------------------------------------------------- #
 
@@ -44,35 +32,40 @@ set_global_assignment -name PROJECT_CREATION_TIME_DATE "22:33:17  OCTOBER 10, 20
 set_global_assignment -name LAST_QUARTUS_VERSION 9.1
 set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
 set_global_assignment -name SIMULATION_MODE FUNCTIONAL
+
+# --- схемы ---
 set_global_assignment -name BDF_FILE lab4.bdf
+set_global_assignment -name BDF_FILE laba4.bdf
+set_global_assignment -name BDF_FILE uu.bdf
+set_global_assignment -name BDF_FILE ron.bdf
+set_global_assignment -name BDF_FILE ram.bdf
+set_global_assignment -name BDF_FILE rom.bdf
+
+# --- память ---
 set_global_assignment -name MIF_FILE rom.mif
 set_global_assignment -name MIF_FILE ram.mif
-set_global_assignment -name QIP_FILE lpm_bustri0.qip
-set_global_assignment -name BDF_FILE rom.bdf
+
+# --- мегафункции ---
 set_global_assignment -name QIP_FILE lpm_rom0.qip
-set_global_assignment -name BDF_FILE ram.bdf
 set_global_assignment -name QIP_FILE lpm_ram_dq0.qip
-set_global_assignment -name BDF_FILE ron.bdf
+set_global_assignment -name QIP_FILE lpm_bustri0.qip
 set_global_assignment -name QIP_FILE lpm_dff0.qip
-set_global_assignment -name QIP_FILE lpm_decode0.qip
-set_global_assignment -name QIP_FILE lpm_mux0.qip
-set_global_assignment -name BDF_FILE uu.bdf
-set_global_assignment -name QIP_FILE lpm_mux1.qip
 set_global_assignment -name QIP_FILE lpm_dff1.qip
 set_global_assignment -name QIP_FILE lpm_dff2.qip
+set_global_assignment -name QIP_FILE lpm_dff3.qip
+set_global_assignment -name QIP_FILE lpm_decode0.qip
+set_global_assignment -name QIP_FILE lpm_decode1.qip
+set_global_assignment -name QIP_FILE lpm_mux0.qip
+set_global_assignment -name QIP_FILE lpm_mux1.qip
+set_global_assignment -name QIP_FILE lpm_counter0.qip
 set_global_assignment -name QIP_FILE lpm_add_sub0.qip
 set_global_assignment -name QIP_FILE lpm_constant0.qip
-set_global_assignment -name QIP_FILE lpm_mux2.qip
-set_global_assignment -name QIP_FILE lpm_counter0.qip
-set_global_assignment -name QIP_FILE lpm_decode1.qip
-set_global_assignment -name QIP_FILE lpm_decode6.qip
-set_global_assignment -name QIP_FILE lpm_mux4.qip
-set_global_assignment -name BDF_FILE laba4.bdf
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform2.vwf
+
+# --- моделирование ---
+set_global_assignment -name VECTOR_WAVEFORM_FILE lab4.vwf
+
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform3.vwf
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Waveform2.vwf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -38,11 +38,11 @@ module lpm_ram_dq0 (
 	wren,
 	q);
 
-	input	[5:0]  address;
+	input	[3:0]  address;
 	input	  clock;
-	input	[8:0]  data;
+	input	[5:0]  data;
 	input	  wren;
-	output	[8:0]  q;
+	output	[5:0]  q;
 
 endmodule
 

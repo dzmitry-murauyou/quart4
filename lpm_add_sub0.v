@@ -41,12 +41,12 @@ module lpm_add_sub0 (
 	datab,
 	result);
 
-	input	[5:0]  dataa;
-	input	[5:0]  datab;
-	output	[5:0]  result;
+	input	[3:0]  dataa;
+	input	[3:0]  datab;
+	output	[3:0]  result;
 
-	wire [5:0] sub_wire0;
-	wire [5:0] result = sub_wire0[5:0];
+	wire [3:0] sub_wire0;
+	wire [3:0] result = sub_wire0[3:0];
 
 	lpm_add_sub	lpm_add_sub_component (
 				.dataa (dataa),
@@ -68,7 +68,7 @@ module lpm_add_sub0 (
 		lpm_add_sub_component.lpm_hint = "ONE_INPUT_IS_CONSTANT=NO,CIN_USED=NO",
 		lpm_add_sub_component.lpm_representation = "UNSIGNED",
 		lpm_add_sub_component.lpm_type = "LPM_ADD_SUB",
-		lpm_add_sub_component.lpm_width = 6;
+		lpm_add_sub_component.lpm_width = 4;
 
 
 endmodule

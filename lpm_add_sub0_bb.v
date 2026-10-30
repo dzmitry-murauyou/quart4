@@ -36,9 +36,9 @@ module lpm_add_sub0 (
 	datab,
 	result);
 
-	input	[5:0]  dataa;
-	input	[5:0]  datab;
-	output	[5:0]  result;
+	input	[3:0]  dataa;
+	input	[3:0]  datab;
+	output	[3:0]  result;
 
 endmodule
 

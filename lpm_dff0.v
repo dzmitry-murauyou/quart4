@@ -43,12 +43,12 @@ module lpm_dff0 (
 	q);
 
 	input	  clock;
-	input	[8:0]  data;
+	input	[7:0]  data;
 	input	  enable;
-	output	[8:0]  q;
+	output	[7:0]  q;
 
-	wire [8:0] sub_wire0;
-	wire [8:0] q = sub_wire0[8:0];
+	wire [7:0] sub_wire0;
+	wire [7:0] q = sub_wire0[7:0];
 
 	lpm_ff	lpm_ff_component (
 				.enable (enable),
@@ -68,7 +68,7 @@ module lpm_dff0 (
 	defparam
 		lpm_ff_component.lpm_fftype = "DFF",
 		lpm_ff_component.lpm_type = "LPM_FF",
-		lpm_ff_component.lpm_width = 9;
+		lpm_ff_component.lpm_width = 8;
 
 
 endmodule

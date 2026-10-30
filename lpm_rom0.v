@@ -41,12 +41,12 @@ module lpm_rom0 (
 	clock,
 	q);
 
-	input	[5:0]  address;
+	input	[3:0]  address;
 	input	  clock;
-	output	[8:0]  q;
+	output	[7:0]  q;
 
-	wire [8:0] sub_wire0;
-	wire [8:0] q = sub_wire0[8:0];
+	wire [7:0] sub_wire0;
+	wire [7:0] q = sub_wire0[7:0];
 
 	altsyncram	altsyncram_component (
 				.clock0 (clock),
@@ -64,7 +64,7 @@ module lpm_rom0 (
 				.clocken1 (1'b1),
 				.clocken2 (1'b1),
 				.clocken3 (1'b1),
-				.data_a ({9{1'b1}}),
+				.data_a ({8{1'b1}}),
 				.data_b (1'b1),
 				.eccstatus (),
 				.q_b (),
@@ -79,12 +79,12 @@ module lpm_rom0 (
 		altsyncram_component.intended_device_family = "Stratix II",
 		altsyncram_component.lpm_hint = "ENABLE_RUNTIME_MOD=NO",
 		altsyncram_component.lpm_type = "altsyncram",
-		altsyncram_component.numwords_a = 64,
+		altsyncram_component.numwords_a = 16,
 		altsyncram_component.operation_mode = "ROM",
 		altsyncram_component.outdata_aclr_a = "NONE",
 		altsyncram_component.outdata_reg_a = "UNREGISTERED",
-		altsyncram_component.widthad_a = 6,
-		altsyncram_component.width_a = 9,
+		altsyncram_component.widthad_a = 4,
+		altsyncram_component.width_a = 8,
 		altsyncram_component.width_byteena_a = 1;
 
 

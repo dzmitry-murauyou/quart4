@@ -26,8 +26,8 @@ applicable agreement for further details.
 	(port
 		(pt 96 24)
 		(output)
-		(text "result[5..0]" (rect 0 0 60 14)(font "Arial" (font_size 8)))
-		(text "result[5..0]" (rect 93 -25 106 24)(font "Arial" (font_size 8))(invisible))
+		(text "result[3..0]" (rect 0 0 60 14)(font "Arial" (font_size 8)))
+		(text "result[3..0]" (rect 93 -25 106 24)(font "Arial" (font_size 8))(invisible))
 		(line (pt 96 24)(pt 80 24)(line_width 3))
 	)
 	(drawing

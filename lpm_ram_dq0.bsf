@@ -26,8 +26,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 32)
 		(input)
-		(text "data[8..0]" (rect 0 0 53 14)(font "Arial" (font_size 8)))
-		(text "data[8..0]" (rect 20 26 65 39)(font "Arial" (font_size 8)))
+		(text "data[5..0]" (rect 0 0 53 14)(font "Arial" (font_size 8)))
+		(text "data[5..0]" (rect 20 26 65 39)(font "Arial" (font_size 8)))
 		(line (pt 0 32)(pt 16 32)(line_width 3))
 	)
 	(port
@@ -40,8 +40,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 64)
 		(input)
-		(text "address[5..0]" (rect 0 0 75 14)(font "Arial" (font_size 8)))
-		(text "address[5..0]" (rect 20 58 79 71)(font "Arial" (font_size 8)))
+		(text "address[3..0]" (rect 0 0 75 14)(font "Arial" (font_size 8)))
+		(text "address[3..0]" (rect 20 58 79 71)(font "Arial" (font_size 8)))
 		(line (pt 0 64)(pt 16 64)(line_width 3))
 	)
 	(port
@@ -54,8 +54,8 @@ applicable agreement for further details.
 	(port
 		(pt 160 32)
 		(output)
-		(text "q[8..0]" (rect 0 0 35 14)(font "Arial" (font_size 8)))
-		(text "q[8..0]" (rect 111 26 141 39)(font "Arial" (font_size 8)))
+		(text "q[5..0]" (rect 0 0 35 14)(font "Arial" (font_size 8)))
+		(text "q[5..0]" (rect 111 26 141 39)(font "Arial" (font_size 8)))
 		(line (pt 160 32)(pt 144 32)(line_width 3))
 	)
 	(drawing

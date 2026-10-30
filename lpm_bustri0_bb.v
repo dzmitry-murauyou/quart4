@@ -36,9 +36,9 @@ module lpm_bustri0 (
 	enabledt,
 	tridata);
 
-	input	[8:0]  data;
+	input	[5:0]  data;
 	input	  enabledt;
-	inout	[8:0]  tridata;
+	inout	[5:0]  tridata;
 
 endmodule
 

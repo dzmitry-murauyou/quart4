@@ -41,9 +41,9 @@ module lpm_bustri0 (
 	enabledt,
 	tridata);
 
-	input	[8:0]  data;
+	input	[5:0]  data;
 	input	  enabledt;
-	inout	[8:0]  tridata;
+	inout	[5:0]  tridata;
 
 
 	lpm_bustri	lpm_bustri_component (
@@ -58,7 +58,7 @@ module lpm_bustri0 (
 				);
 	defparam
 		lpm_bustri_component.lpm_type = "LPM_BUSTRI",
-		lpm_bustri_component.lpm_width = 9;
+		lpm_bustri_component.lpm_width = 6;
 
 
 endmodule

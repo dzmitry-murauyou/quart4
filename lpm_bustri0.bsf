@@ -33,15 +33,15 @@ applicable agreement for further details.
 	(port
 		(pt 0 24)
 		(input)
-		(text "data[8..0]" (rect 0 0 53 14)(font "Arial" (font_size 8)))
-		(text "data[8..0]" (rect -3 -21 10 24)(font "Arial" (font_size 8))(invisible))
+		(text "data[5..0]" (rect 0 0 53 14)(font "Arial" (font_size 8)))
+		(text "data[5..0]" (rect -3 -21 10 24)(font "Arial" (font_size 8))(invisible))
 		(line (pt 0 24)(pt 32 24)(line_width 3))
 	)
 	(port
 		(pt 80 24)
 		(bidir)
-		(text "tridata[8..0]" (rect 0 0 63 14)(font "Arial" (font_size 8)))
-		(text "tridata[8..0]" (rect 84 -30 97 24)(font "Arial" (font_size 8))(invisible))
+		(text "tridata[5..0]" (rect 0 0 63 14)(font "Arial" (font_size 8)))
+		(text "tridata[5..0]" (rect 84 -30 97 24)(font "Arial" (font_size 8))(invisible))
 		(line (pt 80 24)(pt 48 24)(line_width 3))
 	)
 	(drawing
