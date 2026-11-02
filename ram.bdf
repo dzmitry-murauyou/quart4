@@ -17,7 +17,7 @@ applicable agreement for further details.
 (header "graphic" (version "1.3"))
 (pin
 	(input)
-	(rect 150 150 318 166)
+	(rect 192 216 360 232)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
 	(text "address[3:0]" (rect 9 0 115 12) (font "Arial"))
 	(pt 168 8)
@@ -29,14 +29,9 @@ applicable agreement for further details.
 		(line (pt 117 4) (pt 121 8) (line_width 1))
 		(line (pt 117 12) (pt 121 8) (line_width 1)))
 	(text "VCC" (rect 136 7 156 17) (font "Arial" (font_size 6))))
-(connector
-	(pt 318 158)
-	(pt 447 158)
-	(bus))
-(text "address[3..0]" (rect 322 145 426 158) (font "Arial"))
 (pin
 	(input)
-	(rect 150 350 318 366)
+	(rect 192 168 360 184)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
 	(text "data_in[5:0]" (rect 9 0 115 12) (font "Arial"))
 	(pt 168 8)
@@ -48,14 +43,9 @@ applicable agreement for further details.
 		(line (pt 117 4) (pt 121 8) (line_width 1))
 		(line (pt 117 12) (pt 121 8) (line_width 1)))
 	(text "VCC" (rect 136 7 156 17) (font "Arial" (font_size 6))))
-(connector
-	(pt 318 358)
-	(pt 429 358)
-	(bus))
-(text "ram_d[5..0]" (rect 322 345 410 358) (font "Arial"))
 (pin
 	(input)
-	(rect 150 550 318 566)
+	(rect 192 480 360 496)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
 	(text "wren" (rect 9 0 51 12) (font "Arial"))
 	(pt 168 8)
@@ -67,13 +57,9 @@ applicable agreement for further details.
 		(line (pt 117 4) (pt 121 8) (line_width 1))
 		(line (pt 117 12) (pt 121 8) (line_width 1)))
 	(text "VCC" (rect 136 7 156 17) (font "Arial" (font_size 6))))
-(connector
-	(pt 318 558)
-	(pt 384 558))
-(text "ram_wr" (rect 322 545 370 558) (font "Arial"))
 (pin
 	(input)
-	(rect 150 750 318 766)
+	(rect 192 640 360 656)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
 	(text "enable" (rect 9 0 67 12) (font "Arial"))
 	(pt 168 8)
@@ -85,13 +71,9 @@ applicable agreement for further details.
 		(line (pt 117 4) (pt 121 8) (line_width 1))
 		(line (pt 117 12) (pt 121 8) (line_width 1)))
 	(text "VCC" (rect 136 7 156 17) (font "Arial" (font_size 6))))
-(connector
-	(pt 318 758)
-	(pt 384 758))
-(text "ram_en" (rect 322 745 370 758) (font "Arial"))
 (pin
 	(input)
-	(rect 150 950 318 966)
+	(rect 192 760 360 776)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
 	(text "clock" (rect 9 0 59 12) (font "Arial"))
 	(pt 168 8)
@@ -103,13 +85,9 @@ applicable agreement for further details.
 		(line (pt 117 4) (pt 121 8) (line_width 1))
 		(line (pt 117 12) (pt 121 8) (line_width 1)))
 	(text "VCC" (rect 136 7 156 17) (font "Arial" (font_size 6))))
-(connector
-	(pt 318 958)
-	(pt 374 958))
-(text "clk" (rect 322 945 346 958) (font "Arial"))
 (pin
 	(output)
-	(rect 1100 550 1276 566)
+	(rect 1064 576 1240 592)
 	(text "OUTPUT" (rect 1 0 39 10) (font "Arial" (font_size 6)))
 	(text "data_out[5:0]" (rect 90 0 204 12) (font "Arial"))
 	(pt 0 8)
@@ -121,13 +99,8 @@ applicable agreement for further details.
 		(line (pt 78 4) (pt 82 8) (line_width 1))
 		(line (pt 82 8) (pt 78 12) (line_width 1))
 		(line (pt 78 12) (pt 82 8) (line_width 1))))
-(connector
-	(pt 1100 558)
-	(pt 962 558)
-	(bus))
-(text "data_out[5..0]" (rect 968 545 1080 558) (font "Arial"))
 (symbol
-	(rect 550 200 710 312)
+	(rect 600 160 760 272)
 	(text "lpm_ram_dq0" (rect 41 1 133 17) (font "Arial" (font_size 10)))
 	(text "inst" (rect 8 96 25 108) (font "Arial"))
 	(port
@@ -167,31 +140,8 @@ applicable agreement for further details.
 		(line (pt 16 96) (pt 16 16) (line_width 1))
 		(line (pt 16 74) (pt 22 80) (line_width 1))
 		(line (pt 22 80) (pt 16 86) (line_width 1))))
-(connector
-	(pt 550 232)
-	(pt 439 232)
-	(bus))
-(text "ram_d[5..0]" (rect 445 219 533 232) (font "Arial"))
-(connector
-	(pt 550 248)
-	(pt 484 248))
-(text "ram_wr" (rect 490 235 538 248) (font "Arial"))
-(connector
-	(pt 550 264)
-	(pt 421 264)
-	(bus))
-(text "address[3..0]" (rect 427 251 531 264) (font "Arial"))
-(connector
-	(pt 550 280)
-	(pt 494 280))
-(text "clk" (rect 500 267 524 280) (font "Arial"))
-(connector
-	(pt 710 232)
-	(pt 821 232)
-	(bus))
-(text "ram_q[5..0]" (rect 714 219 802 232) (font "Arial"))
 (symbol
-	(rect 750 550 830 590)
+	(rect 880 560 960 600)
 	(text "lpm_bustri0" (rect 7 1 86 17) (font "Arial" (font_size 10)))
 	(text "inst1" (rect 8 24 25 36) (font "Arial"))
 	(port
@@ -220,21 +170,56 @@ applicable agreement for further details.
 		(line (pt 32 32) (pt 32 16) (line_width 1))
 		(line (pt 58 28) (pt 66 20) (line_width 1))
 		(line (pt 10 28) (pt 18 20) (line_width 1))))
+(text "RAM: 16 x 6, init file ram.mif" (rect 200 40 440 58) (font "Arial" (font_size 10)))
 (connector
-	(pt 790 590)
-	(pt 790 656))
+	(pt 600 240)
+	(pt 376 240))
 (connector
-	(pt 790 656)
-	(pt 856 656))
-(text "ram_en" (rect 796 643 844 656) (font "Arial"))
+	(pt 376 240)
+	(pt 376 768))
 (connector
-	(pt 750 574)
-	(pt 639 574)
+	(pt 376 768)
+	(pt 360 768))
+(connector
+	(pt 920 600)
+	(pt 920 648))
+(connector
+	(pt 920 648)
+	(pt 360 648))
+(connector
+	(pt 600 208)
+	(pt 392 208))
+(connector
+	(pt 392 208)
+	(pt 392 488))
+(connector
+	(pt 392 488)
+	(pt 360 488))
+(connector
+	(pt 880 584)
+	(pt 776 584)
 	(bus))
-(text "ram_q[5..0]" (rect 645 561 733 574) (font "Arial"))
 (connector
-	(pt 830 574)
-	(pt 968 574)
+	(pt 776 584)
+	(pt 776 192)
 	(bus))
-(text "data_out[5..0]" (rect 834 561 946 574) (font "Arial"))
-(text "RAM: 16 x 6, init file ram.mif" (rect 150 60 390 78) (font "Arial" (font_size 10)))
+(connector
+	(pt 776 192)
+	(pt 760 192)
+	(bus))
+(connector
+	(pt 600 192)
+	(pt 600 176)
+	(bus))
+(connector
+	(pt 600 176)
+	(pt 360 176)
+	(bus))
+(connector
+	(pt 600 224)
+	(pt 360 224)
+	(bus))
+(connector
+	(pt 960 584)
+	(pt 1064 584)
+	(bus))

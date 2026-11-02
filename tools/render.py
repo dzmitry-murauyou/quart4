@@ -16,6 +16,7 @@ def rect_of(node):
 def draw_bdf(path, out, scale=1.0):
     tree = B.parse((B.ROOT / path).read_text(encoding='utf-8'))
     items = []
+    ends = {}
     minx = miny = 10 ** 9
     maxx = maxy = -10 ** 9
     def upd(x, y):
@@ -49,15 +50,29 @@ def draw_bdf(path, out, scale=1.0):
             upd(r[0], r[1]); upd(r[2], r[3])
         elif n[0] == 'connector':
             ps = [(int(p[1]), int(p[2])) for p in B.children(n, 'pt')]
-            items.append(('poly', ps))
+            bus = bool(B.children(n, 'bus'))
+            items.append(('poly', ps, bus))
+            for tx in B.children(n, 'text'):
+                r = [int(v) for v in B.first(tx, 'rect')[1:]]
+                items.append(('label', (r[0], r[3] - 11), tx[1].strip('"')))
+            if len(ps) == 2:
+                ends[ps[0]] = ends.get(ps[0], 0) + 1
+                ends[ps[1]] = ends.get(ps[1], 0) + 1
             for p in ps:
                 upd(*p)
+        elif n[0] == 'junction':
+            pt = [int(v) for v in B.first(n, 'pt')[1:]]
+            items.append(('dot', tuple(pt)))
+            upd(*pt)
         elif n[0] == 'text':
             nm = n[1].strip('"')
             r = [int(v) for v in B.first(n, 'rect')[1:]]
             items.append(('label', (r[0], r[3] - 12), nm))
             upd(r[0], r[1]); upd(r[2], r[3])
 
+    for p, c in ends.items():
+        if c >= 3:
+            items.append(('dot', p))
     W = int((maxx - minx + 80) * scale)
     H = int((maxy - miny + 80) * scale)
     img = Image.new('RGB', (W, H), 'white')
@@ -71,7 +86,11 @@ def draw_bdf(path, out, scale=1.0):
             d.rectangle([T(x0, y0), T(x1, y1)], outline='#888', fill=it[2])
         elif it[0] == 'poly':
             pts = [T(*p) for p in it[1]]
-            d.line(pts, fill='#222', width=1)
+            w = 3 if (len(it) > 2 and it[2]) else 1
+            d.line(pts, fill='#1b3f6b' if w > 1 else '#222', width=w)
+        elif it[0] == 'dot':
+            x, y = T(*it[1])
+            d.ellipse([x - 3, y - 3, x + 3, y + 3], fill='#1b3f6b')
         elif it[0] == 'label':
             d.text(T(*it[1]), it[2], fill='#06c', font=FONT)
         elif it[0] == 'bigtext':
@@ -84,4 +103,6 @@ def draw_bdf(path, out, scale=1.0):
 
 if __name__ == '__main__':
     for f in sys.argv[1:]:
-        draw_bdf(f, f.replace('.bdf', '.png'), scale=1.0)
+        out = pathlib.Path(__file__).resolve().parent.parent / 'docs' / 'img' / (f.replace('.bdf', '.png'))
+        out.parent.mkdir(parents=True, exist_ok=True)
+        draw_bdf(f, str(out), scale=1.0)

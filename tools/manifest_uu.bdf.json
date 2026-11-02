@@ -1,0 +1,186 @@
+{
+ "clk": [
+  "AR_reg.clock",
+  "DR_reg.clock",
+  "FR.clock",
+  "IP_reg.clock",
+  "IR_reg.clock",
+  "T_cnt.clock",
+  "clk"
+ ],
+ "rom_data[7..0]": [
+  "IR_reg.data[7..0]",
+  "rom_data[7:0]"
+ ],
+ "data_io[5..0]": [
+  "DR_buf.tridata[5..0]",
+  "DR_reg.data[5..0]",
+  "data_io[5:0]"
+ ],
+ "address[3..0]": [
+  "SHA_mux.result[3..0]",
+  "address[3:0]"
+ ],
+ "ir[7..0]": [
+  "IR_reg.q[7..0]",
+  "ir_out[7:0]"
+ ],
+ "T[2..0]": [
+  "T_cnt.q[2..0]",
+  "T_dec.data[2..0]",
+  "T_out[2:0]"
+ ],
+ "z": [
+  "FR.q",
+  "flag_out",
+  "jcond.IN2"
+ ],
+ "ir[1..0]": [
+  "ron_addr[1:0]"
+ ],
+ "mov_t4": [
+  "DR_buf.enabledt",
+  "FR.enable",
+  "mov_t4.OUT",
+  "ron_wr"
+ ],
+ "gnd_net": [
+  "gnd0.1",
+  "ram_wr",
+  "ron_rd"
+ ],
+ "mov_t3": [
+  "DR_reg.enable",
+  "SHA_mux.sel",
+  "mov_t3.OUT",
+  "ram_en"
+ ],
+ "t1": [
+  "IR_reg.enable",
+  "T_dec.eq1",
+  "ip_en.IN1"
+ ],
+ "t2": [
+  "T_dec.eq2",
+  "mov_t2.IN1"
+ ],
+ "t3": [
+  "T_dec.eq3",
+  "ip_jmp.IN1",
+  "mov_t3.IN1"
+ ],
+ "t4": [
+  "T_dec.eq4",
+  "mov_t4.IN1"
+ ],
+ "ir[5..2]": [
+  "AR_reg.data[3..0]",
+  "IP_mux.data1x[3..0]"
+ ],
+ "mov_t2": [
+  "AR_reg.enable",
+  "mov_t2.OUT"
+ ],
+ "ar[3..0]": [
+  "AR_reg.q[3..0]",
+  "SHA_mux.data1x[3..0]"
+ ],
+ "dr[5..0]": [
+  "DR_buf.data[5..0]",
+  "DR_reg.q[5..0]"
+ ],
+ "ip_next[3..0]": [
+  "IP_mux.result[3..0]",
+  "IP_reg.data[3..0]"
+ ],
+ "ip_en": [
+  "IP_reg.enable",
+  "ip_en.OUT"
+ ],
+ "ip[3..0]": [
+  "IP_inc.dataa[3..0]",
+  "IP_reg.q[3..0]",
+  "SHA_mux.data0x[3..0]"
+ ],
+ "one[3..0]": [
+  "IP_inc.datab[3..0]",
+  "const1.result[3..0]"
+ ],
+ "ip_plus1[3..0]": [
+  "IP_inc.result[3..0]",
+  "IP_mux.data0x[3..0]"
+ ],
+ "ip_jump": [
+  "IP_mux.sel",
+  "ip_en.IN2",
+  "ip_jmp.OUT"
+ ],
+ "z_d": [
+  "FR.data",
+  "nz.OUT"
+ ],
+ "ir[7]": [
+  "jump.IN1",
+  "n_ir7.IN"
+ ],
+ "n_ir7": [
+  "is_mov.IN2",
+  "n_ir7.OUT"
+ ],
+ "ir[6]": [
+  "is_mov.IN1",
+  "jcond.IN1"
+ ],
+ "is_mov": [
+  "is_mov.OUT",
+  "mov_t2.IN2",
+  "mov_t3.IN2",
+  "mov_t4.IN2"
+ ],
+ "jcond": [
+  "jcond.OUT",
+  "jump.IN2"
+ ],
+ "jump": [
+  "ip_jmp.IN2",
+  "jump.OUT"
+ ],
+ "dr[1]": [
+  "o1.IN2"
+ ],
+ "dr[0]": [
+  "o1.IN1"
+ ],
+ "o1": [
+  "o1.OUT",
+  "o4.IN1"
+ ],
+ "dr[3]": [
+  "o2.IN2"
+ ],
+ "dr[2]": [
+  "o2.IN1"
+ ],
+ "o2": [
+  "o2.OUT",
+  "o4.IN2"
+ ],
+ "dr[5]": [
+  "o3.IN2"
+ ],
+ "dr[4]": [
+  "o3.IN1"
+ ],
+ "o3": [
+  "o3.OUT",
+  "o5.IN1"
+ ],
+ "o4": [
+  "o4.OUT",
+  "o5.IN2"
+ ],
+ "o5": [
+  "nz.IN",
+  "o5.OUT"
+ ]
+}

@@ -17,7 +17,7 @@ applicable agreement for further details.
 (header "graphic" (version "1.3"))
 (pin
 	(input)
-	(rect 150 100 318 116)
+	(rect 192 96 360 112)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
 	(text "clk" (rect 9 0 43 12) (font "Arial"))
 	(pt 168 8)
@@ -29,13 +29,9 @@ applicable agreement for further details.
 		(line (pt 117 4) (pt 121 8) (line_width 1))
 		(line (pt 117 12) (pt 121 8) (line_width 1)))
 	(text "VCC" (rect 136 7 156 17) (font "Arial" (font_size 6))))
-(connector
-	(pt 318 108)
-	(pt 374 108))
-(text "clk" (rect 322 95 346 108) (font "Arial"))
 (pin
 	(input)
-	(rect 150 300 318 316)
+	(rect 192 240 360 256)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
 	(text "data_input[5:0]" (rect 9 0 139 12) (font "Arial"))
 	(pt 168 8)
@@ -47,14 +43,9 @@ applicable agreement for further details.
 		(line (pt 117 4) (pt 121 8) (line_width 1))
 		(line (pt 117 12) (pt 121 8) (line_width 1)))
 	(text "VCC" (rect 136 7 156 17) (font "Arial" (font_size 6))))
-(connector
-	(pt 318 308)
-	(pt 429 308)
-	(bus))
-(text "ron_d[5..0]" (rect 322 295 410 308) (font "Arial"))
 (pin
 	(input)
-	(rect 150 500 318 516)
+	(rect 192 400 360 416)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
 	(text "address[1:0]" (rect 9 0 115 12) (font "Arial"))
 	(pt 168 8)
@@ -66,14 +57,9 @@ applicable agreement for further details.
 		(line (pt 117 4) (pt 121 8) (line_width 1))
 		(line (pt 117 12) (pt 121 8) (line_width 1)))
 	(text "VCC" (rect 136 7 156 17) (font "Arial" (font_size 6))))
-(connector
-	(pt 318 508)
-	(pt 429 508)
-	(bus))
-(text "ron_a[1..0]" (rect 322 495 410 508) (font "Arial"))
 (pin
 	(input)
-	(rect 150 700 318 716)
+	(rect 192 800 360 816)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
 	(text "write" (rect 9 0 59 12) (font "Arial"))
 	(pt 168 8)
@@ -85,13 +71,9 @@ applicable agreement for further details.
 		(line (pt 117 4) (pt 121 8) (line_width 1))
 		(line (pt 117 12) (pt 121 8) (line_width 1)))
 	(text "VCC" (rect 136 7 156 17) (font "Arial" (font_size 6))))
-(connector
-	(pt 318 708)
-	(pt 375 708))
-(text "write" (rect 322 695 362 708) (font "Arial"))
 (pin
 	(input)
-	(rect 150 900 318 916)
+	(rect 192 1000 360 1016)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
 	(text "read" (rect 9 0 51 12) (font "Arial"))
 	(pt 168 8)
@@ -103,13 +85,9 @@ applicable agreement for further details.
 		(line (pt 117 4) (pt 121 8) (line_width 1))
 		(line (pt 117 12) (pt 121 8) (line_width 1)))
 	(text "VCC" (rect 136 7 156 17) (font "Arial" (font_size 6))))
-(connector
-	(pt 318 908)
-	(pt 374 908))
-(text "read" (rect 322 895 354 908) (font "Arial"))
 (pin
 	(output)
-	(rect 1500 500 1676 516)
+	(rect 1360 616 1536 632)
 	(text "OUTPUT" (rect 1 0 39 10) (font "Arial" (font_size 6)))
 	(text "data_output[5:0]" (rect 90 0 228 12) (font "Arial"))
 	(pt 0 8)
@@ -121,13 +99,8 @@ applicable agreement for further details.
 		(line (pt 78 4) (pt 82 8) (line_width 1))
 		(line (pt 82 8) (pt 78 12) (line_width 1))
 		(line (pt 78 12) (pt 82 8) (line_width 1))))
-(connector
-	(pt 1500 508)
-	(pt 1335 508)
-	(bus))
-(text "data_output[5..0]" (rect 1341 495 1477 508) (font "Arial"))
 (symbol
-	(rect 550 650 678 762)
+	(rect 400 760 528 872)
 	(text "lpm_decode0" (rect 26 1 116 17) (font "Arial" (font_size 10)))
 	(text "dec" (rect 8 96 25 108) (font "Arial"))
 	(port
@@ -171,33 +144,8 @@ applicable agreement for further details.
 		(line (pt 112 16) (pt 112 96) (line_width 1))
 		(line (pt 112 96) (pt 16 96) (line_width 1))
 		(line (pt 16 96) (pt 16 16) (line_width 1))))
-(connector
-	(pt 550 698)
-	(pt 439 698)
-	(bus))
-(text "ron_a[1..0]" (rect 445 685 533 698) (font "Arial"))
-(connector
-	(pt 550 714)
-	(pt 493 714))
-(text "write" (rect 499 701 539 714) (font "Arial"))
-(connector
-	(pt 678 682)
-	(pt 734 682))
-(text "we0" (rect 682 669 706 682) (font "Arial"))
-(connector
-	(pt 678 698)
-	(pt 734 698))
-(text "we1" (rect 682 685 706 698) (font "Arial"))
-(connector
-	(pt 678 714)
-	(pt 734 714))
-(text "we2" (rect 682 701 706 714) (font "Arial"))
-(connector
-	(pt 678 730)
-	(pt 734 730))
-(text "we3" (rect 682 717 706 730) (font "Arial"))
 (symbol
-	(rect 550 100 694 196)
+	(rect 640 96 784 192)
 	(text "lpm_dff2" (rect 48 1 104 17) (font "Arial" (font_size 10)))
 	(text "r0" (rect 8 80 25 92) (font "Arial"))
 	(port
@@ -232,26 +180,8 @@ applicable agreement for further details.
 		(line (pt 16 80) (pt 16 16) (line_width 1))
 		(line (pt 16 42) (pt 22 48) (line_width 1))
 		(line (pt 22 48) (pt 16 54) (line_width 1))))
-(connector
-	(pt 550 132)
-	(pt 439 132)
-	(bus))
-(text "ron_d[5..0]" (rect 445 119 533 132) (font "Arial"))
-(connector
-	(pt 550 148)
-	(pt 494 148))
-(text "clk" (rect 500 135 524 148) (font "Arial"))
-(connector
-	(pt 550 164)
-	(pt 494 164))
-(text "we0" (rect 500 151 524 164) (font "Arial"))
-(connector
-	(pt 694 156)
-	(pt 778 156)
-	(bus))
-(text "r0[5..0]" (rect 698 143 762 156) (font "Arial"))
 (symbol
-	(rect 550 240 694 336)
+	(rect 640 256 784 352)
 	(text "lpm_dff2" (rect 48 1 104 17) (font "Arial" (font_size 10)))
 	(text "r1" (rect 8 80 25 92) (font "Arial"))
 	(port
@@ -286,26 +216,8 @@ applicable agreement for further details.
 		(line (pt 16 80) (pt 16 16) (line_width 1))
 		(line (pt 16 42) (pt 22 48) (line_width 1))
 		(line (pt 22 48) (pt 16 54) (line_width 1))))
-(connector
-	(pt 550 272)
-	(pt 439 272)
-	(bus))
-(text "ron_d[5..0]" (rect 445 259 533 272) (font "Arial"))
-(connector
-	(pt 550 288)
-	(pt 494 288))
-(text "clk" (rect 500 275 524 288) (font "Arial"))
-(connector
-	(pt 550 304)
-	(pt 494 304))
-(text "we1" (rect 500 291 524 304) (font "Arial"))
-(connector
-	(pt 694 296)
-	(pt 778 296)
-	(bus))
-(text "r1[5..0]" (rect 698 283 762 296) (font "Arial"))
 (symbol
-	(rect 550 380 694 476)
+	(rect 640 416 784 512)
 	(text "lpm_dff2" (rect 48 1 104 17) (font "Arial" (font_size 10)))
 	(text "r2" (rect 8 80 25 92) (font "Arial"))
 	(port
@@ -340,26 +252,8 @@ applicable agreement for further details.
 		(line (pt 16 80) (pt 16 16) (line_width 1))
 		(line (pt 16 42) (pt 22 48) (line_width 1))
 		(line (pt 22 48) (pt 16 54) (line_width 1))))
-(connector
-	(pt 550 412)
-	(pt 439 412)
-	(bus))
-(text "ron_d[5..0]" (rect 445 399 533 412) (font "Arial"))
-(connector
-	(pt 550 428)
-	(pt 494 428))
-(text "clk" (rect 500 415 524 428) (font "Arial"))
-(connector
-	(pt 550 444)
-	(pt 494 444))
-(text "we2" (rect 500 431 524 444) (font "Arial"))
-(connector
-	(pt 694 436)
-	(pt 778 436)
-	(bus))
-(text "r2[5..0]" (rect 698 423 762 436) (font "Arial"))
 (symbol
-	(rect 550 520 694 616)
+	(rect 640 576 784 672)
 	(text "lpm_dff2" (rect 48 1 104 17) (font "Arial" (font_size 10)))
 	(text "r3" (rect 8 80 25 92) (font "Arial"))
 	(port
@@ -394,26 +288,8 @@ applicable agreement for further details.
 		(line (pt 16 80) (pt 16 16) (line_width 1))
 		(line (pt 16 42) (pt 22 48) (line_width 1))
 		(line (pt 22 48) (pt 16 54) (line_width 1))))
-(connector
-	(pt 550 552)
-	(pt 439 552)
-	(bus))
-(text "ron_d[5..0]" (rect 445 539 533 552) (font "Arial"))
-(connector
-	(pt 550 568)
-	(pt 494 568))
-(text "clk" (rect 500 555 524 568) (font "Arial"))
-(connector
-	(pt 550 584)
-	(pt 494 584))
-(text "we3" (rect 500 571 524 584) (font "Arial"))
-(connector
-	(pt 694 576)
-	(pt 778 576)
-	(bus))
-(text "r3[5..0]" (rect 698 563 762 576) (font "Arial"))
 (symbol
-	(rect 1000 250 1136 362)
+	(rect 960 224 1096 336)
 	(text "lpm_mux0" (rect 42 2 112 18) (font "Arial" (font_size 10)))
 	(text "mux" (rect 8 96 25 108) (font "Arial"))
 	(port
@@ -457,42 +333,8 @@ applicable agreement for further details.
 		(line (pt 80 32) (pt 80 96) (line_width 1))
 		(line (pt 64 24) (pt 80 32) (line_width 1))
 		(line (pt 64 104) (pt 80 96) (line_width 1))))
-(connector
-	(pt 1000 290)
-	(pt 916 290)
-	(bus))
-(text "r3[5..0]" (rect 922 277 986 290) (font "Arial"))
-(connector
-	(pt 1000 306)
-	(pt 916 306)
-	(bus))
-(text "r2[5..0]" (rect 922 293 986 306) (font "Arial"))
-(connector
-	(pt 1000 322)
-	(pt 916 322)
-	(bus))
-(text "r1[5..0]" (rect 922 309 986 322) (font "Arial"))
-(connector
-	(pt 1000 338)
-	(pt 916 338)
-	(bus))
-(text "r0[5..0]" (rect 922 325 986 338) (font "Arial"))
-(connector
-	(pt 1072 362)
-	(pt 1072 473)
-	(bus))
-(connector
-	(pt 1072 473)
-	(pt 1183 473)
-	(bus))
-(text "ron_a[1..0]" (rect 1078 460 1166 473) (font "Arial"))
-(connector
-	(pt 1136 314)
-	(pt 1265 314)
-	(bus))
-(text "ron_mux[5..0]" (rect 1140 301 1244 314) (font "Arial"))
 (symbol
-	(rect 1000 550 1080 590)
+	(rect 1176 600 1256 640)
 	(text "lpm_bustri0" (rect 7 1 86 17) (font "Arial" (font_size 10)))
 	(text "buf" (rect 8 24 25 36) (font "Arial"))
 	(port
@@ -521,21 +363,192 @@ applicable agreement for further details.
 		(line (pt 32 32) (pt 32 16) (line_width 1))
 		(line (pt 58 28) (pt 66 20) (line_width 1))
 		(line (pt 10 28) (pt 18 20) (line_width 1))))
+(text "RON: registers R0..R3, 6 bit each" (rect 200 40 464 58) (font "Arial" (font_size 10)))
 (connector
-	(pt 1040 590)
-	(pt 1040 646))
+	(pt 1216 640)
+	(pt 1216 1008))
 (connector
-	(pt 1040 646)
-	(pt 1096 646))
-(text "read" (rect 1046 633 1078 646) (font "Arial"))
+	(pt 1216 1008)
+	(pt 360 1008))
 (connector
-	(pt 1000 574)
-	(pt 871 574)
+	(pt 400 808)
+	(pt 376 808)
 	(bus))
-(text "ron_mux[5..0]" (rect 877 561 981 574) (font "Arial"))
 (connector
-	(pt 1080 574)
-	(pt 1245 574)
+	(pt 376 808)
+	(pt 376 408)
 	(bus))
-(text "data_output[5..0]" (rect 1084 561 1220 574) (font "Arial"))
-(text "RON: registers R0..R3, 6 bit each" (rect 150 40 414 58) (font "Arial" (font_size 10)))
+(connector
+	(pt 376 408)
+	(pt 360 408)
+	(bus))
+(connector
+	(pt 1032 336)
+	(pt 1032 400)
+	(bus))
+(connector
+	(pt 1032 400)
+	(pt 376 400)
+	(bus))
+(connector
+	(pt 376 400)
+	(pt 376 408)
+	(bus))
+(connector
+	(pt 640 144)
+	(pt 360 144))
+(connector
+	(pt 360 144)
+	(pt 360 104))
+(connector
+	(pt 640 304)
+	(pt 624 304))
+(connector
+	(pt 624 304)
+	(pt 624 144))
+(connector
+	(pt 640 464)
+	(pt 624 464))
+(connector
+	(pt 624 464)
+	(pt 624 304))
+(connector
+	(pt 640 624)
+	(pt 624 624))
+(connector
+	(pt 624 624)
+	(pt 624 464))
+(connector
+	(pt 640 288)
+	(pt 360 288)
+	(bus))
+(connector
+	(pt 360 288)
+	(pt 360 248)
+	(bus))
+(connector
+	(pt 640 128)
+	(pt 608 128)
+	(bus))
+(connector
+	(pt 608 128)
+	(pt 608 288)
+	(bus))
+(connector
+	(pt 640 448)
+	(pt 608 448)
+	(bus))
+(connector
+	(pt 608 448)
+	(pt 608 288)
+	(bus))
+(connector
+	(pt 640 608)
+	(pt 608 608)
+	(bus))
+(connector
+	(pt 608 608)
+	(pt 608 448)
+	(bus))
+(connector
+	(pt 640 160)
+	(pt 544 160))
+(connector
+	(pt 544 160)
+	(pt 544 792))
+(connector
+	(pt 544 792)
+	(pt 528 792))
+(connector
+	(pt 640 320)
+	(pt 560 320))
+(connector
+	(pt 560 320)
+	(pt 560 808))
+(connector
+	(pt 560 808)
+	(pt 528 808))
+(connector
+	(pt 960 264)
+	(pt 800 264)
+	(bus))
+(connector
+	(pt 800 264)
+	(pt 800 632)
+	(bus))
+(connector
+	(pt 800 632)
+	(pt 784 632)
+	(bus))
+(connector
+	(pt 640 480)
+	(pt 576 480))
+(connector
+	(pt 576 480)
+	(pt 576 824))
+(connector
+	(pt 576 824)
+	(pt 528 824))
+(connector
+	(pt 1176 624)
+	(pt 1112 624)
+	(bus))
+(connector
+	(pt 1112 624)
+	(pt 1112 288)
+	(bus))
+(connector
+	(pt 1112 288)
+	(pt 1096 288)
+	(bus))
+(connector
+	(pt 960 280)
+	(pt 816 280)
+	(bus))
+(connector
+	(pt 816 280)
+	(pt 816 472)
+	(bus))
+(connector
+	(pt 816 472)
+	(pt 784 472)
+	(bus))
+(connector
+	(pt 960 312)
+	(pt 832 312)
+	(bus))
+(connector
+	(pt 832 312)
+	(pt 832 152)
+	(bus))
+(connector
+	(pt 832 152)
+	(pt 784 152)
+	(bus))
+(connector
+	(pt 640 640)
+	(pt 592 640))
+(connector
+	(pt 592 640)
+	(pt 592 840))
+(connector
+	(pt 592 840)
+	(pt 528 840))
+(connector
+	(pt 960 296)
+	(pt 784 296)
+	(bus))
+(connector
+	(pt 784 296)
+	(pt 784 312)
+	(bus))
+(connector
+	(pt 1256 624)
+	(pt 1360 624)
+	(bus))
+(connector
+	(pt 400 824)
+	(pt 360 824))
+(connector
+	(pt 360 824)
+	(pt 360 808))

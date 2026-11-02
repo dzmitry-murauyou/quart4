@@ -1,0 +1,65 @@
+{
+ "clk": [
+  "clk",
+  "inst2.clock",
+  "inst3.clk",
+  "inst4.clock",
+  "inst5.clk"
+ ],
+ "address[3..0]": [
+  "adr_out[3:0]",
+  "inst2.address[3..0]",
+  "inst4.address[3..0]",
+  "inst5.address[3..0]"
+ ],
+ "rom_data[7..0]": [
+  "inst4.q[7..0]",
+  "inst5.rom_data[7..0]",
+  "rom_data_out[7:0]"
+ ],
+ "ir[7..0]": [
+  "inst5.ir_out[7..0]",
+  "ir_out[7:0]"
+ ],
+ "T[2..0]": [
+  "T_out[2:0]",
+  "inst5.T_out[2..0]"
+ ],
+ "z": [
+  "flag_out",
+  "inst5.flag_out"
+ ],
+ "ron_addr[1..0]": [
+  "inst3.address[1..0]",
+  "inst5.ron_addr[1..0]",
+  "ron_addr_out[1:0]"
+ ],
+ "ron_wr": [
+  "inst3.write",
+  "inst5.ron_wr",
+  "ron_wr_out"
+ ],
+ "ron_rd": [
+  "inst3.read",
+  "inst5.ron_rd",
+  "ron_rd_out"
+ ],
+ "ram_en": [
+  "inst2.enable",
+  "inst5.ram_en",
+  "ram_en_out"
+ ],
+ "ram_wr": [
+  "inst2.wren",
+  "inst5.ram_wr",
+  "ram_wr_out"
+ ],
+ "data_io[5..0]": [
+  "data_out[5:0]",
+  "inst2.data_in[5..0]",
+  "inst2.data_out[5..0]",
+  "inst3.data_input[5..0]",
+  "inst3.data_output[5..0]",
+  "inst5.data_io[5..0]"
+ ]
+}
