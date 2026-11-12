@@ -14,7 +14,7 @@ import bdfgen as B
 
 
 def width(name):
-    m = re.search(r'\[(\d+)\.\.(\d+)\]', name)
+    m = re.search(r'\[(\d+)(?:\.\.|:)(\d+)\]', name)
     if m:
         return abs(int(m.group(1)) - int(m.group(2))) + 1
     return 1
@@ -218,6 +218,26 @@ def check(path, verbose=True):
             a, b = rects[i], rects[j]
             if not (a[2] <= b[0] or b[2] <= a[0] or a[3] <= b[1] or b[3] <= a[1]):
                 errors.append('наложение символов: %s и %s' % (a, b))
+
+    # 4c) разрядность цепи должна совпадать с разрядностью вывода, к которому она подходит
+    portw = {}
+    for n in tree:
+        if not isinstance(n, list) or not n:
+            continue
+        if n[0] == 'symbol':
+            iname = B.children(n, 'text')[1][1].strip('"')
+            for pp in B.children(n, 'port'):
+                pn = B.children(pp, 'text')[0][1].strip('"')
+                portw['%s.%s' % (iname, pn)] = width(pn)
+        elif n[0] == 'pin':
+            pn = [t2[1].strip('"') for t2 in B.children(n, 'text')
+                  if t2[1].strip('"') not in ('INPUT', 'OUTPUT', 'BIDIR', 'VCC')][0]
+            portw[pn] = width(pn)
+    for net, tags in manifest.items():
+        for t2 in tags:
+            if t2 in portw and portw[t2] != width(net):
+                errors.append('разрядность: цепь %s (%d бит) подключена к выводу %s (%d бит)'
+                              % (net, width(net), t2, portw[t2]))
 
     # 5) разрядности
     w = {}

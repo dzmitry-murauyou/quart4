@@ -1,11 +1,11 @@
 {
- "address[3..0]": [
-  "address[3:0]",
-  "inst.address[3..0]"
+ "address[5..0]": [
+  "address[5:0]",
+  "inst.address[5..0]"
  ],
- "ram_d[5..0]": [
-  "data_in[5:0]",
-  "inst.data[5..0]"
+ "ram_d[3..0]": [
+  "data_in[3:0]",
+  "inst.data[3..0]"
  ],
  "ram_wr": [
   "inst.wren",
@@ -19,12 +19,12 @@
   "clock",
   "inst.clock"
  ],
- "data_out[5..0]": [
-  "data_out[5:0]",
-  "inst1.tridata[5..0]"
+ "data_out[3..0]": [
+  "data_out[3:0]",
+  "inst1.tridata[3..0]"
  ],
- "ram_q[5..0]": [
-  "inst.q[5..0]",
-  "inst1.data[5..0]"
+ "ram_q[3..0]": [
+  "inst.q[3..0]",
+  "inst1.data[3..0]"
  ]
 }

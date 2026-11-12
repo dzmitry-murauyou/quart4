@@ -37,10 +37,10 @@ module lpm_mux1 (
 	sel,
 	result);
 
-	input	[3:0]  data0x;
-	input	[3:0]  data1x;
+	input	[5:0]  data0x;
+	input	[5:0]  data1x;
 	input	  sel;
-	output	[3:0]  result;
+	output	[5:0]  result;
 
 endmodule
 

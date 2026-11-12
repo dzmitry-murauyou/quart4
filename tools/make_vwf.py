@@ -38,12 +38,12 @@ CLK_NUM = 64         # число периодов синхронизации
 
 SIGNALS = [
     ('clk', 1, 'INPUT'),
-    ('adr_out[3..0]', 4, 'OUTPUT'),
-    ('data_out[5..0]', 6, 'OUTPUT'),
-    ('ir_out[7..0]', 8, 'OUTPUT'),
+    ('adr_out[5..0]', 6, 'OUTPUT'),
+    ('data_out[3..0]', 4, 'OUTPUT'),
+    ('ir_out[9..0]', 10, 'OUTPUT'),
     ('T_out[2..0]', 3, 'OUTPUT'),
     ('flag_out', 1, 'OUTPUT'),
-    ('rom_data_out[7..0]', 8, 'OUTPUT'),
+    ('rom_data_out[9..0]', 10, 'OUTPUT'),
     ('ram_en_out', 1, 'OUTPUT'),
     ('ram_wr_out', 1, 'OUTPUT'),
     ('ron_wr_out', 1, 'OUTPUT'),

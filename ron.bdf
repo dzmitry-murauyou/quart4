@@ -33,7 +33,7 @@ applicable agreement for further details.
 	(input)
 	(rect 192 240 360 256)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
-	(text "data_input[5:0]" (rect 9 0 139 12) (font "Arial"))
+	(text "data_input[3:0]" (rect 9 0 139 12) (font "Arial"))
 	(pt 168 8)
 	(drawing
 		(line (pt 92 12) (pt 117 12) (line_width 1))
@@ -89,7 +89,7 @@ applicable agreement for further details.
 	(output)
 	(rect 1360 616 1536 632)
 	(text "OUTPUT" (rect 1 0 39 10) (font "Arial" (font_size 6)))
-	(text "data_output[5:0]" (rect 90 0 228 12) (font "Arial"))
+	(text "data_output[3:0]" (rect 90 0 228 12) (font "Arial"))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8) (pt 52 8) (line_width 1))
@@ -151,8 +151,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 32)
 		(input)
-		(text "data[5..0]" (rect 0 0 53 14) (font "Arial" (font_size 8)))
-		(text "data[5..0]" (rect 20 26 65 39) (font "Arial" (font_size 8)))
+		(text "data[3..0]" (rect 0 0 53 14) (font "Arial" (font_size 8)))
+		(text "data[3..0]" (rect 20 26 65 39) (font "Arial" (font_size 8)))
 		(line (pt 0 32) (pt 16 32) (line_width 3)))
 	(port
 		(pt 0 48)
@@ -169,8 +169,8 @@ applicable agreement for further details.
 	(port
 		(pt 144 56)
 		(output)
-		(text "q[5..0]" (rect 0 0 35 14) (font "Arial" (font_size 8)))
-		(text "q[5..0]" (rect 95 50 125 63) (font "Arial" (font_size 8)))
+		(text "q[3..0]" (rect 0 0 35 14) (font "Arial" (font_size 8)))
+		(text "q[3..0]" (rect 95 50 125 63) (font "Arial" (font_size 8)))
 		(line (pt 144 56) (pt 128 56) (line_width 3)))
 	(drawing
 		(text "DFF" (rect 109 17 128 29) (font "Arial"))
@@ -187,8 +187,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 32)
 		(input)
-		(text "data[5..0]" (rect 0 0 53 14) (font "Arial" (font_size 8)))
-		(text "data[5..0]" (rect 20 26 65 39) (font "Arial" (font_size 8)))
+		(text "data[3..0]" (rect 0 0 53 14) (font "Arial" (font_size 8)))
+		(text "data[3..0]" (rect 20 26 65 39) (font "Arial" (font_size 8)))
 		(line (pt 0 32) (pt 16 32) (line_width 3)))
 	(port
 		(pt 0 48)
@@ -205,8 +205,8 @@ applicable agreement for further details.
 	(port
 		(pt 144 56)
 		(output)
-		(text "q[5..0]" (rect 0 0 35 14) (font "Arial" (font_size 8)))
-		(text "q[5..0]" (rect 95 50 125 63) (font "Arial" (font_size 8)))
+		(text "q[3..0]" (rect 0 0 35 14) (font "Arial" (font_size 8)))
+		(text "q[3..0]" (rect 95 50 125 63) (font "Arial" (font_size 8)))
 		(line (pt 144 56) (pt 128 56) (line_width 3)))
 	(drawing
 		(text "DFF" (rect 109 17 128 29) (font "Arial"))
@@ -223,8 +223,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 32)
 		(input)
-		(text "data[5..0]" (rect 0 0 53 14) (font "Arial" (font_size 8)))
-		(text "data[5..0]" (rect 20 26 65 39) (font "Arial" (font_size 8)))
+		(text "data[3..0]" (rect 0 0 53 14) (font "Arial" (font_size 8)))
+		(text "data[3..0]" (rect 20 26 65 39) (font "Arial" (font_size 8)))
 		(line (pt 0 32) (pt 16 32) (line_width 3)))
 	(port
 		(pt 0 48)
@@ -241,8 +241,8 @@ applicable agreement for further details.
 	(port
 		(pt 144 56)
 		(output)
-		(text "q[5..0]" (rect 0 0 35 14) (font "Arial" (font_size 8)))
-		(text "q[5..0]" (rect 95 50 125 63) (font "Arial" (font_size 8)))
+		(text "q[3..0]" (rect 0 0 35 14) (font "Arial" (font_size 8)))
+		(text "q[3..0]" (rect 95 50 125 63) (font "Arial" (font_size 8)))
 		(line (pt 144 56) (pt 128 56) (line_width 3)))
 	(drawing
 		(text "DFF" (rect 109 17 128 29) (font "Arial"))
@@ -259,8 +259,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 32)
 		(input)
-		(text "data[5..0]" (rect 0 0 53 14) (font "Arial" (font_size 8)))
-		(text "data[5..0]" (rect 20 26 65 39) (font "Arial" (font_size 8)))
+		(text "data[3..0]" (rect 0 0 53 14) (font "Arial" (font_size 8)))
+		(text "data[3..0]" (rect 20 26 65 39) (font "Arial" (font_size 8)))
 		(line (pt 0 32) (pt 16 32) (line_width 3)))
 	(port
 		(pt 0 48)
@@ -277,8 +277,8 @@ applicable agreement for further details.
 	(port
 		(pt 144 56)
 		(output)
-		(text "q[5..0]" (rect 0 0 35 14) (font "Arial" (font_size 8)))
-		(text "q[5..0]" (rect 95 50 125 63) (font "Arial" (font_size 8)))
+		(text "q[3..0]" (rect 0 0 35 14) (font "Arial" (font_size 8)))
+		(text "q[3..0]" (rect 95 50 125 63) (font "Arial" (font_size 8)))
 		(line (pt 144 56) (pt 128 56) (line_width 3)))
 	(drawing
 		(text "DFF" (rect 109 17 128 29) (font "Arial"))
@@ -295,26 +295,26 @@ applicable agreement for further details.
 	(port
 		(pt 0 40)
 		(input)
-		(text "data3x[5..0]" (rect 0 0 67 14) (font "Arial" (font_size 8)))
-		(text "data3x[5..0]" (rect 4 27 60 40) (font "Arial" (font_size 8)))
+		(text "data3x[3..0]" (rect 0 0 67 14) (font "Arial" (font_size 8)))
+		(text "data3x[3..0]" (rect 4 27 60 40) (font "Arial" (font_size 8)))
 		(line (pt 0 40) (pt 64 40) (line_width 3)))
 	(port
 		(pt 0 56)
 		(input)
-		(text "data2x[5..0]" (rect 0 0 67 14) (font "Arial" (font_size 8)))
-		(text "data2x[5..0]" (rect 4 43 60 56) (font "Arial" (font_size 8)))
+		(text "data2x[3..0]" (rect 0 0 67 14) (font "Arial" (font_size 8)))
+		(text "data2x[3..0]" (rect 4 43 60 56) (font "Arial" (font_size 8)))
 		(line (pt 0 56) (pt 64 56) (line_width 3)))
 	(port
 		(pt 0 72)
 		(input)
-		(text "data1x[5..0]" (rect 0 0 67 14) (font "Arial" (font_size 8)))
-		(text "data1x[5..0]" (rect 4 59 60 72) (font "Arial" (font_size 8)))
+		(text "data1x[3..0]" (rect 0 0 67 14) (font "Arial" (font_size 8)))
+		(text "data1x[3..0]" (rect 4 59 60 72) (font "Arial" (font_size 8)))
 		(line (pt 0 72) (pt 64 72) (line_width 3)))
 	(port
 		(pt 0 88)
 		(input)
-		(text "data0x[5..0]" (rect 0 0 67 14) (font "Arial" (font_size 8)))
-		(text "data0x[5..0]" (rect 4 75 60 88) (font "Arial" (font_size 8)))
+		(text "data0x[3..0]" (rect 0 0 67 14) (font "Arial" (font_size 8)))
+		(text "data0x[3..0]" (rect 4 75 60 88) (font "Arial" (font_size 8)))
 		(line (pt 0 88) (pt 64 88) (line_width 3)))
 	(port
 		(pt 72 112)
@@ -325,8 +325,8 @@ applicable agreement for further details.
 	(port
 		(pt 136 64)
 		(output)
-		(text "result[5..0]" (rect 0 0 60 14) (font "Arial" (font_size 8)))
-		(text "result[5..0]" (rect 82 51 131 64) (font "Arial" (font_size 8)))
+		(text "result[3..0]" (rect 0 0 60 14) (font "Arial" (font_size 8)))
+		(text "result[3..0]" (rect 82 51 131 64) (font "Arial" (font_size 8)))
 		(line (pt 136 64) (pt 80 64) (line_width 3)))
 	(drawing
 		(line (pt 64 24) (pt 64 104) (line_width 1))
@@ -346,14 +346,14 @@ applicable agreement for further details.
 	(port
 		(pt 0 24)
 		(input)
-		(text "data[5..0]" (rect 0 0 53 14) (font "Arial" (font_size 8)))
-		(text "data[5..0]" (rect -3 -21 10 24) (font "Arial" (font_size 8)) (invisible))
+		(text "data[3..0]" (rect 0 0 53 14) (font "Arial" (font_size 8)))
+		(text "data[3..0]" (rect -3 -21 10 24) (font "Arial" (font_size 8)) (invisible))
 		(line (pt 0 24) (pt 32 24) (line_width 3)))
 	(port
 		(pt 80 24)
 		(bidir)
-		(text "tridata[5..0]" (rect 0 0 63 14) (font "Arial" (font_size 8)))
-		(text "tridata[5..0]" (rect 84 -30 97 24) (font "Arial" (font_size 8)) (invisible))
+		(text "tridata[3..0]" (rect 0 0 63 14) (font "Arial" (font_size 8)))
+		(text "tridata[3..0]" (rect 84 -30 97 24) (font "Arial" (font_size 8)) (invisible))
 		(line (pt 80 24) (pt 48 24) (line_width 3)))
 	(drawing
 		(text "9" (rect 63 25 68 37) (font "Arial"))
@@ -363,7 +363,7 @@ applicable agreement for further details.
 		(line (pt 32 32) (pt 32 16) (line_width 1))
 		(line (pt 58 28) (pt 66 20) (line_width 1))
 		(line (pt 10 28) (pt 18 20) (line_width 1))))
-(text "RON: registers R0..R3, 6 bit each" (rect 200 40 464 58) (font "Arial" (font_size 10)))
+(text "RON: registers R0..R3, 4 bit each" (rect 200 40 464 58) (font "Arial" (font_size 10)))
 (connector
 	(pt 1216 640)
 	(pt 1216 1008))

@@ -44,20 +44,20 @@ module lpm_mux0 (
 	sel,
 	result);
 
-	input	[5:0]  data0x;
-	input	[5:0]  data1x;
-	input	[5:0]  data2x;
-	input	[5:0]  data3x;
+	input	[3:0]  data0x;
+	input	[3:0]  data1x;
+	input	[3:0]  data2x;
+	input	[3:0]  data3x;
 	input	[1:0]  sel;
-	output	[5:0]  result;
+	output	[3:0]  result;
 
-	wire [5:0] sub_wire0;
-	wire [5:0] sub_wire5 = data3x[5:0];
-	wire [5:0] sub_wire4 = data1x[5:0];
-	wire [5:0] sub_wire3 = data0x[5:0];
-	wire [5:0] result = sub_wire0[5:0];
-	wire [5:0] sub_wire1 = data2x[5:0];
-	wire [23:0] sub_wire2 = {sub_wire5, sub_wire1, sub_wire4, sub_wire3};
+	wire [3:0] sub_wire0;
+	wire [3:0] sub_wire5 = data3x[3:0];
+	wire [3:0] sub_wire4 = data1x[3:0];
+	wire [3:0] sub_wire3 = data0x[3:0];
+	wire [3:0] result = sub_wire0[3:0];
+	wire [3:0] sub_wire1 = data2x[3:0];
+	wire [15:0] sub_wire2 = {sub_wire5, sub_wire1, sub_wire4, sub_wire3};
 
 	lpm_mux	lpm_mux_component (
 				.sel (sel),
@@ -73,7 +73,7 @@ module lpm_mux0 (
 	defparam
 		lpm_mux_component.lpm_size = 4,
 		lpm_mux_component.lpm_type = "LPM_MUX",
-		lpm_mux_component.lpm_width = 6,
+		lpm_mux_component.lpm_width = 4,
 		lpm_mux_component.lpm_widths = 2;
 
 
@@ -86,7 +86,7 @@ endmodule
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
 // Retrieval info: CONSTANT: LPM_SIZE NUMERIC "4"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_MUX"
-// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "9"
+// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "4"
 // Retrieval info: CONSTANT: LPM_WIDTHS NUMERIC "2"
 // Retrieval info: USED_PORT: data0x 0 0 9 0 INPUT NODEFVAL data0x[8..0]
 // Retrieval info: USED_PORT: data1x 0 0 9 0 INPUT NODEFVAL data1x[8..0]

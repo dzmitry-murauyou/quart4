@@ -33,7 +33,7 @@ applicable agreement for further details.
 	(output)
 	(rect 1600 288 1776 304)
 	(text "OUTPUT" (rect 1 0 39 10) (font "Arial" (font_size 6)))
-	(text "adr_out[3:0]" (rect 90 0 196 12) (font "Arial"))
+	(text "adr_out[5:0]" (rect 90 0 196 12) (font "Arial"))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8) (pt 52 8) (line_width 1))
@@ -47,7 +47,7 @@ applicable agreement for further details.
 	(output)
 	(rect 1600 368 1776 384)
 	(text "OUTPUT" (rect 1 0 39 10) (font "Arial" (font_size 6)))
-	(text "rom_data_out[7:0]" (rect 90 0 236 12) (font "Arial"))
+	(text "rom_data_out[9:0]" (rect 90 0 236 12) (font "Arial"))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8) (pt 52 8) (line_width 1))
@@ -61,7 +61,7 @@ applicable agreement for further details.
 	(output)
 	(rect 1600 448 1776 464)
 	(text "OUTPUT" (rect 1 0 39 10) (font "Arial" (font_size 6)))
-	(text "ir_out[7:0]" (rect 90 0 188 12) (font "Arial"))
+	(text "ir_out[9:0]" (rect 90 0 188 12) (font "Arial"))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8) (pt 52 8) (line_width 1))
@@ -173,7 +173,7 @@ applicable agreement for further details.
 	(output)
 	(rect 1600 1088 1776 1104)
 	(text "OUTPUT" (rect 1 0 39 10) (font "Arial" (font_size 6)))
-	(text "data_out[5:0]" (rect 90 0 204 12) (font "Arial"))
+	(text "data_out[3:0]" (rect 90 0 204 12) (font "Arial"))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8) (pt 52 8) (line_width 1))
@@ -196,26 +196,26 @@ applicable agreement for further details.
 	(port
 		(pt 0 56)
 		(input)
-		(text "rom_data[7..0]" (rect 0 0 126 14) (font "Arial" (font_size 8)))
-		(text "rom_data[7..0]" (rect 22 43 148 56) (font "Arial" (font_size 8)))
+		(text "rom_data[9..0]" (rect 0 0 126 14) (font "Arial" (font_size 8)))
+		(text "rom_data[9..0]" (rect 22 43 148 56) (font "Arial" (font_size 8)))
 		(line (pt 0 56) (pt 16 56) (line_width 3)))
 	(port
 		(pt 240 32)
 		(bidir)
-		(text "data_io[5..0]" (rect 0 0 117 14) (font "Arial" (font_size 8)))
-		(text "data_io[5..0]" (rect 101 19 218 32) (font "Arial" (font_size 8)))
+		(text "data_io[3..0]" (rect 0 0 117 14) (font "Arial" (font_size 8)))
+		(text "data_io[3..0]" (rect 101 19 218 32) (font "Arial" (font_size 8)))
 		(line (pt 240 32) (pt 224 32) (line_width 3)))
 	(port
 		(pt 240 56)
 		(output)
-		(text "address[3..0]" (rect 0 0 117 14) (font "Arial" (font_size 8)))
-		(text "address[3..0]" (rect 101 43 218 56) (font "Arial" (font_size 8)))
+		(text "address[5..0]" (rect 0 0 117 14) (font "Arial" (font_size 8)))
+		(text "address[5..0]" (rect 101 43 218 56) (font "Arial" (font_size 8)))
 		(line (pt 240 56) (pt 224 56) (line_width 3)))
 	(port
 		(pt 240 80)
 		(output)
-		(text "ir_out[7..0]" (rect 0 0 108 14) (font "Arial" (font_size 8)))
-		(text "ir_out[7..0]" (rect 110 67 218 80) (font "Arial" (font_size 8)))
+		(text "ir_out[9..0]" (rect 0 0 108 14) (font "Arial" (font_size 8)))
+		(text "ir_out[9..0]" (rect 110 67 218 80) (font "Arial" (font_size 8)))
 		(line (pt 240 80) (pt 224 80) (line_width 3)))
 	(port
 		(pt 240 104)
@@ -271,8 +271,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 32)
 		(input)
-		(text "address[3..0]" (rect 0 0 117 14) (font "Arial" (font_size 8)))
-		(text "address[3..0]" (rect 22 19 139 32) (font "Arial" (font_size 8)))
+		(text "address[5..0]" (rect 0 0 117 14) (font "Arial" (font_size 8)))
+		(text "address[5..0]" (rect 22 19 139 32) (font "Arial" (font_size 8)))
 		(line (pt 0 32) (pt 16 32) (line_width 3)))
 	(port
 		(pt 0 56)
@@ -283,8 +283,8 @@ applicable agreement for further details.
 	(port
 		(pt 240 32)
 		(output)
-		(text "q[7..0]" (rect 0 0 63 14) (font "Arial" (font_size 8)))
-		(text "q[7..0]" (rect 155 19 218 32) (font "Arial" (font_size 8)))
+		(text "q[9..0]" (rect 0 0 63 14) (font "Arial" (font_size 8)))
+		(text "q[9..0]" (rect 155 19 218 32) (font "Arial" (font_size 8)))
 		(line (pt 240 32) (pt 224 32) (line_width 3)))
 	(drawing
 		(line (pt 16 16) (pt 16 72) (line_width 1))
@@ -298,14 +298,14 @@ applicable agreement for further details.
 	(port
 		(pt 0 32)
 		(input)
-		(text "address[3..0]" (rect 0 0 117 14) (font "Arial" (font_size 8)))
-		(text "address[3..0]" (rect 22 19 139 32) (font "Arial" (font_size 8)))
+		(text "address[5..0]" (rect 0 0 117 14) (font "Arial" (font_size 8)))
+		(text "address[5..0]" (rect 22 19 139 32) (font "Arial" (font_size 8)))
 		(line (pt 0 32) (pt 16 32) (line_width 3)))
 	(port
 		(pt 0 56)
 		(input)
-		(text "data_in[5..0]" (rect 0 0 117 14) (font "Arial" (font_size 8)))
-		(text "data_in[5..0]" (rect 22 43 139 56) (font "Arial" (font_size 8)))
+		(text "data_in[3..0]" (rect 0 0 117 14) (font "Arial" (font_size 8)))
+		(text "data_in[3..0]" (rect 22 43 139 56) (font "Arial" (font_size 8)))
 		(line (pt 0 56) (pt 16 56) (line_width 3)))
 	(port
 		(pt 0 80)
@@ -328,8 +328,8 @@ applicable agreement for further details.
 	(port
 		(pt 240 32)
 		(output)
-		(text "data_out[5..0]" (rect 0 0 126 14) (font "Arial" (font_size 8)))
-		(text "data_out[5..0]" (rect 92 19 218 32) (font "Arial" (font_size 8)))
+		(text "data_out[3..0]" (rect 0 0 126 14) (font "Arial" (font_size 8)))
+		(text "data_out[3..0]" (rect 92 19 218 32) (font "Arial" (font_size 8)))
 		(line (pt 240 32) (pt 224 32) (line_width 3)))
 	(drawing
 		(line (pt 16 16) (pt 16 144) (line_width 1))
@@ -349,8 +349,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 56)
 		(input)
-		(text "data_input[5..0]" (rect 0 0 144 14) (font "Arial" (font_size 8)))
-		(text "data_input[5..0]" (rect 22 43 166 56) (font "Arial" (font_size 8)))
+		(text "data_input[3..0]" (rect 0 0 144 14) (font "Arial" (font_size 8)))
+		(text "data_input[3..0]" (rect 22 43 166 56) (font "Arial" (font_size 8)))
 		(line (pt 0 56) (pt 16 56) (line_width 3)))
 	(port
 		(pt 0 80)
@@ -373,15 +373,15 @@ applicable agreement for further details.
 	(port
 		(pt 240 32)
 		(output)
-		(text "data_output[5..0]" (rect 0 0 153 14) (font "Arial" (font_size 8)))
-		(text "data_output[5..0]" (rect 65 19 218 32) (font "Arial" (font_size 8)))
+		(text "data_output[3..0]" (rect 0 0 153 14) (font "Arial" (font_size 8)))
+		(text "data_output[3..0]" (rect 65 19 218 32) (font "Arial" (font_size 8)))
 		(line (pt 240 32) (pt 224 32) (line_width 3)))
 	(drawing
 		(line (pt 16 16) (pt 16 144) (line_width 1))
 		(line (pt 16 144) (pt 224 144) (line_width 1))
 		(line (pt 224 144) (pt 224 16) (line_width 1))
 		(line (pt 224 16) (pt 16 16) (line_width 1))))
-(text "CPU: data bus 6, address bus 4 (ROM 16x8, RAM 16x6, RON 4x6)" (rect 200 40 680 58) (font "Arial" (font_size 10)))
+(text "CPU: address bus 6, data bus 4 (ROM 64x10, RAM 64x4, RON 4x4)" (rect 200 40 688 58) (font "Arial" (font_size 10)))
 (connector
 	(pt 1240 832)
 	(pt 1584 832)

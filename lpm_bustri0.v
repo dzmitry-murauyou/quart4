@@ -41,9 +41,9 @@ module lpm_bustri0 (
 	enabledt,
 	tridata);
 
-	input	[5:0]  data;
+	input	[3:0]  data;
 	input	  enabledt;
-	inout	[5:0]  tridata;
+	inout	[3:0]  tridata;
 
 
 	lpm_bustri	lpm_bustri_component (
@@ -58,7 +58,7 @@ module lpm_bustri0 (
 				);
 	defparam
 		lpm_bustri_component.lpm_type = "LPM_BUSTRI",
-		lpm_bustri_component.lpm_width = 6;
+		lpm_bustri_component.lpm_width = 4;
 
 
 endmodule
@@ -71,7 +71,7 @@ endmodule
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
 // Retrieval info: PRIVATE: nBit NUMERIC "9"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_BUSTRI"
-// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "9"
+// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "4"
 // Retrieval info: USED_PORT: data 0 0 9 0 INPUT NODEFVAL data[8..0]
 // Retrieval info: USED_PORT: enabledt 0 0 0 0 INPUT NODEFVAL enabledt
 // Retrieval info: USED_PORT: tridata 0 0 9 0 BIDIR NODEFVAL tridata[8..0]

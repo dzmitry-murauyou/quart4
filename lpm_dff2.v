@@ -43,12 +43,12 @@ module lpm_dff2 (
 	q);
 
 	input	  clock;
-	input	[5:0]  data;
+	input	[3:0]  data;
 	input	  enable;
-	output	[5:0]  q;
+	output	[3:0]  q;
 
-	wire [5:0] sub_wire0;
-	wire [5:0] q = sub_wire0[5:0];
+	wire [3:0] sub_wire0;
+	wire [3:0] q = sub_wire0[3:0];
 
 	lpm_ff	lpm_ff_component (
 				.enable (enable),
@@ -68,7 +68,7 @@ module lpm_dff2 (
 	defparam
 		lpm_ff_component.lpm_fftype = "DFF",
 		lpm_ff_component.lpm_type = "LPM_FF",
-		lpm_ff_component.lpm_width = 6;
+		lpm_ff_component.lpm_width = 4;
 
 
 endmodule
@@ -92,7 +92,7 @@ endmodule
 // Retrieval info: PRIVATE: nBit NUMERIC "6"
 // Retrieval info: CONSTANT: LPM_FFTYPE STRING "DFF"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_FF"
-// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "6"
+// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "4"
 // Retrieval info: USED_PORT: clock 0 0 0 0 INPUT NODEFVAL clock
 // Retrieval info: USED_PORT: data 0 0 6 0 INPUT NODEFVAL data[5..0]
 // Retrieval info: USED_PORT: enable 0 0 0 0 INPUT NODEFVAL enable

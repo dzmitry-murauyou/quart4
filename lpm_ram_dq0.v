@@ -43,14 +43,14 @@ module lpm_ram_dq0 (
 	wren,
 	q);
 
-	input	[3:0]  address;
+	input	[5:0]  address;
 	input	  clock;
-	input	[5:0]  data;
+	input	[3:0]  data;
 	input	  wren;
-	output	[5:0]  q;
+	output	[3:0]  q;
 
-	wire [5:0] sub_wire0;
-	wire [5:0] q = sub_wire0[5:0];
+	wire [3:0] sub_wire0;
+	wire [3:0] q = sub_wire0[3:0];
 
 	altsyncram	altsyncram_component (
 				.wren_a (wren),
@@ -83,13 +83,13 @@ module lpm_ram_dq0 (
 		altsyncram_component.intended_device_family = "Stratix II",
 		altsyncram_component.lpm_hint = "ENABLE_RUNTIME_MOD=NO",
 		altsyncram_component.lpm_type = "altsyncram",
-		altsyncram_component.numwords_a = 16,
+		altsyncram_component.numwords_a = 64,
 		altsyncram_component.operation_mode = "SINGLE_PORT",
 		altsyncram_component.outdata_aclr_a = "NONE",
 		altsyncram_component.outdata_reg_a = "UNREGISTERED",
 		altsyncram_component.power_up_uninitialized = "FALSE",
-		altsyncram_component.widthad_a = 4,
-		altsyncram_component.width_a = 6,
+		altsyncram_component.widthad_a = 6,
+		altsyncram_component.width_a = 4,
 		altsyncram_component.width_byteena_a = 1;
 
 
@@ -129,7 +129,7 @@ endmodule
 // Retrieval info: PRIVATE: UseDQRAM NUMERIC "1"
 // Retrieval info: PRIVATE: WRCONTROL_ACLR_A NUMERIC "0"
 // Retrieval info: PRIVATE: WidthAddr NUMERIC "6"
-// Retrieval info: PRIVATE: WidthData NUMERIC "9"
+// Retrieval info: PRIVATE: WidthData NUMERIC "4"
 // Retrieval info: PRIVATE: rden NUMERIC "0"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
@@ -143,7 +143,7 @@ endmodule
 // Retrieval info: CONSTANT: OUTDATA_REG_A STRING "UNREGISTERED"
 // Retrieval info: CONSTANT: POWER_UP_UNINITIALIZED STRING "FALSE"
 // Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "6"
-// Retrieval info: CONSTANT: WIDTH_A NUMERIC "9"
+// Retrieval info: CONSTANT: WIDTH_A NUMERIC "4"
 // Retrieval info: CONSTANT: WIDTH_BYTEENA_A NUMERIC "1"
 // Retrieval info: USED_PORT: address 0 0 6 0 INPUT NODEFVAL address[5..0]
 // Retrieval info: USED_PORT: clock 0 0 0 0 INPUT NODEFVAL clock

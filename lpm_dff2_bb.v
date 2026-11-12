@@ -38,9 +38,9 @@ module lpm_dff2 (
 	q);
 
 	input	  clock;
-	input	[5:0]  data;
+	input	[3:0]  data;
 	input	  enable;
-	output	[5:0]  q;
+	output	[3:0]  q;
 
 endmodule
 
@@ -63,7 +63,7 @@ endmodule
 // Retrieval info: PRIVATE: nBit NUMERIC "6"
 // Retrieval info: CONSTANT: LPM_FFTYPE STRING "DFF"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_FF"
-// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "6"
+// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "4"
 // Retrieval info: USED_PORT: clock 0 0 0 0 INPUT NODEFVAL clock
 // Retrieval info: USED_PORT: data 0 0 6 0 INPUT NODEFVAL data[5..0]
 // Retrieval info: USED_PORT: enable 0 0 0 0 INPUT NODEFVAL enable

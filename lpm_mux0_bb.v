@@ -39,12 +39,12 @@ module lpm_mux0 (
 	sel,
 	result);
 
-	input	[5:0]  data0x;
-	input	[5:0]  data1x;
-	input	[5:0]  data2x;
-	input	[5:0]  data3x;
+	input	[3:0]  data0x;
+	input	[3:0]  data1x;
+	input	[3:0]  data2x;
+	input	[3:0]  data3x;
 	input	[1:0]  sel;
-	output	[5:0]  result;
+	output	[3:0]  result;
 
 endmodule
 
@@ -55,7 +55,7 @@ endmodule
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
 // Retrieval info: CONSTANT: LPM_SIZE NUMERIC "4"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_MUX"
-// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "9"
+// Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "4"
 // Retrieval info: CONSTANT: LPM_WIDTHS NUMERIC "2"
 // Retrieval info: USED_PORT: data0x 0 0 9 0 INPUT NODEFVAL data0x[8..0]
 // Retrieval info: USED_PORT: data1x 0 0 9 0 INPUT NODEFVAL data1x[8..0]

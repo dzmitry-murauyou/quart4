@@ -38,11 +38,11 @@ module lpm_ram_dq0 (
 	wren,
 	q);
 
-	input	[3:0]  address;
+	input	[5:0]  address;
 	input	  clock;
-	input	[5:0]  data;
+	input	[3:0]  data;
 	input	  wren;
-	output	[5:0]  q;
+	output	[3:0]  q;
 
 endmodule
 
@@ -80,7 +80,7 @@ endmodule
 // Retrieval info: PRIVATE: UseDQRAM NUMERIC "1"
 // Retrieval info: PRIVATE: WRCONTROL_ACLR_A NUMERIC "0"
 // Retrieval info: PRIVATE: WidthAddr NUMERIC "6"
-// Retrieval info: PRIVATE: WidthData NUMERIC "9"
+// Retrieval info: PRIVATE: WidthData NUMERIC "4"
 // Retrieval info: PRIVATE: rden NUMERIC "0"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
@@ -94,7 +94,7 @@ endmodule
 // Retrieval info: CONSTANT: OUTDATA_REG_A STRING "UNREGISTERED"
 // Retrieval info: CONSTANT: POWER_UP_UNINITIALIZED STRING "FALSE"
 // Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "6"
-// Retrieval info: CONSTANT: WIDTH_A NUMERIC "9"
+// Retrieval info: CONSTANT: WIDTH_A NUMERIC "4"
 // Retrieval info: CONSTANT: WIDTH_BYTEENA_A NUMERIC "1"
 // Retrieval info: USED_PORT: address 0 0 6 0 INPUT NODEFVAL address[5..0]
 // Retrieval info: USED_PORT: clock 0 0 0 0 INPUT NODEFVAL clock
