@@ -92,9 +92,11 @@
 | `make_vwf.py` | генерация `lab4.vwf` |
 | `check.py` | проверка готовых схем: геометрия проводников сверяется с замыслом (связность, КЗ, подписи) |
 | `render.py` | отрисовка `.bdf` в PNG (для быстрой визуальной проверки разводки) |
+| `make_code_table.py` | таблицы кода программы (символьная/двоичная/HEX и по битам) → `docs/img/code_table.png` |
 | `bdfgen.py` | мини-библиотека для сборки схем Quartus (`.bdf`/`.bsf`) |
 
 Пересборка схем: `python3 tools/make_schematics.py`,
 проверка: `python3 tools/check.py laba4.bdf uu.bdf ron.bdf ram.bdf rom.bdf`,
-картинки для отчёта: `python3 tools/render.py uu.bdf laba4.bdf ron.bdf ram.bdf rom.bdf`
+картинки для отчёта: `python3 tools/render.py uu.bdf laba4.bdf ron.bdf ram.bdf rom.bdf`,
+таблицы кода программы: `python3 tools/make_code_table.py`
 (результат — `docs/img/*.png`).
