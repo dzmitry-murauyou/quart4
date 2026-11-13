@@ -329,11 +329,6 @@ class Sch:
         for net in sorted(self.nets, key=self._span, reverse=True):
             if '..' not in net or net in named:
                 continue
-            # не даём цепи второе имя: если к ней подключён вывод схемы с другим
-            # именем (например data_out[3..0] и data_io[3..0]), подпись не ставим
-            if any(nm != net and self.pins.get(pt) == net
-                   for pt, nm in self.pin_names.items()):
-                continue
             L = int(4.4 * len(net)) + 1
             segs = [sg for sg in r.segs if sg[2] == net and sg[0] != sg[1]]
             segs.sort(key=lambda sg: -(abs(sg[0][0] - sg[1][0]) + abs(sg[0][1] - sg[1][1])))

@@ -940,6 +940,24 @@ applicable agreement for further details.
 	(pt 1336 624)
 	(bus))
 (connector
+	(pt 744 16)
+	(pt 752 16)
+	(bus))
+(connector
+	(text "T[2..0]" (rect 752 0 783 12) (font "Arial"))
+	(pt 752 16)
+	(pt 1896 16)
+	(bus))
+(connector
+	(pt 600 344)
+	(pt 608 344)
+	(bus))
+(connector
+	(text "ir[8..0]" (rect 608 328 644 340) (font "Arial"))
+	(pt 608 344)
+	(pt 1896 344)
+	(bus))
+(connector
 	(pt 616 496)
 	(pt 616 512)
 	(bus))
@@ -1212,10 +1230,6 @@ applicable agreement for further details.
 	(pt 744 16)
 	(bus))
 (connector
-	(pt 744 16)
-	(pt 1896 16)
-	(bus))
-(connector
 	(pt 1896 16)
 	(pt 1896 104)
 	(bus))
@@ -1226,10 +1240,6 @@ applicable agreement for further details.
 (connector
 	(pt 600 328)
 	(pt 600 344)
-	(bus))
-(connector
-	(pt 600 344)
-	(pt 1896 344)
 	(bus))
 (connector
 	(pt 1896 344)

@@ -384,7 +384,57 @@ applicable agreement for further details.
 (text "CPU: address bus 6, data bus 4 (ROM 64x9, RAM 64x4, RON 4x4)" (rect 200 40 680 58) (font "Arial" (font_size 10)))
 (connector
 	(pt 1240 832)
+	(pt 1248 832)
+	(bus))
+(connector
+	(text "data_io[3..0]" (rect 1248 816 1306 828) (font "Arial"))
+	(pt 1248 832)
 	(pt 1584 832)
+	(bus))
+(connector
+	(pt 952 696)
+	(pt 1008 696)
+	(bus))
+(connector
+	(text "ron_addr[1..0]" (rect 1008 680 1070 692) (font "Arial"))
+	(pt 1008 696)
+	(pt 1600 696)
+	(bus))
+(connector
+	(pt 368 184)
+	(pt 376 184)
+	(bus))
+(connector
+	(text "rom_data[8..0]" (rect 376 168 438 180) (font "Arial"))
+	(pt 376 184)
+	(pt 1256 184)
+	(bus))
+(connector
+	(pt 1000 168)
+	(pt 1008 168)
+	(bus))
+(connector
+	(text "address[5..0]" (rect 1008 152 1066 164) (font "Arial"))
+	(pt 1008 168)
+	(pt 1600 168)
+	(bus))
+(connector
+	(pt 640 344)
+	(pt 648 344)
+	(bus))
+(connector
+	(text "T[2..0]" (rect 648 328 679 340) (font "Arial"))
+	(pt 648 344)
+	(pt 1552 344)
+	(bus))
+(connector
+	(pt 640 320)
+	(pt 648 320)
+	(bus))
+(connector
+	(text "ir[8..0]" (rect 648 304 684 316) (font "Arial"))
+	(pt 648 320)
+	(pt 1536 320)
 	(bus))
 (connector
 	(pt 1584 832)
@@ -456,10 +506,6 @@ applicable agreement for further details.
 (connector
 	(pt 952 880)
 	(pt 952 696)
-	(bus))
-(connector
-	(pt 952 696)
-	(pt 1600 696)
 	(bus))
 (connector
 	(pt 640 392)
@@ -583,20 +629,12 @@ applicable agreement for further details.
 	(pt 368 184)
 	(bus))
 (connector
-	(pt 368 184)
-	(pt 1256 184)
-	(bus))
-(connector
 	(pt 1256 184)
 	(pt 1256 232)
 	(bus))
 (connector
 	(pt 1000 232)
 	(pt 1000 168)
-	(bus))
-(connector
-	(pt 1000 168)
-	(pt 1600 168)
 	(bus))
 (connector
 	(pt 1600 168)
@@ -632,20 +670,12 @@ applicable agreement for further details.
 	(pt 1568 616)
 	(pt 1600 616))
 (connector
-	(pt 640 344)
-	(pt 1552 344)
-	(bus))
-(connector
 	(pt 1552 344)
 	(pt 1552 536)
 	(bus))
 (connector
 	(pt 1552 536)
 	(pt 1600 536)
-	(bus))
-(connector
-	(pt 640 320)
-	(pt 1536 320)
 	(bus))
 (connector
 	(pt 1536 320)

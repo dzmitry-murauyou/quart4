@@ -181,6 +181,15 @@ applicable agreement for further details.
 	(pt 776 192)
 	(bus))
 (connector
+	(pt 600 176)
+	(pt 368 176)
+	(bus))
+(connector
+	(text "ram_d[3..0]" (rect 368 160 417 172) (font "Arial"))
+	(pt 368 176)
+	(pt 360 176)
+	(bus))
+(connector
 	(pt 960 584)
 	(pt 968 584)
 	(bus))
@@ -224,10 +233,6 @@ applicable agreement for further details.
 (connector
 	(pt 600 192)
 	(pt 600 176)
-	(bus))
-(connector
-	(pt 600 176)
-	(pt 360 176)
 	(bus))
 (connector
 	(pt 600 224)

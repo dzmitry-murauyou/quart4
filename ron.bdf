@@ -365,6 +365,24 @@ applicable agreement for further details.
 		(line (pt 10 28) (pt 18 20) (line_width 1))))
 (text "RON: registers R0..R3, 4 bit each" (rect 200 40 464 58) (font "Arial" (font_size 10)))
 (connector
+	(pt 1032 400)
+	(pt 384 400)
+	(bus))
+(connector
+	(text "ron_a[1..0]" (rect 384 384 433 396) (font "Arial"))
+	(pt 384 400)
+	(pt 376 400)
+	(bus))
+(connector
+	(pt 640 288)
+	(pt 368 288)
+	(bus))
+(connector
+	(text "ron_d[3..0]" (rect 368 272 417 284) (font "Arial"))
+	(pt 368 288)
+	(pt 360 288)
+	(bus))
+(connector
 	(pt 800 264)
 	(pt 800 360)
 	(bus))
@@ -432,10 +450,6 @@ applicable agreement for further details.
 	(pt 1032 400)
 	(bus))
 (connector
-	(pt 1032 400)
-	(pt 376 400)
-	(bus))
-(connector
 	(pt 376 400)
 	(pt 376 408)
 	(bus))
@@ -463,10 +477,6 @@ applicable agreement for further details.
 (connector
 	(pt 624 624)
 	(pt 624 464))
-(connector
-	(pt 640 288)
-	(pt 360 288)
-	(bus))
 (connector
 	(pt 360 288)
 	(pt 360 248)
