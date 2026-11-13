@@ -172,6 +172,24 @@ applicable agreement for further details.
 		(line (pt 10 28) (pt 18 20) (line_width 1))))
 (text "RAM: 64 x 4, init file ram.mif" (rect 200 40 440 58) (font "Arial" (font_size 10)))
 (connector
+	(pt 776 584)
+	(pt 776 208)
+	(bus))
+(connector
+	(text "ram_q[3..0]" (rect 780 208 792 257) (font "Arial") (vertical))
+	(pt 776 208)
+	(pt 776 192)
+	(bus))
+(connector
+	(pt 960 584)
+	(pt 968 584)
+	(bus))
+(connector
+	(text "data_out[3..0]" (rect 968 568 1030 580) (font "Arial"))
+	(pt 968 584)
+	(pt 1064 584)
+	(bus))
+(connector
 	(pt 600 240)
 	(pt 376 240))
 (connector
@@ -200,10 +218,6 @@ applicable agreement for further details.
 	(pt 776 584)
 	(bus))
 (connector
-	(pt 776 584)
-	(pt 776 192)
-	(bus))
-(connector
 	(pt 776 192)
 	(pt 760 192)
 	(bus))
@@ -218,8 +232,4 @@ applicable agreement for further details.
 (connector
 	(pt 600 224)
 	(pt 360 224)
-	(bus))
-(connector
-	(pt 960 584)
-	(pt 1064 584)
 	(bus))

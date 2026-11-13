@@ -931,6 +931,78 @@ applicable agreement for further details.
 	(pt 784 664)
 	(pt 784 696))
 (connector
+	(pt 456 624)
+	(pt 464 624)
+	(bus))
+(connector
+	(text "data_io[3..0]" (rect 464 608 522 620) (font "Arial"))
+	(pt 464 624)
+	(pt 1336 624)
+	(bus))
+(connector
+	(pt 616 496)
+	(pt 616 512)
+	(bus))
+(connector
+	(text "ip[5..0]" (rect 620 512 632 548) (font "Arial") (vertical))
+	(pt 616 512)
+	(pt 616 872)
+	(bus))
+(connector
+	(pt 1072 488)
+	(pt 1128 488)
+	(bus))
+(connector
+	(text "address[5..0]" (rect 1128 472 1186 484) (font "Arial"))
+	(pt 1128 488)
+	(pt 1896 488)
+	(bus))
+(connector
+	(pt 1240 664)
+	(pt 656 664)
+	(bus))
+(connector
+	(text "dr[3..0]" (rect 656 648 692 660) (font "Arial"))
+	(pt 656 664)
+	(pt 632 664)
+	(bus))
+(connector
+	(pt 1088 784)
+	(pt 464 784)
+	(bus))
+(connector
+	(text "ip_next[5..0]" (rect 464 768 522 780) (font "Arial"))
+	(pt 464 784)
+	(pt 456 784)
+	(bus))
+(connector
+	(pt 936 872)
+	(pt 728 872)
+	(bus))
+(connector
+	(text "ip_plus1[5..0]" (rect 728 876 790 888) (font "Arial"))
+	(pt 728 872)
+	(pt 632 872)
+	(bus))
+(connector
+	(pt 936 480)
+	(pt 608 480)
+	(bus))
+(connector
+	(text "ar[5..0]" (rect 608 464 644 476) (font "Arial"))
+	(pt 608 480)
+	(pt 600 480)
+	(bus))
+(connector
+	(pt 336 1024)
+	(pt 344 1024)
+	(bus))
+(connector
+	(text "one[5..0]" (rect 344 1008 384 1020) (font "Arial"))
+	(pt 344 1024)
+	(pt 424 1024)
+	(bus))
+(connector
 	(pt 1184 1424)
 	(pt 1240 1424))
 (connector
@@ -1119,10 +1191,6 @@ applicable agreement for further details.
 	(pt 456 624)
 	(bus))
 (connector
-	(pt 456 624)
-	(pt 1336 624)
-	(bus))
-(connector
 	(pt 1336 624)
 	(pt 1336 664)
 	(bus))
@@ -1203,14 +1271,6 @@ applicable agreement for further details.
 	(pt 616 496)
 	(bus))
 (connector
-	(pt 616 496)
-	(pt 616 872)
-	(bus))
-(connector
-	(pt 1072 488)
-	(pt 1896 488)
-	(bus))
-(connector
 	(pt 1896 1648)
 	(pt 1880 1648))
 (connector
@@ -1222,10 +1282,6 @@ applicable agreement for further details.
 (connector
 	(pt 1432 1632)
 	(pt 1880 1632))
-(connector
-	(pt 1240 664)
-	(pt 632 664)
-	(bus))
 (connector
 	(pt 632 664)
 	(pt 632 696)
@@ -1264,16 +1320,8 @@ applicable agreement for further details.
 	(pt 1088 784)
 	(bus))
 (connector
-	(pt 1088 784)
-	(pt 456 784)
-	(bus))
-(connector
 	(pt 456 784)
 	(pt 456 848)
-	(bus))
-(connector
-	(pt 936 872)
-	(pt 632 872)
 	(bus))
 (connector
 	(pt 632 872)
@@ -1293,10 +1341,6 @@ applicable agreement for further details.
 	(pt 904 1496)
 	(pt 904 1424))
 (connector
-	(pt 936 480)
-	(pt 600 480)
-	(bus))
-(connector
 	(pt 600 480)
 	(pt 600 512)
 	(bus))
@@ -1309,10 +1353,6 @@ applicable agreement for further details.
 (connector
 	(pt 624 1600)
 	(pt 624 1640))
-(connector
-	(pt 336 1024)
-	(pt 424 1024)
-	(bus))
 (connector
 	(pt 424 1024)
 	(pt 424 1072)

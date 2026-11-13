@@ -365,6 +365,51 @@ applicable agreement for further details.
 		(line (pt 10 28) (pt 18 20) (line_width 1))))
 (text "RON: registers R0..R3, 4 bit each" (rect 200 40 464 58) (font "Arial" (font_size 10)))
 (connector
+	(pt 800 264)
+	(pt 800 360)
+	(bus))
+(connector
+	(text "r3[3..0]" (rect 784 360 796 396) (font "Arial") (vertical))
+	(pt 800 360)
+	(pt 800 632)
+	(bus))
+(connector
+	(pt 1112 624)
+	(pt 1112 304)
+	(bus))
+(connector
+	(text "ron_mux[3..0]" (rect 1116 304 1128 362) (font "Arial") (vertical))
+	(pt 1112 304)
+	(pt 1112 288)
+	(bus))
+(connector
+	(pt 816 280)
+	(pt 816 320)
+	(bus))
+(connector
+	(text "r2[3..0]" (rect 820 320 832 356) (font "Arial") (vertical))
+	(pt 816 320)
+	(pt 816 472)
+	(bus))
+(connector
+	(pt 832 312)
+	(pt 832 168)
+	(bus))
+(connector
+	(text "r0[3..0]" (rect 816 168 828 204) (font "Arial") (vertical))
+	(pt 832 168)
+	(pt 832 152)
+	(bus))
+(connector
+	(pt 1256 624)
+	(pt 1264 624)
+	(bus))
+(connector
+	(text "data_output[3..0]" (rect 1264 608 1339 620) (font "Arial"))
+	(pt 1264 624)
+	(pt 1360 624)
+	(bus))
+(connector
 	(pt 1216 640)
 	(pt 1216 1008))
 (connector
@@ -473,10 +518,6 @@ applicable agreement for further details.
 	(pt 800 264)
 	(bus))
 (connector
-	(pt 800 264)
-	(pt 800 632)
-	(bus))
-(connector
 	(pt 800 632)
 	(pt 784 632)
 	(bus))
@@ -494,10 +535,6 @@ applicable agreement for further details.
 	(pt 1112 624)
 	(bus))
 (connector
-	(pt 1112 624)
-	(pt 1112 288)
-	(bus))
-(connector
 	(pt 1112 288)
 	(pt 1096 288)
 	(bus))
@@ -506,20 +543,12 @@ applicable agreement for further details.
 	(pt 816 280)
 	(bus))
 (connector
-	(pt 816 280)
-	(pt 816 472)
-	(bus))
-(connector
 	(pt 816 472)
 	(pt 784 472)
 	(bus))
 (connector
 	(pt 960 312)
 	(pt 832 312)
-	(bus))
-(connector
-	(pt 832 312)
-	(pt 832 152)
 	(bus))
 (connector
 	(pt 832 152)
@@ -541,10 +570,6 @@ applicable agreement for further details.
 (connector
 	(pt 784 296)
 	(pt 784 312)
-	(bus))
-(connector
-	(pt 1256 624)
-	(pt 1360 624)
 	(bus))
 (connector
 	(pt 400 824)

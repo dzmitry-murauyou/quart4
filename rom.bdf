@@ -88,15 +88,20 @@ applicable agreement for further details.
 		(line (pt 22 48) (pt 16 54) (line_width 1))))
 (text "ROM: 64 x 9, init file rom.mif" (rect 200 40 440 58) (font "Arial" (font_size 10)))
 (connector
+	(pt 600 160)
+	(pt 368 160)
+	(bus))
+(connector
+	(text "address[5..0]" (rect 368 144 426 156) (font "Arial"))
+	(pt 368 160)
+	(pt 360 160)
+	(bus))
+(connector
 	(pt 600 176)
 	(pt 360 176))
 (connector
 	(pt 360 176)
 	(pt 360 392))
-(connector
-	(pt 600 160)
-	(pt 360 160)
-	(bus))
 (connector
 	(pt 760 168)
 	(pt 1000 168)

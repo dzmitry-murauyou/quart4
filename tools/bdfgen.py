@@ -183,6 +183,7 @@ class Sch:
         self.nets = {}      # имя цепи -> [(tag, точка)]
         self.pins = {}      # точка -> имя цепи
         self.texts = []     # (имя, rect) — подписи цепей
+        self.pin_names = {}  # точка вывода схемы -> имя вывода
         self.title = title
         self.router = R.Router()
 
@@ -241,6 +242,7 @@ class Sch:
         self.items.append(n)
         self.router.block_rect(x, y, x + w, y + h, soft=8)
         conn = (x + px, y + py)
+        self.pin_names[conn] = name
         self._add(net, name, conn)
         return conn
 
@@ -308,8 +310,75 @@ class Sch:
             pts = [p for _, p in self.nets[n]]
             if len(pts) == 1:
                 print('   !!! цепь %s имеет только одну точку' % n)
+        self._name_buses()
         self.items.extend(r.bdf_items())
         return self
+
+    def _name_buses(self):
+        """Явно подписать КАЖДУЮ шину (цепь с диапазоном).
+
+        Quartus не выводит имя шины, у которой концы подключены к выводам с
+        разными именами: «Can't find name for bus». Поэтому, как и в исходном
+        проекте, имя пишется на проводнике прямым текстом — на самом длинном
+        отрезке цепи разрывается проводник, и на одной из половин ставится
+        подпись (текст внутри connector, 4 единицы от линии, для вертикального
+        отрезка — повёрнутый, с признаком (vertical)).
+        """
+        r = self.router
+        named = {n for n, _ in self.texts}
+        for net in sorted(self.nets, key=self._span, reverse=True):
+            if '..' not in net or net in named:
+                continue
+            # не даём цепи второе имя: если к ней подключён вывод схемы с другим
+            # именем (например data_out[3..0] и data_io[3..0]), подпись не ставим
+            if any(nm != net and self.pins.get(pt) == net
+                   for pt, nm in self.pin_names.items()):
+                continue
+            L = int(4.4 * len(net)) + 1
+            segs = [sg for sg in r.segs if sg[2] == net and sg[0] != sg[1]]
+            segs.sort(key=lambda sg: -(abs(sg[0][0] - sg[1][0]) + abs(sg[0][1] - sg[1][1])))
+            spot = None
+            for sg in segs:
+                a, b, _, bus = sg
+                if a[1] == b[1]:                                   # горизонтальный отрезок
+                    lo, hi = sorted((a[0], b[0]))
+                    for x in range(lo + 8, hi - 8 + 1, 8):
+                        for y0 in (a[1] - 16, a[1] + 4, a[1] - 28, a[1] + 16):   # сверху / снизу / дальше
+                            rect = (x, y0, x + L, y0 + 12)
+                            if self._rect_free(*rect, net):
+                                spot = (sg, (x, a[1]), rect, False)
+                                break
+                        if spot:
+                            break
+                else:                                              # вертикальный отрезок
+                    lo, hi = sorted((a[1], b[1]))
+                    for y in range(lo + 16, hi - 16 + 1, 8):
+                        for x0 in (a[0] - 16, a[0] + 4, a[0] - 28, a[0] + 16):   # слева / справа / дальше
+                            rect = (x0, y, x0 + 12, y + L)
+                            if self._rect_free(*rect, net):
+                                spot = (sg, (a[0], y), rect, True)
+                                break
+                        if spot:
+                            break
+                if spot:
+                    break
+            if not spot:
+                print('   !!! не удалось подписать шину %s' % net)
+                continue
+            (a, b, _, bus), m, rect, vertical = spot
+            r.segs[r.segs.index((a, b, net, bus)):r.segs.index((a, b, net, bus)) + 1] = \
+                [(a, m, net, bus), (m, b, net, bus)]
+            r.hidden.update({(a, m), (m, b)})
+            text = ['text', '"%s"' % net,
+                    ['rect', str(rect[0]), str(rect[1]), str(rect[2]), str(rect[3])],
+                    ['font', '"Arial"']] + ([['vertical']] if vertical else [])
+            bus_flag = [['bus']] if bus else []
+            self.items.append(['connector', ['pt', str(a[0]), str(a[1])],
+                               ['pt', str(m[0]), str(m[1])]] + bus_flag)
+            self.items.append(['connector', text,
+                               ['pt', str(m[0]), str(m[1])],
+                               ['pt', str(b[0]), str(b[1])]] + bus_flag)
+            self.texts.append((net, rect))
 
     def _tap(self, net, parent):
         """Ответвление от шины parent: короткий отвод + подпись имени цепи.
