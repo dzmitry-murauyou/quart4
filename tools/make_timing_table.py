@@ -3,7 +3,7 @@
 """Рисует таблицу «что происходит по тактам» (по данным модели tools/sim.py).
 
 Блоки:
-  1) MOV M[4], R0  — команда из адреса 00, такты T0…T7;
+  1) MOV M[4], R0  — команда из адреса 00, такты T0…T4;
   2) JZ $3         — адрес 01, Z = 0 (перехода нет);
   3) JZ $0         — адрес 05, Z = 1 (переход есть);
   4) сводка по всему циклу программы.
@@ -33,6 +33,7 @@ GREY = (120, 120, 120)
 ROW_H = 40
 HDR_H = 44
 TITLE_H = 42
+TICKS = 5                      # тактов на команду: T0…T4
 MARGIN = 24
 GAP = 36
 
@@ -78,12 +79,12 @@ def hexb(v, n):
 
 # ------------------------------------------------------------------ данные модели
 def collect():
-    """Прогон модели: 6 команд по 8 тактов = полный цикл программы."""
+    """Прогон модели: 6 команд по 5 тактов = полный цикл программы."""
     cpu = CPU()
-    ticks = [cpu.step() for _ in range(8 * 6)]
+    ticks = [cpu.step() for _ in range(TICKS * 6)]
     cmd = []                    # (адрес команды, слово, такты)
-    for k in range(0, len(ticks), 8):
-        blk = ticks[k:k + 8]
+    for k in range(0, len(ticks), TICKS):
+        blk = ticks[k:k + TICKS]
         # слово команды появляется в IR на такте T2 (защёлкнуто в конце T1)
         word = blk[2]['IR'] if len(blk) > 2 else blk[0]['IR']
         cmd.append((blk[0]['IP'], word, blk))      # адрес команды = IP в такте T0
@@ -113,7 +114,7 @@ def action(cmd_word, t, st):
                 return "Z = 1 → IP ← IR[5..0] = %X (переход)" % adr
             return "Z = 0 → перехода нет, IP остаётся IP+1"
         return "—"
-    return "резерв (автомат досчитывает до T0)"
+    return "—"
 
 
 def rows_for(block):
@@ -132,6 +133,11 @@ def rows_for(block):
     return out
 
 
+def cpu_after(st):
+    """Флаг Z после такта: записывается в конце T4 команды MOV."""
+    return 1 if st['DR'] == 0 else 0
+
+
 def summary(cmd):
     rows = []
     for adr, word, blk in cmd:
@@ -140,7 +146,7 @@ def summary(cmd):
             rows.append(["0x" + hexb(adr, 2), disasm(word),
                          "ША = 0x%02X, ШД = 0x%X" % (blk[3]['sha'], blk[3]['bus']),
                          "R%d ← 0x%X" % ((word >> 6) & 3, blk[4]['bus']),
-                         "Z = %d" % blk[5]['Z']])
+                         "Z = %d" % cpu_after(blk[4])])
         else:
             jump = blk[3]['ctl']['ip_ld_jmp']
             rows.append(["0x" + hexb(adr, 2), disasm(word), "—",
@@ -190,7 +196,7 @@ def main():
                "JZ, непосредственная адресация"
         blocks.append(("Команда 0x%02X — %s (%s)" % (adr, disasm(word), kind),
                        COLS, rows_for(blk)))
-    blocks.append(("Весь цикл программы (6 команд × 8 тактов)", SUMMARY_COLS,
+    blocks.append(("Весь цикл программы (6 команд × 5 тактов)", SUMMARY_COLS,
                    summary(cmd)))
 
     H = MARGIN * 2 + sum(TITLE_H + HDR_H + ROW_H * len(r) + GAP

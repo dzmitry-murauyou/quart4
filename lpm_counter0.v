@@ -65,6 +65,7 @@ module lpm_counter0 (
 	defparam
 		lpm_counter_component.lpm_direction = "UP",
 		lpm_counter_component.lpm_port_updown = "PORT_UNUSED",
+		lpm_counter_component.lpm_modulus = 5,
 		lpm_counter_component.lpm_type = "LPM_COUNTER",
 		lpm_counter_component.lpm_width = 3;
 
@@ -84,8 +85,8 @@ endmodule
 // Retrieval info: PRIVATE: CarryOut NUMERIC "0"
 // Retrieval info: PRIVATE: Direction NUMERIC "0"
 // Retrieval info: PRIVATE: INTENDED_DEVICE_FAMILY STRING "Stratix II"
-// Retrieval info: PRIVATE: ModulusCounter NUMERIC "0"
-// Retrieval info: PRIVATE: ModulusValue NUMERIC "0"
+// Retrieval info: PRIVATE: ModulusCounter NUMERIC "1"
+// Retrieval info: PRIVATE: ModulusValue NUMERIC "5"
 // Retrieval info: PRIVATE: SCLR NUMERIC "0"
 // Retrieval info: PRIVATE: SLOAD NUMERIC "0"
 // Retrieval info: PRIVATE: SSET NUMERIC "0"
@@ -93,6 +94,7 @@ endmodule
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
 // Retrieval info: PRIVATE: nBit NUMERIC "3"
 // Retrieval info: CONSTANT: LPM_DIRECTION STRING "UP"
+// Retrieval info: CONSTANT: LPM_MODULUS NUMERIC "5"
 // Retrieval info: CONSTANT: LPM_PORT_UPDOWN STRING "PORT_UNUSED"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_COUNTER"
 // Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "3"

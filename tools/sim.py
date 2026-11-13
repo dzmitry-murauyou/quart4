@@ -77,7 +77,7 @@ class CPU:
         if s.T == 4 and s.is_mov():
             s.RON[s.rsel()] = bus & DR_MASK
             s.Z = 1 if s.DR == 0 else 0
-        s.T = (s.T + 1) & 7
+        s.T = (s.T + 1) % 5      # тактов ровно 5: T0…T4
         return st
 
 
@@ -90,15 +90,15 @@ def disasm(w):
 
 if __name__ == '__main__':
     cpu = CPU(); log = []
-    for i in range(8 * 8 * 3):        # три полных обхода программы
+    for i in range(5 * 6 * 3):        # три полных обхода программы
         st = cpu.step()
         c = st['ctl']
         act = [k for k, v in c.items() if v]
         log.append('T%d IP=%02X IR=%03X(%s) AR=%02X DR=%X Z=%d bus=%s SHA=%02X | %s' % (
             st['T'], st['IP'], st['IR'], disasm(st['IR']), st['AR'], st['DR'], st['Z'],
             '-' if st['bus'] is None else '%X' % st['bus'], st['sha'], ','.join(act)))
-        if i % 8 == 7 and i < 8 * 8:
-            print('\n'.join(log[-8:])); print('-' * 100)
+        if i % 5 == 4 and i < 5 * 6:
+            print('\n'.join(log[-5:])); print('-' * 100)
     print('\nИтог: RON =', [format(x, 'X') for x in cpu.RON])
     print('\nТрасса выборки (адреса в порядке выполнения):')
     seen = []

@@ -227,7 +227,7 @@ def make_uu():
     # константа 0 для неиспользуемых в данном варианте управляющих сигналов
     s.inst(gnd, 'gnd0', 1400, 1620, {'1': 'gnd_net'})
 
-    s.note('CONTROL UNIT: IP, IR, AR, DR, FR, state counter T0..T7', 200, 20)
+    s.note('CONTROL UNIT: IP, IR, AR, DR, FR, state counter T0..T4', 200, 20)
     s.connect().save('uu.bdf')
 
 

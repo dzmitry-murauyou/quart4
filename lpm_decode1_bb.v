@@ -37,10 +37,7 @@ module lpm_decode1 (
 	eq1,
 	eq2,
 	eq3,
-	eq4,
-	eq5,
-	eq6,
-	eq7);
+	eq4);
 
 	input	[2:0]  data;
 	output	  eq0;
@@ -48,9 +45,6 @@ module lpm_decode1 (
 	output	  eq2;
 	output	  eq3;
 	output	  eq4;
-	output	  eq5;
-	output	  eq6;
-	output	  eq7;
 
 endmodule
 
