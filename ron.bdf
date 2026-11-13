@@ -147,7 +147,7 @@ applicable agreement for further details.
 (symbol
 	(rect 640 96 784 192)
 	(text "lpm_dff2" (rect 48 1 104 17) (font "Arial" (font_size 10)))
-	(text "r0" (rect 8 80 25 92) (font "Arial"))
+	(text "reg0" (rect 8 80 25 92) (font "Arial"))
 	(port
 		(pt 0 32)
 		(input)
@@ -183,7 +183,7 @@ applicable agreement for further details.
 (symbol
 	(rect 640 256 784 352)
 	(text "lpm_dff2" (rect 48 1 104 17) (font "Arial" (font_size 10)))
-	(text "r1" (rect 8 80 25 92) (font "Arial"))
+	(text "reg1" (rect 8 80 25 92) (font "Arial"))
 	(port
 		(pt 0 32)
 		(input)
@@ -219,7 +219,7 @@ applicable agreement for further details.
 (symbol
 	(rect 640 416 784 512)
 	(text "lpm_dff2" (rect 48 1 104 17) (font "Arial" (font_size 10)))
-	(text "r2" (rect 8 80 25 92) (font "Arial"))
+	(text "reg2" (rect 8 80 25 92) (font "Arial"))
 	(port
 		(pt 0 32)
 		(input)
@@ -255,7 +255,7 @@ applicable agreement for further details.
 (symbol
 	(rect 640 576 784 672)
 	(text "lpm_dff2" (rect 48 1 104 17) (font "Arial" (font_size 10)))
-	(text "r3" (rect 8 80 25 92) (font "Arial"))
+	(text "reg3" (rect 8 80 25 92) (font "Arial"))
 	(port
 		(pt 0 32)
 		(input)
@@ -419,6 +419,15 @@ applicable agreement for further details.
 	(pt 832 152)
 	(bus))
 (connector
+	(pt 960 296)
+	(pt 872 296)
+	(bus))
+(connector
+	(text "r1[3..0]" (rect 876 280 912 292) (font "Arial"))
+	(pt 872 296)
+	(pt 784 296)
+	(bus))
+(connector
 	(pt 1256 624)
 	(pt 1264 624)
 	(bus))
@@ -573,10 +582,6 @@ applicable agreement for further details.
 (connector
 	(pt 592 840)
 	(pt 528 840))
-(connector
-	(pt 960 296)
-	(pt 784 296)
-	(bus))
 (connector
 	(pt 784 296)
 	(pt 784 312)

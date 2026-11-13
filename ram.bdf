@@ -190,6 +190,15 @@ applicable agreement for further details.
 	(pt 360 176)
 	(bus))
 (connector
+	(pt 600 224)
+	(pt 480 224)
+	(bus))
+(connector
+	(text "address[5..0]" (rect 484 208 542 220) (font "Arial"))
+	(pt 480 224)
+	(pt 360 224)
+	(bus))
+(connector
 	(pt 960 584)
 	(pt 968 584)
 	(bus))
@@ -233,8 +242,4 @@ applicable agreement for further details.
 (connector
 	(pt 600 192)
 	(pt 600 176)
-	(bus))
-(connector
-	(pt 600 224)
-	(pt 360 224)
 	(bus))

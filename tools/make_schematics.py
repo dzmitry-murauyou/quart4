@@ -135,7 +135,7 @@ def make_ron():
            {'data[1..0]': 'ron_a[1:0]', 'enable': 'write',
             'eq0': 'we0', 'eq1': 'we1', 'eq2': 'we2', 'eq3': 'we3'})
     for i in range(4):
-        s.inst(dff, 'r%d' % i, 640, 96 + i * 160,
+        s.inst(dff, 'reg%d' % i, 640, 96 + i * 160,
                {'data[3..0]': 'ron_d[3:0]', 'clock': 'clk', 'enable': 'we%d' % i,
                 'q[3..0]': 'r%d[3..0]' % i})
     s.inst(mux, 'mux', 960, 224,

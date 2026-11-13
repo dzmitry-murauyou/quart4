@@ -357,6 +357,17 @@ class Sch:
                             break
                 if spot:
                     break
+            if not spot and segs:            # аварийный вариант: свободного места нет,
+                a, b, _, bus = segs[0]       # подпись ставим в середину самого длинного
+                if a[1] == b[1]:             # отрезка (в Quartus текст принадлежит
+                    m = ((a[0] + b[0]) // 16 * 8, a[1])     # своему connector'у)
+                    rect = (m[0] + 4, m[1] - 16, m[0] + 4 + L, m[1] - 4)
+                    spot = (segs[0], m, rect, False)
+                else:
+                    m = (a[0], (a[1] + b[1]) // 16 * 8)
+                    rect = (m[0] - 16, m[1] + 4, m[0] - 4, m[1] + 4 + L)
+                    spot = (segs[0], m, rect, True)
+                print('   (шина %s: свободного места нет, подпись в середине)' % net)
             if not spot:
                 print('   !!! не удалось подписать шину %s' % net)
                 continue

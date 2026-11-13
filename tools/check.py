@@ -253,10 +253,34 @@ def check(path, verbose=True):
                 elif wd == 1 and bus:
                     errors.append('вывод %s (1 бит) подключён шинным проводом — нужен провод' % tag)
 
+    # 4f) имя цепи не должно совпадать с именем экземпляра:
+    #     Quartus выдаёт "Logic function ... is already defined as a signal name"
+    inames, labels = set(), set()
+    for n in tree:
+        if not isinstance(n, list) or not n:
+            continue
+        if n[0] == 'symbol':
+            inames.add(B.children(n, 'text')[1][1].strip('\"').lower())
+        elif n[0] == 'connector':
+            for t2 in B.children(n, 'text'):
+                nm = t2[1].strip('\"')
+                if nm:
+                    labels.add((nm, nm.split('[')[0].lower()))
+    for nm, stem in sorted(labels):
+        if stem in inames:
+            errors.append('имя цепи %s совпадает с именем экземпляра %s' % (nm, stem))
+
     # 5) разрядности
     w = {}
     for net in manifest:
         w.setdefault(net, set()).add(width(net))
+    # 5b) у каждой многобитной цепи должна быть подпись на проводнике,
+    #     иначе Quartus может не вывести имя шины ("Can't find name for bus")
+    lab_names = {nm for nm, _ in labels}
+    for net in manifest:
+        if width(net) > 1 and net not in lab_names:
+            errors.append('шина %s без подписи на проводнике' % net)
+
     # 6) подписи цепей: имя должно совпадать с именем разветвляемой шины
     for lab, r in []:
         pass

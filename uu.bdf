@@ -1021,6 +1021,15 @@ applicable agreement for further details.
 	(pt 424 1024)
 	(bus))
 (connector
+	(pt 456 296)
+	(pt 408 296)
+	(bus))
+(connector
+	(text "rom_data[8..0]" (rect 412 280 474 292) (font "Arial"))
+	(pt 408 296)
+	(pt 360 296)
+	(bus))
+(connector
 	(pt 1184 1424)
 	(pt 1240 1424))
 (connector
@@ -1374,10 +1383,6 @@ applicable agreement for further details.
 (connector
 	(pt 456 304)
 	(pt 456 296)
-	(bus))
-(connector
-	(pt 456 296)
-	(pt 360 296)
 	(bus))
 (connector
 	(pt 840 1648)
