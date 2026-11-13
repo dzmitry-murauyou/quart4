@@ -46,6 +46,7 @@ module lpm_compare0 (
 	output	  aeb;
 
 	wire  sub_wire0;
+	assign aeb = sub_wire0;
 
 	lpm_compare	lpm_compare_component (
 				.dataa (dataa),
