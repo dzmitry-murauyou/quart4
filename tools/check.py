@@ -239,6 +239,20 @@ def check(path, verbose=True):
                 errors.append('разрядность: цепь %s (%d бит) подключена к выводу %s (%d бит)'
                               % (net, width(net), t2, portw[t2]))
 
+    # 4d) стиль проводника (шина/провод) должен соответствовать разрядности вывода:
+    #     многобитный вывод соединяется только шинным проводником, однобитный — только проводом
+    wpt = {}
+    for tag, d, pt in ports:
+        tail = re.search(r'\[[^\]]*\]$', tag)          # range шины в конце имени вывода
+        wpt.setdefault(pt, []).append((tag, width(tail.group(0)) if tail else 1))
+    for a, b, bus in segs:
+        for pt in (a, b):
+            for tag, wd in wpt.get(pt, []):
+                if wd > 1 and not bus:
+                    errors.append('вывод %s (%d бит) подключён тонким проводом — нужна шина' % (tag, wd))
+                elif wd == 1 and bus:
+                    errors.append('вывод %s (1 бит) подключён шинным проводом — нужен провод' % tag)
+
     # 5) разрядности
     w = {}
     for net in manifest:

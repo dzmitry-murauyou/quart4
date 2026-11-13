@@ -374,11 +374,20 @@ class Sch:
         for dist, c, e, f, lab in cands[:24]:
             snap = r.snapshot()
             multi = '..' in net
+            if multi:
+                # Срез шины (например ir[5..0] из ir[8..0]) по правилам Quartus
+                # соединяется с шиной-источником ПО ИМЕНИ: физически стыковать
+                # шины разной разрядности нельзя (Width mismatch). Поэтому отвод
+                # начинается не на шине, а на шаг сетки в стороне от неё.
+                if c[0] == e[0]:                       # отвод перпендикулярен, шина горизонтальна
+                    c = (c[0], c[1] + (8 if e[1] > c[1] else -8))
+                else:                                  # шина вертикальна
+                    c = (c[0] + (8 if e[0] > c[0] else -8), c[1])
             r.add_segment(c, e, net, bus=multi)
             r.hidden.add((c, e))
-            r.add_segment(e, f, net)
+            r.add_segment(e, f, net, bus=multi)
             try:
-                r.route(net, [f] + pts)
+                r.route(net, [f] + pts, bus=multi)
             except RouteError:
                 r.restore(snap)
                 continue
