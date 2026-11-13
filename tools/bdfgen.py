@@ -324,15 +324,15 @@ class Sch:
         cands = []
 
         def lab_for(c, e):
-            """Рамка подписи цепи. Ставится на ГОРИЗОНТАЛЬНЫЙ участок отвода
-            (так же, как её пишет сам Quartus: text внутри connector, рамка
-            на 4 единицы выше линии) — иначе Quartus не считает проводник
-            подписанным и выдаёт Can't find name for bus."""
-            if c[1] == e[1]:                    # участок горизонтальный — подпись сверху
-                x0 = min(c[0], e[0]) + 4
-                return (x0, c[1] - 17, x0 + w, c[1] - 4)
-            y0 = min(c[1], e[1]) + 4            # участок вертикальный — подпись сбоку
-            return (c[0] + 6, y0, c[0] + 6 + w, y0 + 13)
+            """Рамка подписи цепи — как её пишет сам Quartus: короткий текст
+            вплотную к проводнику (4 единицы), для вертикального проводника —
+            повёрнутый ((vertical)) слева от линии."""
+            L = int(4.4 * len(net)) + 1
+            if c[0] == e[0]:                        # проводник вертикальный
+                y0 = min(c[1], e[1]) + 16
+                return (c[0] - 16, y0, c[0] - 4, y0 + L), True
+            x0 = min(c[0], e[0]) + 4                # проводник горизонтальный
+            return (x0, c[1] - 16, x0 + L, c[1] - 4), False
 
         def consider(c, e, f):
             if r._hard(e, net) or r._sensitive(e, net):
@@ -344,8 +344,8 @@ class Sch:
                     return
                 if not r._edge_ok(e, f, net):
                     return
-            lab = lab_for(e, f if f is not None else e)
-            if not self._rect_free(*lab, net):
+            lab = lab_for(c, e)
+            if not self._rect_free(*lab[0], net):
                 return
             tail = f if f is not None else e
             dist = min(abs(tail[0] - p[0]) + abs(tail[1] - p[1]) for p in pts)
@@ -378,29 +378,25 @@ class Sch:
         for dist, c, e, f, lab in cands[:24]:
             snap = r.snapshot()
             multi = '..' in net
-            # Срез шины (ir[5..0] из ir[8..0]) обязан физически начинаться НА шине-
-            # источнике: Quartus ищет для среза «superset bus» именно в точке
-            # подключения (иначе: "No superset bus at connection" / "Can't find
-            # name for bus"). Поэтому отвод идёт прямо от шины, но ВСЕ его отрезки
-            # оформляются шинными проводниками.
+            # Отвод начинается прямо на шине-источнике и сам несёт имя цепи
+            # (так оформлены срезы в рабочем проекте: коннектор, начинающийся
+            # на шине, с текстом имени внутри). Все отрезки шинной цепи — bus.
             r.add_segment(c, e, net, bus=multi)
+            r.hidden.add((c, e))
             r.add_segment(e, f, net, bus=multi)
             try:
                 r.route(net, [f] + pts, bus=multi)
             except RouteError:
                 r.restore(snap)
                 continue
-            # имя цепи хранится внутри самого проводника-отвода (как в Quartus);
-            # подписан всегда горизонтальный участок «хвоста» e-f
-            self.items.append(['connector',
-                               ['text', '"%s"' % net,
-                                ['rect', str(lab[0]), str(lab[1]),
-                                 str(lab[2]), str(lab[3])],
-                                ['font', '"Arial"']],
-                               ['pt', str(e[0]), str(e[1])],
-                               ['pt', str(f[0]), str(f[1])]] + ([['bus']] if multi else []))
-            r.hidden.add((e, f))
-            self.texts.append((net, lab))
+            rect, vertical = lab
+            text = ['text', '"%s"' % net,
+                    ['rect', str(rect[0]), str(rect[1]), str(rect[2]), str(rect[3])],
+                    ['font', '"Arial"']] + ([['vertical']] if vertical else [])
+            self.items.append(['connector', text,
+                               ['pt', str(c[0]), str(c[1])],
+                               ['pt', str(e[0]), str(e[1])]] + ([['bus']] if multi else []))
+            self.texts.append((net, rect))
             return
         raise RouteError('не удалось развести отвод %s от %s' % (net, parent))
 
