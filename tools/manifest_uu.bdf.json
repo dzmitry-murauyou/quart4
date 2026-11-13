@@ -87,7 +87,8 @@
  ],
  "dr[3..0]": [
   "DR_buf.data[3..0]",
-  "DR_reg.q[3..0]"
+  "DR_reg.q[3..0]",
+  "FR_cmp.dataa[3..0]"
  ],
  "ip_next[5..0]": [
   "IP_mux.result[5..0]",
@@ -117,7 +118,7 @@
  ],
  "z_d": [
   "FR.data",
-  "nz.OUT"
+  "FR_cmp.aeb"
  ],
  "ir[8]": [
   "is_mov.IN",
@@ -133,28 +134,8 @@
   "ip_jmp.IN2",
   "jump.OUT"
  ],
- "dr[1]": [
-  "o1.IN2"
- ],
- "dr[0]": [
-  "o1.IN1"
- ],
- "o1": [
-  "o1.OUT",
-  "o3.IN1"
- ],
- "dr[3]": [
-  "o2.IN2"
- ],
- "dr[2]": [
-  "o2.IN1"
- ],
- "o2": [
-  "o2.OUT",
-  "o3.IN2"
- ],
- "o3": [
-  "nz.IN",
-  "o3.OUT"
+ "zero[3..0]": [
+  "FR_cmp.datab[3..0]",
+  "const0.result[3..0]"
  ]
 }

@@ -158,6 +158,8 @@ def make_uu():
     reg6 = B.load_bsf('lpm_dff1.bsf')      # 6 бит (AR, IP)
     dr_b = B.load_bsf('lpm_dff2.bsf')      # 4 бита (DR, РОН)
     fr_b = B.load_bsf('lpm_dff3.bsf')      # 1 бит
+    cmp_b = B.load_bsf('lpm_compare0.bsf')  # 4 бита: A = B (компаратор)
+    zerob = B.load_bsf('lpm_constant1.bsf')  # 4 бита, значение 0
     add = B.load_bsf('lpm_add_sub0.bsf')   # 6 бит
     one = B.load_bsf('lpm_constant0.bsf')  # 6 бит, значение 1
     mux = B.load_bsf('lpm_mux1.bsf')       # 2:1, 6 бит
@@ -219,11 +221,10 @@ def make_uu():
     s.inst(andg, 'mov_t4', 1260, 1400, {'IN1': 't4', 'IN2': 'is_mov', 'OUT': 'mov_t4'})
     s.inst(andg, 'ip_jmp', 1400, 1400, {'IN1': 't3', 'IN2': 'jump', 'OUT': 'ip_jump'})
     s.inst(org, 'ip_en', 1540, 1400, {'IN1': 't1', 'IN2': 'ip_jump', 'OUT': 'ip_en'})
-    # флаг нуля: z_d = ~(dr[3] | dr[2] | dr[1] | dr[0])
-    s.inst(org, 'o1', 560, 1620, {'IN1': 'dr[0]', 'IN2': 'dr[1]', 'OUT': 'o1'})
-    s.inst(org, 'o2', 700, 1620, {'IN1': 'dr[2]', 'IN2': 'dr[3]', 'OUT': 'o2'})
-    s.inst(org, 'o3', 840, 1620, {'IN1': 'o1', 'IN2': 'o2', 'OUT': 'o3'})
-    s.inst(notg, 'nz', 980, 1620, {'IN': 'o3', 'OUT': 'z_d'})
+    # флаг нуля: компаратор DR = 0 (выход aeb -> вход данных регистра флагов)
+    s.inst(zerob, 'const0', 560, 1600, {'result[3..0]': 'zero[3..0]'})
+    s.inst(cmp_b, 'FR_cmp', 760, 1600,
+           {'dataa[3..0]': 'dr[3:0]', 'datab[3..0]': 'zero[3:0]', 'aeb': 'z_d'})
     # константа 0 для неиспользуемых в данном варианте управляющих сигналов
     s.inst(gnd, 'gnd0', 1400, 1620, {'1': 'gnd_net'})
 

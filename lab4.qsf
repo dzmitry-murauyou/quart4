@@ -60,6 +60,8 @@ set_global_assignment -name QIP_FILE lpm_mux1.qip
 set_global_assignment -name QIP_FILE lpm_counter0.qip
 set_global_assignment -name QIP_FILE lpm_add_sub0.qip
 set_global_assignment -name QIP_FILE lpm_constant0.qip
+set_global_assignment -name QIP_FILE lpm_constant1.qip
+set_global_assignment -name QIP_FILE lpm_compare0.qip
 
 # --- моделирование ---
 set_global_assignment -name VECTOR_WAVEFORM_FILE lab4.vwf
