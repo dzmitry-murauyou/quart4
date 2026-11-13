@@ -27,8 +27,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 56)
 		(input)
-		(text "rom_data[9..0]" (rect 0 0 126 14) (font "Arial" (font_size 8)))
-		(text "rom_data[9..0]" (rect 22 43 148 56) (font "Arial" (font_size 8)))
+		(text "rom_data[8..0]" (rect 0 0 126 14) (font "Arial" (font_size 8)))
+		(text "rom_data[8..0]" (rect 22 43 148 56) (font "Arial" (font_size 8)))
 		(line (pt 0 56) (pt 16 56) (line_width 3)))
 	(port
 		(pt 240 32)
@@ -45,8 +45,8 @@ applicable agreement for further details.
 	(port
 		(pt 240 80)
 		(output)
-		(text "ir_out[9..0]" (rect 0 0 108 14) (font "Arial" (font_size 8)))
-		(text "ir_out[9..0]" (rect 110 67 218 80) (font "Arial" (font_size 8)))
+		(text "ir_out[8..0]" (rect 0 0 108 14) (font "Arial" (font_size 8)))
+		(text "ir_out[8..0]" (rect 110 67 218 80) (font "Arial" (font_size 8)))
 		(line (pt 240 80) (pt 224 80) (line_width 3)))
 	(port
 		(pt 240 104)

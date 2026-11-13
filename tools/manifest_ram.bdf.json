@@ -1,10 +1,10 @@
 {
  "address[5..0]": [
-  "address[5:0]",
+  "address[5..0]",
   "inst.address[5..0]"
  ],
  "ram_d[3..0]": [
-  "data_in[3:0]",
+  "data_in[3..0]",
   "inst.data[3..0]"
  ],
  "ram_wr": [
@@ -20,7 +20,7 @@
   "inst.clock"
  ],
  "data_out[3..0]": [
-  "data_out[3:0]",
+  "data_out[3..0]",
   "inst1.tridata[3..0]"
  ],
  "ram_q[3..0]": [

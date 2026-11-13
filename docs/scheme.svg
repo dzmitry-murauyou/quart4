@@ -14,8 +14,8 @@
   <!-- ROM -->
   <rect x="60" y="70" width="220" height="110" rx="8" fill="#eef4fb" stroke="#2b5c8a" stroke-width="2"/>
   <text x="170" y="105" text-anchor="middle" font-size="16" font-weight="bold">ROM — память команд</text>
-  <text x="170" y="130" text-anchor="middle" font-size="13">64 × 10 бит (rom.mif)</text>
-  <text x="170" y="152" text-anchor="middle" font-size="13">A[5..0]  →  Q[9..0]</text>
+  <text x="170" y="130" text-anchor="middle" font-size="13">64 × 9 бит (rom.mif)</text>
+  <text x="170" y="152" text-anchor="middle" font-size="13">A[5..0]  →  Q[8..0]</text>
 
   <!-- RAM -->
   <rect x="60" y="300" width="220" height="110" rx="8" fill="#eef4fb" stroke="#2b5c8a" stroke-width="2"/>
@@ -28,7 +28,7 @@
   <text x="170" y="502" text-anchor="middle" font-size="16" font-weight="bold">РОН — 4 × 4 бита</text>
   <text x="170" y="526" text-anchor="middle" font-size="13">R0, R1, R2, R3</text>
   <text x="170" y="548" text-anchor="middle" font-size="13">запись / чтение через ШД</text>
-  <text x="170" y="570" text-anchor="middle" font-size="13">адрес регистра: IR[1..0]</text>
+  <text x="170" y="570" text-anchor="middle" font-size="13">адрес регистра: IR[7..6]</text>
 
   <!-- UU -->
   <rect x="560" y="70" width="340" height="520" rx="8" fill="#fbf5ec" stroke="#a4762b" stroke-width="2"/>
@@ -38,7 +38,7 @@
   <text x="655" y="160" text-anchor="middle" font-size="12">6 бит</text>
   <rect x="740" y="120" width="130" height="52" rx="6" fill="#fff" stroke="#a4762b"/>
   <text x="805" y="142" text-anchor="middle" font-size="13" font-weight="bold">IR</text>
-  <text x="805" y="160" text-anchor="middle" font-size="12">10 бит</text>
+  <text x="805" y="160" text-anchor="middle" font-size="12">9 бит</text>
   <rect x="590" y="192" width="130" height="52" rx="6" fill="#fff" stroke="#a4762b"/>
   <text x="655" y="214" text-anchor="middle" font-size="13" font-weight="bold">AR</text>
   <text x="655" y="232" text-anchor="middle" font-size="12">6 бит</text>
@@ -80,7 +80,7 @@
 
   <!-- УУ -> ROM: команда -->
   <line x1="560" y1="140" x2="280" y2="140" stroke="#333" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arr)"/>
-  <text x="330" y="132" font-size="12">код команды (10)</text>
+  <text x="330" y="132" font-size="12">код команды (9)</text>
 
   <!-- clk -->
   <line x1="730" y1="620" x2="730" y2="590" stroke="#333" stroke-width="2" marker-end="url(#arr)"/>

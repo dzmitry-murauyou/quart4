@@ -223,6 +223,7 @@ class Sch:
     # --- элементы ----------------------------------------------------
     def pin(self, name, kind, net, x, y):
         """Вывод схемы (input/output/bidir). Соединение — в точке (x+px, y+py)."""
+        name = norm(name)          # шины в .bdf пишутся через '..', не через ':'
         x, y = int(x) - int(x) % 8, int(y) - int(y) % 8
         n = clone(load_pin(kind))
         r = first(n, 'rect')

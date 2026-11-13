@@ -7,22 +7,22 @@
   "inst5.clk"
  ],
  "address[5..0]": [
-  "adr_out[5:0]",
+  "adr_out[5..0]",
   "inst2.address[5..0]",
   "inst4.address[5..0]",
   "inst5.address[5..0]"
  ],
- "rom_data[9..0]": [
-  "inst4.q[9..0]",
-  "inst5.rom_data[9..0]",
-  "rom_data_out[9:0]"
+ "rom_data[8..0]": [
+  "inst4.q[8..0]",
+  "inst5.rom_data[8..0]",
+  "rom_data_out[8..0]"
  ],
- "ir[9..0]": [
-  "inst5.ir_out[9..0]",
-  "ir_out[9:0]"
+ "ir[8..0]": [
+  "inst5.ir_out[8..0]",
+  "ir_out[8..0]"
  ],
  "T[2..0]": [
-  "T_out[2:0]",
+  "T_out[2..0]",
   "inst5.T_out[2..0]"
  ],
  "z": [
@@ -32,7 +32,7 @@
  "ron_addr[1..0]": [
   "inst3.address[1..0]",
   "inst5.ron_addr[1..0]",
-  "ron_addr_out[1:0]"
+  "ron_addr_out[1..0]"
  ],
  "ron_wr": [
   "inst3.write",
@@ -55,7 +55,7 @@
   "ram_wr_out"
  ],
  "data_io[3..0]": [
-  "data_out[3:0]",
+  "data_out[3..0]",
   "inst2.data_in[3..0]",
   "inst2.data_out[3..0]",
   "inst3.data_input[3..0]",

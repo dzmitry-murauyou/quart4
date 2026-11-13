@@ -33,7 +33,7 @@ applicable agreement for further details.
 	(input)
 	(rect 192 240 360 256)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
-	(text "data_input[3:0]" (rect 9 0 139 12) (font "Arial"))
+	(text "data_input[3..0]" (rect 9 0 147 12) (font "Arial"))
 	(pt 168 8)
 	(drawing
 		(line (pt 92 12) (pt 117 12) (line_width 1))
@@ -47,7 +47,7 @@ applicable agreement for further details.
 	(input)
 	(rect 192 400 360 416)
 	(text "INPUT" (rect 133 0 161 10) (font "Arial" (font_size 6)))
-	(text "address[1:0]" (rect 9 0 115 12) (font "Arial"))
+	(text "address[1..0]" (rect 9 0 123 12) (font "Arial"))
 	(pt 168 8)
 	(drawing
 		(line (pt 92 12) (pt 117 12) (line_width 1))
@@ -89,7 +89,7 @@ applicable agreement for further details.
 	(output)
 	(rect 1360 616 1536 632)
 	(text "OUTPUT" (rect 1 0 39 10) (font "Arial" (font_size 6)))
-	(text "data_output[3:0]" (rect 90 0 228 12) (font "Arial"))
+	(text "data_output[3..0]" (rect 90 0 236 12) (font "Arial"))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8) (pt 52 8) (line_width 1))

@@ -90,10 +90,10 @@ def make_rom():
     rom = B.load_bsf('lpm_rom0.bsf')
     inp(s, 'address[5:0]', 'address[5:0]', 360, 160)
     inp(s, 'clock', 'clk', 360, 392)
-    outp(s, 'q[9:0]', 'rom_q[9:0]', 1000, 168)
+    outp(s, 'q[8:0]', 'rom_q[8:0]', 1000, 168)
     s.inst(rom, 'inst', 600, 128,
-           {'address[5:0]': 'address[5:0]', 'clock': 'clk', 'q[9:0]': 'rom_q[9:0]'})
-    s.note('ROM: 64 x 10, init file rom.mif', 200, 40)
+           {'address[5:0]': 'address[5:0]', 'clock': 'clk', 'q[8:0]': 'rom_q[8:0]'})
+    s.note('ROM: 64 x 9, init file rom.mif', 200, 40)
     s.connect().save('rom.bdf')
 
 
@@ -154,7 +154,7 @@ def make_uu():
     s = B.Sch()
     cnt = B.load_bsf('lpm_counter0.bsf')   # 3 бита, счётчик тактов
     dec = B.load_bsf('lpm_decode1.bsf')    # 3 -> 8
-    ir_b = B.load_bsf('lpm_dff0.bsf')      # 10 бит (IR)
+    ir_b = B.load_bsf('lpm_dff0.bsf')      # 9 бит (IR)
     reg6 = B.load_bsf('lpm_dff1.bsf')      # 6 бит (AR, IP)
     dr_b = B.load_bsf('lpm_dff2.bsf')      # 4 бита (DR, РОН)
     fr_b = B.load_bsf('lpm_dff3.bsf')      # 1 бит
@@ -166,13 +166,13 @@ def make_uu():
 
     # ---- выводы блока
     inp(s, 'clk', 'clk', 360, 72)
-    inp(s, 'rom_data[9:0]', 'rom_data[9:0]', 360, 296)
+    inp(s, 'rom_data[8:0]', 'rom_data[8:0]', 360, 296)
     bidir(s, 'data_io[3:0]', 'data_io[3:0]', 1900, 664)
     outp(s, 'address[5:0]', 'address[5:0]', 1900, 488)
-    outp(s, 'ir_out[9:0]', 'ir[9:0]', 1900, 328)
+    outp(s, 'ir_out[8:0]', 'ir[8:0]', 1900, 328)
     outp(s, 'T_out[2:0]', 'T[2:0]', 1900, 104)
     outp(s, 'flag_out', 'z', 1900, 248)
-    outp(s, 'ron_addr[1:0]', 'ir[1..0]', 1900, 1136)
+    outp(s, 'ron_addr[1:0]', 'ir[7..6]', 1900, 1136)
     outp(s, 'ron_wr', 'mov_t4', 1900, 1264)
     outp(s, 'ron_rd', 'gnd_net', 1900, 1392)
     outp(s, 'ram_en', 'mov_t3', 1900, 1520)
@@ -184,10 +184,10 @@ def make_uu():
            {'data[2..0]': 'T[2:0]', 'eq1': 't1', 'eq2': 't2', 'eq3': 't3',
             'eq4': 't4'})
     s.inst(ir_b, 'IR_reg', 456, 272,
-           {'data[9..0]': 'rom_data[9:0]', 'clock': 'clk', 'enable': 't1',
-            'q[9..0]': 'ir[9..0]'})
+           {'data[8..0]': 'rom_data[8:0]', 'clock': 'clk', 'enable': 't1',
+            'q[8..0]': 'ir[8:0]'})
     s.inst(reg6, 'AR_reg', 456, 456,
-           {'data[5..0]': 'ir[7..2]', 'clock': 'clk', 'enable': 'mov_t2',
+           {'data[5..0]': 'ir[5..0]', 'clock': 'clk', 'enable': 'mov_t2',
             'q[5..0]': 'ar[5:0]'})
     s.inst(dr_b, 'DR_reg', 456, 640,
            {'data[3..0]': 'data_io[3:0]', 'clock': 'clk', 'enable': 'mov_t3',
@@ -200,7 +200,7 @@ def make_uu():
             'result[5..0]': 'ip_plus1[5:0]'})
     s.inst(one, 'const1', 240, 1000, {'result[5..0]': 'one[5:0]'})
     s.inst(mux, 'IP_mux', 940, 820,
-           {'data0x[5..0]': 'ip_plus1[5:0]', 'data1x[5..0]': 'ir[7..2]',
+           {'data0x[5..0]': 'ip_plus1[5:0]', 'data1x[5..0]': 'ir[5..0]',
             'sel': 'ip_jump', 'result[5..0]': 'ip_next[5:0]'})
     s.inst(mux, 'SHA_mux', 940, 440,
            {'data0x[5..0]': 'ip[5:0]', 'data1x[5..0]': 'ar[5:0]',
@@ -211,11 +211,9 @@ def make_uu():
     s.inst(fr_b, 'FR', 1260, 200,
            {'data': 'z_d', 'clock': 'clk', 'enable': 'mov_t4', 'q': 'z'})
 
-    # ---- управляющая логика (КОП = IR[9..8])
-    s.inst(notg, 'n_ir9', 456, 1400, {'IN': 'ir[9]', 'OUT': 'n_ir9'})
-    s.inst(andg, 'is_mov', 560, 1400, {'IN1': 'ir[8]', 'IN2': 'n_ir9', 'OUT': 'is_mov'})
-    s.inst(org, 'jcond', 700, 1400, {'IN1': 'ir[8]', 'IN2': 'z', 'OUT': 'jcond'})
-    s.inst(andg, 'jump', 840, 1400, {'IN1': 'ir[9]', 'IN2': 'jcond', 'OUT': 'jump'})
+    # ---- управляющая логика (КОП = IR[8]: 0 = MOV, 1 = JZ)
+    s.inst(notg, 'is_mov', 560, 1400, {'IN': 'ir[8]', 'OUT': 'is_mov'})
+    s.inst(andg, 'jump', 840, 1400, {'IN1': 'ir[8]', 'IN2': 'z', 'OUT': 'jump'})
     s.inst(andg, 'mov_t2', 980, 1400, {'IN1': 't2', 'IN2': 'is_mov', 'OUT': 'mov_t2'})
     s.inst(andg, 'mov_t3', 1120, 1400, {'IN1': 't3', 'IN2': 'is_mov', 'OUT': 'mov_t3'})
     s.inst(andg, 'mov_t4', 1260, 1400, {'IN1': 't4', 'IN2': 'is_mov', 'OUT': 'mov_t4'})
@@ -243,8 +241,8 @@ def make_top():
 
     inp(s, 'clk', 'clk', 200, 272)
     out = [('adr_out[5:0]', 'address[5:0]', 296),
-           ('rom_data_out[9:0]', 'rom_data[9:0]', 376),
-           ('ir_out[9:0]', 'ir[9:0]', 456),
+           ('rom_data_out[8:0]', 'rom_data[8:0]', 376),
+           ('ir_out[8:0]', 'ir[8:0]', 456),
            ('T_out[2:0]', 'T[2:0]', 536),
            ('flag_out', 'z', 616),
            ('ron_addr_out[1:0]', 'ron_addr[1:0]', 696),
@@ -257,13 +255,13 @@ def make_top():
         outp(s, pname, net, 1600, y)
 
     s.inst(uu, 'inst5', 400, 240,
-           {'clk': 'clk', 'rom_data[9..0]': 'rom_data[9:0]',
+           {'clk': 'clk', 'rom_data[8..0]': 'rom_data[8:0]',
             'address[5..0]': 'address[5:0]', 'ron_addr[1..0]': 'ron_addr[1:0]',
             'ron_wr': 'ron_wr', 'ron_rd': 'ron_rd',
-            'ram_en': 'ram_en', 'ram_wr': 'ram_wr', 'ir_out[9..0]': 'ir[9:0]',
+            'ram_en': 'ram_en', 'ram_wr': 'ram_wr', 'ir_out[8..0]': 'ir[8:0]',
             'T_out[2..0]': 'T[2:0]', 'flag_out': 'z', 'data_io[3..0]': 'data_io[3:0]'})
     s.inst(rom, 'inst4', 1000, 200,
-           {'address[5:0]': 'address[5:0]', 'clock': 'clk', 'q[9:0]': 'rom_data[9:0]'})
+           {'address[5:0]': 'address[5:0]', 'clock': 'clk', 'q[8:0]': 'rom_data[8:0]'})
     s.inst(ram, 'inst2', 1000, 500,
            {'address[5:0]': 'address[5:0]', 'data_in[3:0]': 'data_io[3:0]',
             'wren': 'ram_wr', 'enable': 'ram_en', 'clock': 'clk',
@@ -272,22 +270,22 @@ def make_top():
            {'clk': 'clk', 'data_input[3:0]': 'data_io[3:0]',
             'address[1:0]': 'ron_addr[1:0]', 'write': 'ron_wr',
             'read': 'ron_rd', 'data_output[3:0]': 'data_io[3:0]'})
-    s.note('CPU: address bus 6, data bus 4 (ROM 64x10, RAM 64x4, RON 4x4)', 200, 40)
+    s.note('CPU: address bus 6, data bus 4 (ROM 64x9, RAM 64x4, RON 4x4)', 200, 40)
     s.connect().save('laba4.bdf')
 
 
 if __name__ == '__main__':
     write_bsf('rom.bsf', 'rom', [('address[5:0]', 'input'), ('clock', 'input'),
-                                 ('q[9:0]', 'output')])
+                                 ('q[8:0]', 'output')])
     write_bsf('ram.bsf', 'ram', [('address[5:0]', 'input'), ('data_in[3:0]', 'input'),
                                  ('wren', 'input'), ('enable', 'input'), ('clock', 'input'),
                                  ('data_out[3:0]', 'output')])
     write_bsf('ron.bsf', 'ron', [('clk', 'input'), ('data_input[3:0]', 'input'),
                                  ('address[1:0]', 'input'), ('write', 'input'),
                                  ('read', 'input'), ('data_output[3:0]', 'output')])
-    write_bsf('uu.bsf', 'uu', [('clk', 'input'), ('rom_data[9:0]', 'input'),
+    write_bsf('uu.bsf', 'uu', [('clk', 'input'), ('rom_data[8:0]', 'input'),
                                ('data_io[3:0]', 'bidir'),
-                               ('address[5:0]', 'output'), ('ir_out[9:0]', 'output'),
+                               ('address[5:0]', 'output'), ('ir_out[8:0]', 'output'),
                                ('T_out[2:0]', 'output'), ('flag_out', 'output'),
                                ('ron_addr[1:0]', 'output'), ('ron_wr', 'output'),
                                ('ron_rd', 'output'), ('ram_en', 'output'),

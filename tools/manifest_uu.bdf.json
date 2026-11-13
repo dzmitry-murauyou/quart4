@@ -8,35 +8,35 @@
   "T_cnt.clock",
   "clk"
  ],
- "rom_data[9..0]": [
-  "IR_reg.data[9..0]",
-  "rom_data[9:0]"
+ "rom_data[8..0]": [
+  "IR_reg.data[8..0]",
+  "rom_data[8..0]"
  ],
  "data_io[3..0]": [
   "DR_buf.tridata[3..0]",
   "DR_reg.data[3..0]",
-  "data_io[3:0]"
+  "data_io[3..0]"
  ],
  "address[5..0]": [
   "SHA_mux.result[5..0]",
-  "address[5:0]"
+  "address[5..0]"
  ],
- "ir[9..0]": [
-  "IR_reg.q[9..0]",
-  "ir_out[9:0]"
+ "ir[8..0]": [
+  "IR_reg.q[8..0]",
+  "ir_out[8..0]"
  ],
  "T[2..0]": [
   "T_cnt.q[2..0]",
   "T_dec.data[2..0]",
-  "T_out[2:0]"
+  "T_out[2..0]"
  ],
  "z": [
   "FR.q",
   "flag_out",
-  "jcond.IN2"
+  "jump.IN2"
  ],
- "ir[1..0]": [
-  "ron_addr[1:0]"
+ "ir[7..6]": [
+  "ron_addr[1..0]"
  ],
  "mov_t4": [
   "DR_buf.enabledt",
@@ -73,7 +73,7 @@
   "T_dec.eq4",
   "mov_t4.IN1"
  ],
- "ir[7..2]": [
+ "ir[5..0]": [
   "AR_reg.data[5..0]",
   "IP_mux.data1x[5..0]"
  ],
@@ -119,27 +119,15 @@
   "FR.data",
   "nz.OUT"
  ],
- "ir[9]": [
-  "jump.IN1",
-  "n_ir9.IN"
- ],
- "n_ir9": [
-  "is_mov.IN2",
-  "n_ir9.OUT"
- ],
  "ir[8]": [
-  "is_mov.IN1",
-  "jcond.IN1"
+  "is_mov.IN",
+  "jump.IN1"
  ],
  "is_mov": [
   "is_mov.OUT",
   "mov_t2.IN2",
   "mov_t3.IN2",
   "mov_t4.IN2"
- ],
- "jcond": [
-  "jcond.OUT",
-  "jump.IN2"
  ],
  "jump": [
   "ip_jmp.IN2",

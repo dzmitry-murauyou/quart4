@@ -1,17 +1,20 @@
 # -*- coding: utf-8 -*-
 """Цикловая модель АСК: ША = 6, ШД = 4, MOV M->R (прямая), JZ (непосредственная).
 
-Слово команды 10 бит: КОП[9..8] | ADR[7..2] | R[1..0].
+Слово команды 9 бит: КОП[8] | R[7..6] | ADR[5..0].
+Команды: КОП = 0 -> MOV, КОП = 1 -> JZ.
 """
 
 ROM = {
-    0x00: 0b01_000100_00,  # MOV M[4], R0   R0=9  Z=0
-    0x01: 0b10_000011_00,  # JZ  $3         Z=0 -> перехода нет
-    0x02: 0b01_000101_01,  # MOV M[5], R1   R1=6  Z=0
-    0x03: 0b01_000110_10,  # MOV M[6], R2   R2=F  Z=0
-    0x04: 0b01_000111_11,  # MOV M[7], R3   R3=0  Z=1
-    0x05: 0b10_000000_00,  # JZ  $0         Z=1 -> переход на 00
+    0x00: 0b0_00_000100,  # MOV M[4], R0   R0=9  Z=0
+    0x01: 0b1_00_000011,  # JZ  $3         Z=0 -> перехода нет
+    0x02: 0b0_01_000101,  # MOV M[5], R1   R1=6  Z=0
+    0x03: 0b0_10_000110,  # MOV M[6], R2   R2=F  Z=0
+    0x04: 0b0_11_000111,  # MOV M[7], R3   R3=0  Z=1
+    0x05: 0b1_00_000000,  # JZ  $0         Z=1 -> переход на 00
 }
+# Незанятые ячейки = 000 -> формально MOV M[0], R0, но программа зациклена
+# (JZ $0 при Z=1), поэтому IP за пределы адреса 05 не выходит.
 ROM = {a: ROM.get(a, 0x000) for a in range(64)}
 
 RAM = {a: 0 for a in range(64)}
@@ -30,14 +33,14 @@ class CPU:
         s.RON = [0] * 4; s.trace = []
 
     # ---- комбинационная логика (как в схеме uu.bdf) ----
-    def is_mov(s): return ((s.IR >> 9) & 1) == 0 and ((s.IR >> 8) & 1) == 1
-    def is_jz(s):  return ((s.IR >> 9) & 1) == 1 and ((s.IR >> 8) & 1) == 0
-    def is_jmp(s): return ((s.IR >> 9) & 1) == 1 and ((s.IR >> 8) & 1) == 1
-    def jump(s):   return ((s.IR >> 9) & 1) == 1 and (((s.IR >> 8) & 1) == 1 or s.Z == 1)
+    def op(s):     return (s.IR >> 8) & 1        # КОП = IR[8]
+    def is_mov(s): return s.op() == 0
+    def is_jz(s):  return s.op() == 1
+    def jump(s):   return s.op() == 1 and s.Z == 1
     def sel_sha(s): return s.T == 3 and s.is_mov()
     def sha(s):    return s.AR if s.sel_sha() else s.IP
-    def adr(s):    return (s.IR >> 2) & IP_MASK      # IR[7..2]
-    def rsel(s):   return s.IR & 0x3                 # IR[1..0]
+    def adr(s):    return s.IR & IP_MASK             # IR[5..0]
+    def rsel(s):   return (s.IR >> 6) & 0x3          # IR[7..6]
 
     def bus(s):
         if s.T == 3 and s.is_mov():
@@ -79,11 +82,10 @@ class CPU:
 
 
 def disasm(w):
-    kop = (w >> 8) & 3; adr = (w >> 2) & IP_MASK; r = w & 3
-    if kop == 0b01: return 'MOV M[%X], R%d' % (adr, r)
-    if kop == 0b10: return 'JZ  $%X' % adr
-    if kop == 0b11: return 'JMP $%X' % adr
-    return 'NOP'
+    adr = w & IP_MASK; r = (w >> 6) & 3
+    if ((w >> 8) & 1) == 0:
+        return 'MOV M[%X], R%d' % (adr, r)
+    return 'JZ  $%X' % adr
 
 
 if __name__ == '__main__':

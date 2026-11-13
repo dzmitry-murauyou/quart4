@@ -1,14 +1,14 @@
 {
  "address[5..0]": [
-  "address[5:0]",
+  "address[5..0]",
   "inst.address[5..0]"
  ],
  "clk": [
   "clock",
   "inst.clock"
  ],
- "rom_q[9..0]": [
-  "inst.q[9..0]",
-  "q[9:0]"
+ "rom_q[8..0]": [
+  "inst.q[8..0]",
+  "q[8..0]"
  ]
 }

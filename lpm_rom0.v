@@ -43,10 +43,10 @@ module lpm_rom0 (
 
 	input	[5:0]  address;
 	input	  clock;
-	output	[9:0]  q;
+	output	[8:0]  q;
 
-	wire [9:0] sub_wire0;
-	wire [9:0] q = sub_wire0[9:0];
+	wire [8:0] sub_wire0;
+	wire [8:0] q = sub_wire0[8:0];
 
 	altsyncram	altsyncram_component (
 				.clock0 (clock),
@@ -84,7 +84,7 @@ module lpm_rom0 (
 		altsyncram_component.outdata_aclr_a = "NONE",
 		altsyncram_component.outdata_reg_a = "UNREGISTERED",
 		altsyncram_component.widthad_a = 6,
-		altsyncram_component.width_a = 10,
+		altsyncram_component.width_a = 9,
 		altsyncram_component.width_byteena_a = 1;
 
 
@@ -119,7 +119,7 @@ endmodule
 // Retrieval info: PRIVATE: SingleClock NUMERIC "1"
 // Retrieval info: PRIVATE: UseDQRAM NUMERIC "0"
 // Retrieval info: PRIVATE: WidthAddr NUMERIC "6"
-// Retrieval info: PRIVATE: WidthData NUMERIC "10"
+// Retrieval info: PRIVATE: WidthData NUMERIC "9"
 // Retrieval info: PRIVATE: rden NUMERIC "0"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
 // Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
@@ -132,7 +132,7 @@ endmodule
 // Retrieval info: CONSTANT: OUTDATA_ACLR_A STRING "NONE"
 // Retrieval info: CONSTANT: OUTDATA_REG_A STRING "UNREGISTERED"
 // Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "6"
-// Retrieval info: CONSTANT: WIDTH_A NUMERIC "10"
+// Retrieval info: CONSTANT: WIDTH_A NUMERIC "9"
 // Retrieval info: CONSTANT: WIDTH_BYTEENA_A NUMERIC "1"
 // Retrieval info: USED_PORT: address 0 0 6 0 INPUT NODEFVAL address[5..0]
 // Retrieval info: USED_PORT: clock 0 0 0 0 INPUT NODEFVAL clock

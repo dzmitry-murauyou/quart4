@@ -156,24 +156,14 @@ SIGNAL("data_out[0]")
 	PARENT = "data_out";
 }
 
-SIGNAL("ir_out[9..0]")
+SIGNAL("ir_out[8..0]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
-	WIDTH = 10;
+	WIDTH = 9;
 	LSB_INDEX = 0;
 	DIRECTION = OUTPUT;
 	PARENT = "";
-}
-
-SIGNAL("ir_out[9]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "ir_out";
 }
 
 SIGNAL("ir_out[8]")
@@ -316,24 +306,14 @@ SIGNAL("flag_out")
 	PARENT = "";
 }
 
-SIGNAL("rom_data_out[9..0]")
+SIGNAL("rom_data_out[8..0]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
-	WIDTH = 10;
+	WIDTH = 9;
 	LSB_INDEX = 0;
 	DIRECTION = OUTPUT;
 	PARENT = "";
-}
-
-SIGNAL("rom_data_out[9]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "rom_data_out";
 }
 
 SIGNAL("rom_data_out[8]")
@@ -614,16 +594,7 @@ TRANSITION_LIST("data_out[0]")
 	}
 }
 
-TRANSITION_LIST("ir_out[9..0]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 12800.0;
-	}
-}
-
-TRANSITION_LIST("ir_out[9]")
+TRANSITION_LIST("ir_out[8..0]")
 {
 	NODE
 	{
@@ -758,16 +729,7 @@ TRANSITION_LIST("flag_out")
 	}
 }
 
-TRANSITION_LIST("rom_data_out[9..0]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 12800.0;
-	}
-}
-
-TRANSITION_LIST("rom_data_out[9]")
+TRANSITION_LIST("rom_data_out[8..0]")
 {
 	NODE
 	{

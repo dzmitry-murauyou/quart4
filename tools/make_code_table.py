@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Рисует таблицы кода программы в стиле отчёта (как в методичке):
-  1) Адрес ROM | Символьно | BIN (10 бит) | HEX
-  2) побитовое поле команды: КОП(2) | ADR(6) | R(2)
+  1) Адрес ROM | Символьно | BIN (9 бит) | HEX
+  2) побитовое поле команды: КОП(1) | R(2) | ADR(6)
 
 Запуск:  python3 tools/make_code_table.py [выходной.png]
 Результат по умолчанию: docs/img/code_table.png
@@ -23,14 +23,15 @@ F_MONO = F + "DejaVuSansMono.ttf"
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-# --- программа: (адрес, мнемоника, КОП(2 бита), ADR(6 бит), R(2 бита)) -----------------
+# --- программа: (адрес, мнемоника, КОП(1 бит), R(2 бита), ADR(6 бит)) ------------------
+#     КОП = 0 -> MOV M -> R (прямая адресация), КОП = 1 -> JZ (непосредственная)
 PROGRAM = [
-    ("00", "Mov ($4), R0", 0b01, 0b000100, 0b00),
-    ("01", "JZ $3", 0b10, 0b000011, 0b00),
-    ("02", "Mov ($5), R1", 0b01, 0b000101, 0b01),
-    ("03", "Mov ($6), R2", 0b01, 0b000110, 0b10),
-    ("04", "Mov ($7), R3", 0b01, 0b000111, 0b11),
-    ("05", "JZ $0", 0b10, 0b000000, 0b00),
+    ("00", "Mov ($4), R0", 0b0, 0b00, 0b000100),
+    ("01", "JZ $3", 0b1, 0b00, 0b000011),
+    ("02", "Mov ($5), R1", 0b0, 0b01, 0b000101),
+    ("03", "Mov ($6), R2", 0b0, 0b10, 0b000110),
+    ("04", "Mov ($7), R3", 0b0, 0b11, 0b000111),
+    ("05", "JZ $0", 0b1, 0b00, 0b000000),
 ]
 
 ROW_H = 40          # высота строки данных
@@ -39,8 +40,9 @@ MARGIN = 24         # поля картинки
 GAP = 44            # промежуток между таблицами
 
 
-def word(kop, adr, r):
-    return (kop << 8) | (adr << 2) | r
+def word(kop, r, adr):
+    """Слово команды: [8] КОП | [7..6] R | [5..0] ADR."""
+    return (kop << 8) | (r << 6) | adr
 
 
 def bits(value, n):
@@ -129,31 +131,31 @@ def main():
     t1 = Table(
         cols=[150, 330, 260, 120],
         rows_i=[(0, 1, "Адрес ROM", "b"), (1, 1, "Символьно", "b"),
-                (2, 1, "BIN (10 бит)", "b"), (3, 1, "HEX", "b")],
+                (2, 1, "BIN (9 бит)", "b"), (3, 1, "HEX", "b")],
         rows_h=[],
         hdr_height=HDR_H,
         row_height=ROW_H,
     )
-    for addr, mnem, kop, adr, r in PROGRAM:
-        code = word(kop, adr, r)
+    for addr, mnem, kop, r, adr in PROGRAM:
+        code = word(kop, r, adr)
         t1.rows_h.append([(addr, "m"), (mnem, "r"),
-                          (bits(code, 10), "m"), ("%03X" % code, "m")])
+                          (bits(code, 9), "m"), ("%03X" % code, "m")])
 
     # ---------- таблица 2: побитовое поле ----------
     bit_w = 40
     t2 = Table(
-        cols=[150] + [bit_w] * 10,
-        rows_i=[(0, 1, "Адрес ROM", "b"), (1, 2, "КОП (2 бита)", "b"),
-                (3, 6, "ADR (6 бит)", "b"), (9, 2, "R (2 бита)", "b")],
+        cols=[150] + [bit_w] * 9,
+        rows_i=[(0, 1, "Адрес ROM", "b"), (1, 1, "КОП", "b"),
+                (2, 2, "R (2 бита)", "b"), (4, 6, "ADR (6 бит)", "b")],
         rows_h=[],
         hdr_height=HDR_H,
         row_height=ROW_H,
     )
-    for addr, mnem, kop, adr, r in PROGRAM:
+    for addr, mnem, kop, r, adr in PROGRAM:
         row = [(addr, "m")]
-        row += [(b, "m") for b in bits(kop, 2)]
-        row += [(b, "m") for b in bits(adr, 6)]
+        row += [(b, "m") for b in bits(kop, 1)]
         row += [(b, "m") for b in bits(r, 2)]
+        row += [(b, "m") for b in bits(adr, 6)]
         t2.rows_h.append(row)
 
     W = max(t1.width, t2.width) + 2 * MARGIN
@@ -165,9 +167,9 @@ def main():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     img.save(OUT)
     print("сохранено: %s (%dx%d)" % (os.path.relpath(OUT, ROOT), W, H))
-    for addr, mnem, kop, adr, r in PROGRAM:
-        code = word(kop, adr, r)
-        print("  %s  %-14s %s  %03X" % (addr, mnem, bits(code, 10), code))
+    for addr, mnem, kop, r, adr in PROGRAM:
+        code = word(kop, r, adr)
+        print("  %s  %-14s %s  %03X" % (addr, mnem, bits(code, 9), code))
 
 
 if __name__ == "__main__":
