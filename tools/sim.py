@@ -99,6 +99,23 @@ if __name__ == '__main__':
             '-' if st['bus'] is None else '%X' % st['bus'], st['sha'], ','.join(act)))
         if i % 5 == 4 and i < 5 * 6:
             print('\n'.join(log[-5:])); print('-' * 100)
+    print('\nФлаг Z по командам (записывается в FR в такте T4 команды MOV):')
+    rows = []
+    for k in range(0, len(cpu.trace), 5):
+        blk = cpu.trace[k:k + 5]
+        if len(blk) < 5:
+            break
+        word = blk[2]['IR']
+        if disasm(word).startswith('MOV'):
+            rows.append('%02X %-12s операнд DR=%X -> Z=%d'
+                        % (blk[0]['IP'], disasm(word), blk[4]['DR'],
+                           0 if blk[4]['DR'] else 1))
+        else:
+            rows.append('%02X %-12s (флаг не меняется) Z=%d'
+                        % (blk[0]['IP'], disasm(word), blk[3]['Z']))
+        if len(rows) == 6:
+            break
+    print('\n'.join(rows))
     print('\nИтог: RON =', [format(x, 'X') for x in cpu.RON])
     print('\nТрасса выборки (адреса в порядке выполнения):')
     seen = []
