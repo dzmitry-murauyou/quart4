@@ -1,2 +1,14 @@
 __pycache__/
 *.pyc
+
+# результаты компиляции Quartus (генерируются заново, в репозитории не нужны)
+db/
+incremental_db/
+simulation/
+*.qws
+*.qph
+*.vdb
+*.vo
+*.sdo
+*.blf
+*.jdi
