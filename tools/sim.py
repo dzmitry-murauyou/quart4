@@ -28,8 +28,18 @@ DR_MASK = 0x0F     # ШД = 4 бита
 
 
 class CPU:
+    """Модель машины: 6 тактов (T0…T5), обе памяти — синхронные (задержка 1 такт).
+
+    Память на Stratix II читается по фронту: адрес, поданный в такте T,
+    даёт данные в такте T+1. Поэтому адрес операнда выставляется на ША
+    в такте T3, а данные RAM читаются в DR в такте T4.
+    """
+
+    TICKS = 6
+
     def __init__(s):
         s.IP = 0; s.IR = 0; s.AR = 0; s.DR = 0; s.Z = 0; s.T = 0
+        s.rom_q = 0; s.ram_q = 0          # выходные регистры памяти
         s.RON = [0] * 4; s.trace = []
 
     # ---- комбинационная логика (как в схеме uu.bdf) ----
@@ -43,41 +53,46 @@ class CPU:
     def rsel(s):   return (s.IR >> 6) & 0x3          # IR[7..6]
 
     def bus(s):
-        if s.T == 3 and s.is_mov():
-            return RAM[s.AR], 'RAM'
+        """Кто в этом такте выставляет данные на ШД."""
         if s.T == 4 and s.is_mov():
+            return s.ram_q, 'RAM'                    # данные RAM (адрес подан в T3)
+        if s.T == 5 and s.is_mov():
             return s.DR, 'DR'
         return None, '-'
 
     def ROM_out(s):
-        return ROM[s.sha()]
+        return s.rom_q                               # слово, прочитанное по адресу T-1
 
     def step(s):
-        sha = s.sha(); bus, src = s.bus(); rom = s.ROM_out()
+        sha = s.sha(); bus, src = s.bus(); rom = s.rom_q
         st = dict(T=s.T, IP=s.IP, IR=s.IR, AR=s.AR, DR=s.DR, Z=s.Z,
                   sha=sha, rom=rom, bus=bus, src=src, RON=list(s.RON))
-        ctl = dict(ir_ld=s.T == 1, ip_cnt=s.T == 1,
+        ctl = dict(ir_ld=(s.T == 1), ip_cnt=(s.T == 1),
                    ip_ld_jmp=(s.T == 3 and s.jump()),
                    ar_ld=(s.T == 2 and s.is_mov()), sha_ar=s.sel_sha(),
-                   ram_en=s.sel_sha(), dr_ld=(s.T == 3 and s.is_mov()),
-                   dr_out=(s.T == 4 and s.is_mov()),
-                   ron_wr=(s.T == 4 and s.is_mov()),
-                   fr_ld=(s.T == 4 and s.is_mov()))
+                   ram_en=(s.T == 4 and s.is_mov()),
+                   dr_ld=(s.T == 4 and s.is_mov()),
+                   dr_out=(s.T == 5 and s.is_mov()),
+                   ron_wr=(s.T == 5 and s.is_mov()),
+                   fr_ld=(s.T == 5 and s.is_mov()))
         st['ctl'] = ctl
         s.trace.append(st)
         # ---- регистры (по фронту) ----
         if s.T == 1:
-            s.IR = rom; s.IP = (s.IP + 1) & IP_MASK
+            s.IR = s.rom_q; s.IP = (s.IP + 1) & IP_MASK
+        elif s.T == 2 and s.is_mov():
+            s.AR = s.adr()
         elif s.T == 3 and s.jump():
             s.IP = s.adr()
-        if s.T == 2 and s.is_mov():
-            s.AR = s.adr()
-        if s.T == 3 and s.is_mov():
-            s.DR = bus & DR_MASK
-        if s.T == 4 and s.is_mov():
-            s.RON[s.rsel()] = bus & DR_MASK
+        elif s.T == 4 and s.is_mov():
+            s.DR = s.ram_q & DR_MASK
+        elif s.T == 5 and s.is_mov():
+            s.RON[s.rsel()] = s.DR
             s.Z = 1 if s.DR == 0 else 0
-        s.T = (s.T + 1) % 5      # тактов ровно 5: T0…T4
+        # ---- память защёлкивает адрес с ША по каждому фронту ----
+        s.rom_q = ROM[sha]
+        s.ram_q = RAM[sha] & DR_MASK
+        s.T = (s.T + 1) % s.TICKS
         return st
 
 
@@ -90,26 +105,26 @@ def disasm(w):
 
 if __name__ == '__main__':
     cpu = CPU(); log = []
-    for i in range(5 * 6 * 3):        # три полных обхода программы
+    for i in range(6 * 6 * 3):        # три полных обхода программы
         st = cpu.step()
         c = st['ctl']
         act = [k for k, v in c.items() if v]
         log.append('T%d IP=%02X IR=%03X(%s) AR=%02X DR=%X Z=%d bus=%s SHA=%02X | %s' % (
             st['T'], st['IP'], st['IR'], disasm(st['IR']), st['AR'], st['DR'], st['Z'],
             '-' if st['bus'] is None else '%X' % st['bus'], st['sha'], ','.join(act)))
-        if i % 5 == 4 and i < 5 * 6:
-            print('\n'.join(log[-5:])); print('-' * 100)
-    print('\nФлаг Z по командам (записывается в FR в такте T4 команды MOV):')
+        if i % 6 == 5 and i < 6 * 6:
+            print('\n'.join(log[-6:])); print('-' * 100)
+    print('\nФлаг Z по командам (DR ← ШД в T4, флаг пишется в FR в такте T5 команды MOV):')
     rows = []
-    for k in range(0, len(cpu.trace), 5):
-        blk = cpu.trace[k:k + 5]
-        if len(blk) < 5:
+    for k in range(0, len(cpu.trace), 6):
+        blk = cpu.trace[k:k + 6]
+        if len(blk) < 6:
             break
         word = blk[2]['IR']
         if disasm(word).startswith('MOV'):
             rows.append('%02X %-12s операнд DR=%X -> Z=%d'
-                        % (blk[0]['IP'], disasm(word), blk[4]['DR'],
-                           0 if blk[4]['DR'] else 1))
+                        % (blk[0]['IP'], disasm(word), blk[5]['DR'],
+                           0 if blk[5]['DR'] else 1))
         else:
             rows.append('%02X %-12s (флаг не меняется) Z=%d'
                         % (blk[0]['IP'], disasm(word), blk[3]['Z']))

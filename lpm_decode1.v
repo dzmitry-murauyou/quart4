@@ -42,7 +42,8 @@ module lpm_decode1 (
 	eq1,
 	eq2,
 	eq3,
-	eq4);
+	eq4,
+	eq5);
 
 	input	[2:0]  data;
 	output	  eq0;
@@ -50,8 +51,10 @@ module lpm_decode1 (
 	output	  eq2;
 	output	  eq3;
 	output	  eq4;
+	output	  eq5;
 
-	wire [4:0] sub_wire0;
+	wire [5:0] sub_wire0;
+	wire [5:5] sub_wire6 = sub_wire0[5:5];
 	wire [4:4] sub_wire5 = sub_wire0[4:4];
 	wire [3:3] sub_wire4 = sub_wire0[3:3];
 	wire [2:2] sub_wire3 = sub_wire0[2:2];
@@ -62,6 +65,7 @@ module lpm_decode1 (
 	wire  eq2 = sub_wire3;
 	wire  eq3 = sub_wire4;
 	wire  eq4 = sub_wire5;
+	wire  eq5 = sub_wire6;
 
 	lpm_decode	lpm_decode_component (
 				.data (data),
@@ -75,7 +79,7 @@ module lpm_decode1 (
 				// synopsys translate_on
 				);
 	defparam
-		lpm_decode_component.lpm_decodes = 5,
+		lpm_decode_component.lpm_decodes = 6,
 		lpm_decode_component.lpm_type = "LPM_DECODE",
 		lpm_decode_component.lpm_width = 3;
 
@@ -98,8 +102,9 @@ endmodule
 // Retrieval info: PRIVATE: eq2 NUMERIC "1"
 // Retrieval info: PRIVATE: eq3 NUMERIC "1"
 // Retrieval info: PRIVATE: eq4 NUMERIC "1"
+// Retrieval info: PRIVATE: eq5 NUMERIC "1"
 // Retrieval info: PRIVATE: nBit NUMERIC "3"
-// Retrieval info: CONSTANT: LPM_DECODES NUMERIC "5"
+// Retrieval info: CONSTANT: LPM_DECODES NUMERIC "6"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_DECODE"
 // Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "3"
 // Retrieval info: USED_PORT: @eq 0 0 LPM_DECODES 0 OUTPUT NODEFVAL @eq[LPM_DECODES-1..0]

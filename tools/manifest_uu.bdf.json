@@ -38,10 +38,10 @@
  "ir[7..6]": [
   "ron_addr[1..0]"
  ],
- "mov_t4": [
+ "mov_t5": [
   "DR_buf.enabledt",
   "FR.enable",
-  "mov_t4.OUT",
+  "mov_t5.OUT",
   "ron_wr"
  ],
  "gnd_net": [
@@ -49,10 +49,9 @@
   "ram_wr",
   "ron_rd"
  ],
- "mov_t3": [
+ "mov_t4": [
   "DR_reg.enable",
-  "SHA_mux.sel",
-  "mov_t3.OUT",
+  "mov_t4.OUT",
   "ram_en"
  ],
  "t1": [
@@ -72,6 +71,10 @@
  "t4": [
   "T_dec.eq4",
   "mov_t4.IN1"
+ ],
+ "t5": [
+  "T_dec.eq5",
+  "mov_t5.IN1"
  ],
  "ir[5..0]": [
   "AR_reg.data[5..0]",
@@ -116,6 +119,10 @@
   "ip_en.IN2",
   "ip_jmp.OUT"
  ],
+ "mov_t3": [
+  "SHA_mux.sel",
+  "mov_t3.OUT"
+ ],
  "z_d": [
   "FR.data",
   "FR_cmp.aeb"
@@ -128,7 +135,8 @@
   "is_mov.OUT",
   "mov_t2.IN2",
   "mov_t3.IN2",
-  "mov_t4.IN2"
+  "mov_t4.IN2",
+  "mov_t5.IN2"
  ],
  "jump": [
   "ip_jmp.IN2",

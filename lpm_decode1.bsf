@@ -20,7 +20,7 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 0 0 128 112)
+	(rect 0 0 128 128)
 	(text "lpm_decode1" (rect 26 1 116 17)(font "Arial" (font_size 10)))
 	(text "inst" (rect 8 160 25 172)(font "Arial" ))
 	(port
@@ -64,6 +64,13 @@ applicable agreement for further details.
 		(text "eq4" (rect 0 0 21 14)(font "Arial" (font_size 8)))
 		(text "eq4" (rect 91 90 109 103)(font "Arial" (font_size 8)))
 		(line (pt 128 96)(pt 112 96)(line_width 1))
+	)
+	(port
+		(pt 128 112)
+		(output)
+		(text "eq5" (rect 0 0 21 14)(font "Arial" (font_size 8)))
+		(text "eq5" (rect 91 106 109 119)(font "Arial" (font_size 8)))
+		(line (pt 128 112)(pt 112 112)(line_width 1))
 	)
 	(drawing
 		(line (pt 16 16)(pt 112 16)(line_width 1))

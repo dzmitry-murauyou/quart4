@@ -175,16 +175,16 @@ def make_uu():
     outp(s, 'T_out[2:0]', 'T[2:0]', 1900, 104)
     outp(s, 'flag_out', 'z', 1900, 248)
     outp(s, 'ron_addr[1:0]', 'ir[7..6]', 1900, 1136)
-    outp(s, 'ron_wr', 'mov_t4', 1900, 1264)
+    outp(s, 'ron_wr', 'mov_t5', 1900, 1264)
     outp(s, 'ron_rd', 'gnd_net', 1900, 1392)
-    outp(s, 'ram_en', 'mov_t3', 1900, 1520)
+    outp(s, 'ram_en', 'mov_t4', 1900, 1520)
     outp(s, 'ram_wr', 'gnd_net', 1900, 1648)
 
     # ---- регистры и счётчик тактов
     s.inst(cnt, 'T_cnt', 456, 64, {'clock': 'clk', 'q[2:0]': 'T[2:0]'})
     s.inst(dec, 'T_dec', 760, 32,
            {'data[2..0]': 'T[2:0]', 'eq1': 't1', 'eq2': 't2', 'eq3': 't3',
-            'eq4': 't4'})
+            'eq4': 't4', 'eq5': 't5'})
     s.inst(ir_b, 'IR_reg', 456, 272,
            {'data[8..0]': 'rom_data[8:0]', 'clock': 'clk', 'enable': 't1',
             'q[8..0]': 'ir[8:0]'})
@@ -192,7 +192,7 @@ def make_uu():
            {'data[5..0]': 'ir[5..0]', 'clock': 'clk', 'enable': 'mov_t2',
             'q[5..0]': 'ar[5:0]'})
     s.inst(dr_b, 'DR_reg', 456, 640,
-           {'data[3..0]': 'data_io[3:0]', 'clock': 'clk', 'enable': 'mov_t3',
+           {'data[3..0]': 'data_io[3:0]', 'clock': 'clk', 'enable': 'mov_t4',
             'q[3..0]': 'dr[3:0]'})
     s.inst(reg6, 'IP_reg', 456, 820,
            {'data[5..0]': 'ip_next[5:0]', 'clock': 'clk', 'enable': 'ip_en',
@@ -208,10 +208,10 @@ def make_uu():
            {'data0x[5..0]': 'ip[5:0]', 'data1x[5..0]': 'ar[5:0]',
             'sel': 'mov_t3', 'result[5..0]': 'address[5:0]'})
     s.inst(buf, 'DR_buf', 1240, 640,
-           {'enabledt': 'mov_t4', 'data[3..0]': 'dr[3:0]',
+           {'enabledt': 'mov_t5', 'data[3..0]': 'dr[3:0]',
             'tridata[3..0]': 'data_io[3:0]'})
     s.inst(fr_b, 'FR', 1260, 200,
-           {'data': 'z_d', 'clock': 'clk', 'enable': 'mov_t4', 'q': 'z'})
+           {'data': 'z_d', 'clock': 'clk', 'enable': 'mov_t5', 'q': 'z'})
 
     # ---- управляющая логика (КОП = IR[8]: 0 = MOV, 1 = JZ)
     s.inst(notg, 'is_mov', 560, 1400, {'IN': 'ir[8]', 'OUT': 'is_mov'})
@@ -219,6 +219,7 @@ def make_uu():
     s.inst(andg, 'mov_t2', 980, 1400, {'IN1': 't2', 'IN2': 'is_mov', 'OUT': 'mov_t2'})
     s.inst(andg, 'mov_t3', 1120, 1400, {'IN1': 't3', 'IN2': 'is_mov', 'OUT': 'mov_t3'})
     s.inst(andg, 'mov_t4', 1260, 1400, {'IN1': 't4', 'IN2': 'is_mov', 'OUT': 'mov_t4'})
+    s.inst(andg, 'mov_t5', 1696, 1400, {'IN1': 't5', 'IN2': 'is_mov', 'OUT': 'mov_t5'})
     s.inst(andg, 'ip_jmp', 1400, 1400, {'IN1': 't3', 'IN2': 'jump', 'OUT': 'ip_jump'})
     s.inst(org, 'ip_en', 1540, 1400, {'IN1': 't1', 'IN2': 'ip_jump', 'OUT': 'ip_en'})
     # флаг нуля: компаратор DR = 0 (выход aeb -> вход данных регистра флагов)
@@ -228,7 +229,7 @@ def make_uu():
     # константа 0 для неиспользуемых в данном варианте управляющих сигналов
     s.inst(gnd, 'gnd0', 1400, 1620, {'1': 'gnd_net'})
 
-    s.note('CONTROL UNIT: IP, IR, AR, DR, FR, state counter T0..T4', 200, 20)
+    s.note('CONTROL UNIT: IP, IR, AR, DR, FR, state counter T0..T5', 200, 20)
     s.connect().save('uu.bdf')
 
 

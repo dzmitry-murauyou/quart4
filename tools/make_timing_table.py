@@ -3,7 +3,7 @@
 """Рисует таблицу «что происходит по тактам» (по данным модели tools/sim.py).
 
 Блоки:
-  1) MOV M[4], R0  — команда из адреса 00, такты T0…T4;
+  1) MOV M[4], R0  — команда из адреса 00, такты T0…T5;
   2) JZ $3         — адрес 01, Z = 0 (перехода нет);
   3) JZ $0         — адрес 05, Z = 1 (переход есть);
   4) сводка по всему циклу программы.
@@ -33,7 +33,7 @@ GREY = (120, 120, 120)
 ROW_H = 40
 HDR_H = 44
 TITLE_H = 42
-TICKS = 5                      # тактов на команду: T0…T4
+TICKS = 6                      # тактов на команду: T0…T5
 MARGIN = 24
 GAP = 36
 
@@ -79,7 +79,7 @@ def hexb(v, n):
 
 # ------------------------------------------------------------------ данные модели
 def collect():
-    """Прогон модели: 6 команд по 5 тактов = полный цикл программы."""
+    """Прогон модели: 6 команд по 6 тактов = полный цикл программы."""
     cpu = CPU()
     ticks = [cpu.step() for _ in range(TICKS * 6)]
     cmd = []                    # (адрес команды, слово, такты)
@@ -97,24 +97,24 @@ def action(cmd_word, t, st):
     adr = cmd_word & 0x3F
     rsel = (cmd_word >> 6) & 3
     if t == 0:
-        return "ША ← IP; ROM читает слово по адресу IP"
+        return "ША ← IP; ROM принимает адрес команды"
     if t == 1:
         return "IR ← ROM[IP]; IP ← IP + 1"
-    if t in (2, 3, 4):
-        if mov:
-            if t == 2:
-                return "AR ← IR[5..0] — прямой адрес операнда"
-            if t == 3:
-                return "ША ← AR; RAM[%X] выдаёт данные на ШД; DR ← ШД" % adr
-            return "DR → ШД; R%d ← ШД; FR.Z ← (DR = 0)" % rsel
+    if mov:
         if t == 2:
-            return "декодирование: mov = ~IR[8] = 0"
+            return "AR ← IR[5..0] — прямой адрес операнда"
         if t == 3:
-            if st['Z']:
-                return "Z = 1 → IP ← IR[5..0] = %X (переход)" % adr
-            return "Z = 0 → перехода нет, IP остаётся IP+1"
-        return "—"
-    return "—"
+            return "ША ← AR; RAM принимает адрес ячейки M[%X]" % adr
+        if t == 4:
+            return "данные RAM[%X] на ШД; DR ← ШД" % adr
+        return "DR → ШД; R%d ← ШД; FR.Z ← (DR = 0)" % rsel
+    if t == 2:
+        return "декодирование: mov = ~IR[8] = 0"
+    if t == 3:
+        if st['Z']:
+            return "Z = 1 → IP ← IR[5..0] = %X (переход)" % adr
+        return "Z = 0 → перехода нет, IP остаётся IP+1"
+    return "— (JZ эти такты не использует)"
 
 
 def rows_for(block):
@@ -144,19 +144,21 @@ def summary(cmd):
         mov = ((word >> 8) & 1) == 0
         if mov:
             rows.append(["0x" + hexb(adr, 2), disasm(word),
-                         "ША = 0x%02X, ШД = 0x%X" % (blk[3]['sha'], blk[3]['bus']),
-                         "R%d ← 0x%X" % ((word >> 6) & 3, blk[4]['bus']),
-                         "Z = %d" % cpu_after(blk[4])])
+                         "0x%02X" % blk[3]['sha'],
+                         "0x%X" % blk[4]['bus'],
+                         "R%d ← 0x%X" % ((word >> 6) & 3, blk[5]['bus']),
+                         "Z = %d" % (0 if blk[5]['DR'] else 1)])
         else:
             jump = blk[3]['ctl']['ip_ld_jmp']
-            rows.append(["0x" + hexb(adr, 2), disasm(word), "—",
+            rows.append(["0x" + hexb(adr, 2), disasm(word), "—", "—",
                          "IP ← 0x%02X" % blk[4]['IP'] if jump else "перехода нет",
                          "Z = %d" % blk[3]['Z']])
     return rows
 
 
-SUMMARY_COLS = [("Адрес", 90), ("Команда", 220), ("Такт T3: ША / ШД", 240),
-                ("Запись", 240), ("Флаг после", 160)]
+SUMMARY_COLS = [("Адрес", 90), ("Команда", 200), ("T3: ША (адрес RAM)", 190),
+                ("T4: ШД (данные)", 170), ("Запись в РОН", 190),
+                ("Флаг после", 150)]
 
 
 # ------------------------------------------------------------------ рисование
@@ -196,7 +198,7 @@ def main():
                "JZ, непосредственная адресация"
         blocks.append(("Команда 0x%02X — %s (%s)" % (adr, disasm(word), kind),
                        COLS, rows_for(blk)))
-    blocks.append(("Весь цикл программы (6 команд × 5 тактов)", SUMMARY_COLS,
+    blocks.append(("Весь цикл программы (6 команд × 6 тактов)", SUMMARY_COLS,
                    summary(cmd)))
 
     H = MARGIN * 2 + sum(TITLE_H + HDR_H + ROW_H * len(r) + GAP
