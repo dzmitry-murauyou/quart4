@@ -64,7 +64,7 @@ module lpm_rom0 (
 				.clocken1 (1'b1),
 				.clocken2 (1'b1),
 				.clocken3 (1'b1),
-				.data_a ({8{1'b1}}),
+				.data_a ({9{1'b1}}),
 				.data_b (1'b1),
 				.eccstatus (),
 				.q_b (),
