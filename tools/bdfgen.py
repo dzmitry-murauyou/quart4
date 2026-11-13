@@ -324,11 +324,15 @@ class Sch:
         cands = []
 
         def lab_for(c, e):
-            if c[0] == e[0]:                    # отвод вертикальный — подпись сбоку
-                y0 = min(c[1], e[1]) + 4
-                return (c[0] + 6, y0, c[0] + 6 + w, y0 + 13)
-            x0 = min(c[0], e[0]) + 4            # отвод горизонтальный — подпись сверху
-            return (x0, c[1] - 15, x0 + w, c[1] - 2)
+            """Рамка подписи цепи. Ставится на ГОРИЗОНТАЛЬНЫЙ участок отвода
+            (так же, как её пишет сам Quartus: text внутри connector, рамка
+            на 4 единицы выше линии) — иначе Quartus не считает проводник
+            подписанным и выдаёт Can't find name for bus."""
+            if c[1] == e[1]:                    # участок горизонтальный — подпись сверху
+                x0 = min(c[0], e[0]) + 4
+                return (x0, c[1] - 17, x0 + w, c[1] - 4)
+            y0 = min(c[1], e[1]) + 4            # участок вертикальный — подпись сбоку
+            return (c[0] + 6, y0, c[0] + 6 + w, y0 + 13)
 
         def consider(c, e, f):
             if r._hard(e, net) or r._sensitive(e, net):
@@ -340,7 +344,7 @@ class Sch:
                     return
                 if not r._edge_ok(e, f, net):
                     return
-            lab = lab_for(c, e)
+            lab = lab_for(e, f if f is not None else e)
             if not self._rect_free(*lab, net):
                 return
             tail = f if f is not None else e
@@ -380,21 +384,22 @@ class Sch:
             # name for bus"). Поэтому отвод идёт прямо от шины, но ВСЕ его отрезки
             # оформляются шинными проводниками.
             r.add_segment(c, e, net, bus=multi)
-            r.hidden.add((c, e))
             r.add_segment(e, f, net, bus=multi)
             try:
                 r.route(net, [f] + pts, bus=multi)
             except RouteError:
                 r.restore(snap)
                 continue
-            # имя цепи хранится внутри самого проводника-отвода (как в Quartus)
+            # имя цепи хранится внутри самого проводника-отвода (как в Quartus);
+            # подписан всегда горизонтальный участок «хвоста» e-f
             self.items.append(['connector',
                                ['text', '"%s"' % net,
                                 ['rect', str(lab[0]), str(lab[1]),
                                  str(lab[2]), str(lab[3])],
                                 ['font', '"Arial"']],
-                               ['pt', str(c[0]), str(c[1])],
-                               ['pt', str(e[0]), str(e[1])]] + ([['bus']] if multi else []))
+                               ['pt', str(e[0]), str(e[1])],
+                               ['pt', str(f[0]), str(f[1])]] + ([['bus']] if multi else []))
+            r.hidden.add((e, f))
             self.texts.append((net, lab))
             return
         raise RouteError('не удалось развести отвод %s от %s' % (net, parent))

@@ -901,35 +901,35 @@ applicable agreement for further details.
 	(rotate270))
 (text "CONTROL UNIT: IP, IR, AR, DR, FR, state counter T0..T7" (rect 200 20 632 38) (font "Arial" (font_size 10)))
 (connector
-	(text "ir[5..0]" (rect 694 324 764 337) (font "Arial"))
-	(pt 688 344)
-	(pt 688 320)
+	(text "ir[5..0]" (rect 604 359 674 372) (font "Arial"))
+	(pt 688 376)
+	(pt 600 376)
 	(bus))
 (connector
-	(text "ir[8]" (rect 774 324 820 337) (font "Arial"))
-	(pt 768 344)
-	(pt 768 320))
+	(text "ir[8]" (rect 844 359 890 372) (font "Arial"))
+	(pt 904 376)
+	(pt 840 376))
 (connector
-	(text "ir[7..6]" (rect 1814 324 1884 337) (font "Arial"))
-	(pt 1808 344)
-	(pt 1808 320)
+	(text "ir[7..6]" (rect 1812 359 1882 372) (font "Arial"))
+	(pt 1808 376)
+	(pt 1896 376)
 	(bus))
 (connector
-	(text "dr[1]" (rect 662 644 708 657) (font "Arial"))
-	(pt 656 664)
-	(pt 656 640))
+	(text "dr[1]" (rect 660 679 706 692) (font "Arial"))
+	(pt 720 696)
+	(pt 656 696))
 (connector
-	(text "dr[0]" (rect 710 636 756 649) (font "Arial"))
-	(pt 704 664)
-	(pt 704 632))
+	(text "dr[0]" (rect 732 679 778 692) (font "Arial"))
+	(pt 792 696)
+	(pt 728 696))
 (connector
-	(text "dr[3]" (rect 766 644 812 657) (font "Arial"))
-	(pt 760 664)
-	(pt 760 640))
+	(text "dr[3]" (rect 852 679 898 692) (font "Arial"))
+	(pt 912 696)
+	(pt 848 696))
 (connector
-	(text "dr[2]" (rect 854 644 900 657) (font "Arial"))
-	(pt 848 664)
-	(pt 848 640))
+	(text "dr[2]" (rect 932 679 978 692) (font "Arial"))
+	(pt 992 696)
+	(pt 928 696))
 (connector
 	(pt 1184 1424)
 	(pt 1240 1424))
@@ -1342,8 +1342,8 @@ applicable agreement for further details.
 	(pt 904 1632)
 	(pt 904 1640))
 (connector
-	(pt 688 320)
-	(pt 600 320)
+	(pt 688 344)
+	(pt 688 376)
 	(bus))
 (connector
 	(pt 456 488)
@@ -1351,15 +1351,11 @@ applicable agreement for further details.
 	(bus))
 (connector
 	(pt 456 384)
-	(pt 616 384)
+	(pt 600 384)
 	(bus))
 (connector
-	(pt 616 384)
-	(pt 616 320)
-	(bus))
-(connector
-	(pt 616 320)
-	(pt 600 320)
+	(pt 600 384)
+	(pt 600 376)
 	(bus))
 (connector
 	(pt 936 856)
@@ -1371,17 +1367,14 @@ applicable agreement for further details.
 	(bus))
 (connector
 	(pt 648 384)
-	(pt 616 384)
+	(pt 600 384)
 	(bus))
 (connector
-	(pt 768 320)
-	(pt 832 320))
+	(pt 904 344)
+	(pt 904 376))
 (connector
 	(pt 840 1416)
-	(pt 840 320))
-(connector
-	(pt 840 320)
-	(pt 832 320))
+	(pt 840 376))
 (connector
 	(pt 560 1416)
 	(pt 560 1384))
@@ -1389,8 +1382,8 @@ applicable agreement for further details.
 	(pt 560 1384)
 	(pt 840 1384))
 (connector
-	(pt 1808 320)
-	(pt 1896 320)
+	(pt 1808 344)
+	(pt 1808 376)
 	(bus))
 (connector
 	(pt 1896 1136)
@@ -1398,66 +1391,69 @@ applicable agreement for further details.
 	(bus))
 (connector
 	(pt 1880 1136)
-	(pt 1880 320)
+	(pt 1880 376)
 	(bus))
 (connector
-	(pt 1880 320)
-	(pt 1896 320)
+	(pt 1880 376)
+	(pt 1896 376)
 	(bus))
 (connector
-	(pt 656 640)
-	(pt 592 640))
+	(pt 720 664)
+	(pt 720 696))
 (connector
 	(pt 560 1648)
-	(pt 408 1648))
+	(pt 544 1648))
 (connector
-	(pt 408 1648)
-	(pt 408 608))
-(connector
-	(pt 408 608)
-	(pt 592 608))
-(connector
-	(pt 592 608)
-	(pt 592 640))
-(connector
-	(pt 704 632)
-	(pt 640 632))
-(connector
-	(pt 560 1632)
-	(pt 544 1632))
-(connector
-	(pt 544 1632)
+	(pt 544 1648)
 	(pt 544 1112))
 (connector
 	(pt 544 1112)
 	(pt 664 1112))
 (connector
 	(pt 664 1112)
-	(pt 664 632))
+	(pt 664 696))
 (connector
-	(pt 664 632)
-	(pt 640 632))
+	(pt 664 696)
+	(pt 656 696))
 (connector
-	(pt 760 640)
-	(pt 696 640))
+	(pt 792 664)
+	(pt 792 696))
+(connector
+	(pt 560 1632)
+	(pt 560 1496))
+(connector
+	(pt 560 1496)
+	(pt 728 1496))
+(connector
+	(pt 728 1496)
+	(pt 728 696))
+(connector
+	(pt 912 664)
+	(pt 912 696))
 (connector
 	(pt 696 1648)
 	(pt 680 1648))
 (connector
 	(pt 680 1648)
-	(pt 680 640))
+	(pt 680 1512))
 (connector
-	(pt 680 640)
-	(pt 696 640))
+	(pt 680 1512)
+	(pt 808 1512))
 (connector
-	(pt 848 640)
-	(pt 784 640))
+	(pt 808 1512)
+	(pt 808 696))
+(connector
+	(pt 808 696)
+	(pt 848 696))
+(connector
+	(pt 992 664)
+	(pt 992 696))
 (connector
 	(pt 696 1632)
-	(pt 696 680))
+	(pt 696 712))
 (connector
-	(pt 696 680)
-	(pt 784 680))
+	(pt 696 712)
+	(pt 928 712))
 (connector
-	(pt 784 680)
-	(pt 784 640))
+	(pt 928 712)
+	(pt 928 696))
