@@ -36,7 +36,7 @@ SIGNAL("clk")
 	PARENT = "";
 }
 
-SIGNAL("adr_out[5..0]")
+SIGNAL("adr_out")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
@@ -106,7 +106,7 @@ SIGNAL("adr_out[0]")
 	PARENT = "adr_out";
 }
 
-SIGNAL("data_out[3..0]")
+SIGNAL("data_out")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
@@ -156,7 +156,7 @@ SIGNAL("data_out[0]")
 	PARENT = "data_out";
 }
 
-SIGNAL("ir_out[8..0]")
+SIGNAL("ir_out")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
@@ -256,7 +256,7 @@ SIGNAL("ir_out[0]")
 	PARENT = "ir_out";
 }
 
-SIGNAL("T_out[2..0]")
+SIGNAL("T_out")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
@@ -306,7 +306,7 @@ SIGNAL("flag_out")
 	PARENT = "";
 }
 
-SIGNAL("rom_data_out[8..0]")
+SIGNAL("rom_data_out")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
@@ -446,7 +446,7 @@ SIGNAL("ron_rd_out")
 	PARENT = "";
 }
 
-SIGNAL("ron_addr_out[1..0]")
+SIGNAL("ron_addr_out")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
@@ -483,15 +483,6 @@ TRANSITION_LIST("clk")
 		REPEAT = 64;
 		LEVEL 0 FOR 100.0;
 		LEVEL 1 FOR 100.0;
-	}
-}
-
-TRANSITION_LIST("adr_out[5..0]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 12800.0;
 	}
 }
 
@@ -549,15 +540,6 @@ TRANSITION_LIST("adr_out[0]")
 	}
 }
 
-TRANSITION_LIST("data_out[3..0]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 12800.0;
-	}
-}
-
 TRANSITION_LIST("data_out[3]")
 {
 	NODE
@@ -586,15 +568,6 @@ TRANSITION_LIST("data_out[1]")
 }
 
 TRANSITION_LIST("data_out[0]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 12800.0;
-	}
-}
-
-TRANSITION_LIST("ir_out[8..0]")
 {
 	NODE
 	{
@@ -684,15 +657,6 @@ TRANSITION_LIST("ir_out[0]")
 	}
 }
 
-TRANSITION_LIST("T_out[2..0]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 12800.0;
-	}
-}
-
 TRANSITION_LIST("T_out[2]")
 {
 	NODE
@@ -721,15 +685,6 @@ TRANSITION_LIST("T_out[0]")
 }
 
 TRANSITION_LIST("flag_out")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 12800.0;
-	}
-}
-
-TRANSITION_LIST("rom_data_out[8..0]")
 {
 	NODE
 	{
@@ -847,15 +802,6 @@ TRANSITION_LIST("ron_wr_out")
 }
 
 TRANSITION_LIST("ron_rd_out")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 12800.0;
-	}
-}
-
-TRANSITION_LIST("ron_addr_out[1..0]")
 {
 	NODE
 	{
