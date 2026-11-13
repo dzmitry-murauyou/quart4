@@ -902,7 +902,7 @@ applicable agreement for further details.
 (text "CONTROL UNIT: IP, IR, AR, DR, FR, state counter T0..T7" (rect 200 20 632 38) (font "Arial" (font_size 10)))
 (connector
 	(text "ir[5..0]" (rect 694 324 764 337) (font "Arial"))
-	(pt 688 336)
+	(pt 688 344)
 	(pt 688 320)
 	(bus))
 (connector
@@ -911,7 +911,7 @@ applicable agreement for further details.
 	(pt 768 320))
 (connector
 	(text "ir[7..6]" (rect 1814 324 1884 337) (font "Arial"))
-	(pt 1808 336)
+	(pt 1808 344)
 	(pt 1808 320)
 	(bus))
 (connector
